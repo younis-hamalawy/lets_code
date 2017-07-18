@@ -10,4 +10,10 @@
 #
 
 class Registration < ApplicationRecord
+  belongs_to :registred_user,
+              foreign_key: :user_id,
+              primary_key: :id,
+              class_name: :users
+
+  belongs_to :event
 end

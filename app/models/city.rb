@@ -11,4 +11,10 @@
 #
 
 class City < ApplicationRecord
+  validates :city_abrv, :name, :image_url, presence: true
+  validates :city_abrv, uniqueness: true
+
+  has_many :users
+
+  has_many :events
 end

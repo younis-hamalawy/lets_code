@@ -23,21 +23,18 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  belongs_to :city,
-          foreign_key: :city_id,
-          primary_key: :id,
-          class_name: :City
+  belongs_to :city
 
   has_many :registrations
 
   has_many :hosted_events,
-          foreign_key: :host_id,
-          primary_key: :id,
-          class_name: :Events
+            foreign_key: :host_id,
+            primary_key: :id,
+            class_name: :Events
 
   has_many :registered_events,
-          through: :registrations,
-          source: :events
+            through: :registrations,
+            source: :events
 
   def password= password
     self.password_digest = BCrypt::Password.create(password)

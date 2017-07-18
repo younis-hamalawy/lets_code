@@ -16,12 +16,16 @@
 class Event < ApplicationRecord
   validates :name, :description, :date, :address, :city_id, :host_id, presence: true
 
-  belongs_to :cities
-  belongs_to :host
+  belongs_to :city
+  belongs_to :host,
+              foreign_key: :host_id,
+              primary_key: :id,
+              class_name: :Users
 
   has_many :registrations
+
   has_many :registered_users,
           through: :registrations,
-          source: :registered_users
+          source: :registered_user
 
 end
