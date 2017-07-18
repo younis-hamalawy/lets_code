@@ -1,30 +1,28 @@
+```
 {
-  currentUser: {
-    id: 1,
-    first_name: "Mallik",
-    last_name: "Beuger",
-    email: "mallik@yahoo.com",
-    city_id: null
-  },
+  sessions: {
+    currentUser: {
+      id: 1,
+      first_name: "Mallik",
+      last_name: "Beuger",
+      email: "mallik@yahoo.com",
+      imgae_url: "http/www.hghgs.com/3645326",
+      city_id: 3
+    },
+        errors: []
+  }
   users: {
     entities{
       1: {
         id: 1,
         first_name: "Kurt",
-        last_name: "Russell",
-        email: "kurt_russell@gmail.com",
-        city_id: 1
+        imgae_url: "http/www.hghgs.com/3645326"
       },
       3: {
         id: 3,
         first_name: "Zoe",
-        last_name: "Bell",
-        email: "zoe@zoebell.io",
-        city_id: 5
+        imgae_url: "http/www.hghgs.com/3644326"
       }
-    },
-    errors: {
-
     }
   }
   cities: {
@@ -58,33 +56,19 @@
         host_id: 5
       }
     },
-    errors: {
-
-    }
-  dashboard: {
-    hosted_events: {
-      1: {
-        id: 1,
-        event_id: 2,
-        user_id: 1
-      },
-      2: {
-        id: 2,
-        event_id: 20,
-        user_id: 1
-      }
+    errors: []
+  }
+  registrations: {
+    3: {
+      id: 3,
+      user_id: 5,
+      event_id: 7
     },
-    attended_events: {
-      5: {
-        id: 5,
-        event_id: 23,
-        user_id: 5
-      },
-      4: {
-        id: 4,
-        event_id: 14,
-        user_id: 10
-      }
-    }
+    7: {
+      id: 7,
+      user_id: 4,
+      event_id: 4
+    },
   }
 }
+```

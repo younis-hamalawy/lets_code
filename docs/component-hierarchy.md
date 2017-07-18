@@ -42,10 +42,10 @@
 
 | path                          | component           |
 | ----------------------------- | ------------------- |
-| "/main"                       | MainContainer       |
+| "/"                           | MainContainer       |
 | "/sign-in"                    | AuthFormContainer   |
 | "/sign-up"                    | AuthFormContainer   |
 | "/cities"                     | CitiesIndex         |
 | "/cities/:id"                 | CityShow            |
 | "/dashboard"                  | Dashboard           |
-| "/hosting"                    | HostingContaine     |
+| "/hosting"                    | HostingContainer     |

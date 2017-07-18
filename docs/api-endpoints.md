@@ -10,6 +10,7 @@
 
 ### Users
 
+- `GET /api/users`
 - `POST /api/users`
 
 ### Session
@@ -21,9 +22,10 @@
 
 - `GET /api/cities`
 
-### Hosts
+### Registrations
 
-- `GET /api/cities/id/host/id`
+- `GET /api/registrations`
+- `POST /api/registrations`
 
 ### Events
 
