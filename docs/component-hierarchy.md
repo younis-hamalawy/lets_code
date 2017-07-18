@@ -1,36 +1,51 @@
 # Component Hierarchy
 
-### AuthForm
-- AuthForm Container
 
-### Home
-- Home
-- Navbar
-- Footer
+### Main
+  - Navbar
+    - AuthButtonContainer
+  - Main
+  - Footer
+
+### Auth
+  - AuthFormContainer
+    - AuthFormS
 
 ### Cities
-- CityIndex
-- CityDetail
+  - CitiesIndexContainer
+    - CitiesIndex
+      - CitiesIndexItem
+
+### City Show
+  - CityShow
+    - CityDetail
+    - EventsIndexContainer
+      - EventsIndex
+        - EventsIndexItem
 
 ### Dashboard
-- DashboardIndex
+  - DashboardContainer
+    - EventsIndexContainer
+      - EventsIndex
+        - EventsIndexItem
+    - EventsIndexContainer
+      - EventsIndex
+        - EventsIndexItem
 
-### HostingContainer
-- HostingIndex
-
-### Dashboard
-- Dashboard
-
+### Hosting
+  - HostingShow
+    - EventFormContainer
+      - EventForm
 
 
 # Routes
 
 | path                          | component           |
 | ----------------------------- | ------------------- |
+| "/main"                       | MainContainer       |
 | "/sign-in"                    | AuthFormContainer   |
 | "/sign-up"                    | AuthFormContainer   |
-| "/home"                       | HomeContainer       |
-| "/cities"                     | CityIndex           |
-| "/cities/:id"                 | CityDetail          |
+| "/cities"                     | CitiesIndex         |
+| "/cities/:id"                 | CityShow            |
 | "/dashboard"                  | Dashboard           |
 | "/hosting"                    | HostingContaine     |
