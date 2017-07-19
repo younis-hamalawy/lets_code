@@ -31321,7 +31321,7 @@ var SessionForm = function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_this);
-    _this.signupFields = _this.signupFields.bind(_this);
+    // this.signupFields = this.signupFields.bind(this);
     _this.demosignin = _this.demosignin.bind(_this);
     return _this;
   }
