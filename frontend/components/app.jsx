@@ -6,6 +6,9 @@ import SessionFormContainer from './session_form/session_form_container';
 import { AuthRoute } from '../util/route_util';
 
 const App = () => (
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great|Sacramento');
+  </style>
   <div>
     <navbar>
       <h1>Let's Code!</h1>
