@@ -5,7 +5,7 @@ const sessionLinks = () => (
   <nav className="sign-button">
     <Link to="/signin">Sign In</Link>
     &nbsp;or&nbsp;
-    <Link to="/signup">Sign up!</Link>
+    <Link to="/signup">Sign Up!</Link>
   </nav>
 );
 

@@ -56,21 +56,23 @@ class SessionForm extends React.Component {
   signupFields() {
 		if (this.props.formType === "signup") {
 			return (
-        <div className="sign-form-container">
+        <div className="sign-form">
           <br/>
-          <label>First Name:
+          <label>
             <input type="text"
               value={this.state.first_name}
               onChange={this.update('first_name')}
               className="sign-input"
+              placeholder="First name"
             />
           </label>
           <br/>
-          <label>Last Name:
+          <label>
             <input type="text"
               value={this.state.last_name}
               onChange={this.update('last_name')}
               className="sign-input"
+              placeholder="Last name"
             />
           </label>
         </div>
@@ -80,7 +82,7 @@ class SessionForm extends React.Component {
 
   demosignin(e) {
 		e.preventDefault();
-		const user = {first_name: "Ewa",last_name: "Klimek", email: "ewa@gmail.com", password: "123456"};
+		const user = {email: "ewa@gmail.com", password: "123456"};
 		this.props.signin({user});
 	}
 
@@ -94,20 +96,21 @@ class SessionForm extends React.Component {
           {this.renderErrors()}
           {this.signupFields()}
           <div className="sign-form">
-            <br/>
-            <label>Email:
+            <label>
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
                 className="sign-input"
+                placeholder="Email address"
               />
             </label>
             <br/>
-            <label>Password:
+            <label>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 className="sign-input"
+                placeholder="password"
               />
             </label>
             <br/>

@@ -31201,7 +31201,7 @@ var sessionLinks = function sessionLinks() {
     _react2.default.createElement(
       _reactRouterDom.Link,
       { to: '/signup' },
-      'Sign up!'
+      'Sign Up!'
     )
   );
 };
@@ -31262,6 +31262,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, _ref2) {
   var formType = location.pathname.slice(1);
   var _processForm = formType === 'signin' ? _session_actions.signin : _session_actions.signup;
   return {
+    signin: function signin(user) {
+      return dispatch((0, _session_actions.signin)(user));
+    },
+    signup: function signup(user) {
+      return dispatch((0, _session_actions.signup)(user));
+    },
     processForm: function processForm(user) {
       return dispatch(_processForm(user));
     },
@@ -31381,27 +31387,27 @@ var SessionForm = function (_React$Component) {
       if (this.props.formType === "signup") {
         return _react2.default.createElement(
           'div',
-          { className: 'sign-form-container' },
+          { className: 'sign-form' },
           _react2.default.createElement('br', null),
           _react2.default.createElement(
             'label',
             null,
-            'First Name:',
             _react2.default.createElement('input', { type: 'text',
               value: this.state.first_name,
               onChange: this.update('first_name'),
-              className: 'sign-input'
+              className: 'sign-input',
+              placeholder: 'First name'
             })
           ),
           _react2.default.createElement('br', null),
           _react2.default.createElement(
             'label',
             null,
-            'Last Name:',
             _react2.default.createElement('input', { type: 'text',
               value: this.state.last_name,
               onChange: this.update('last_name'),
-              className: 'sign-input'
+              className: 'sign-input',
+              placeholder: 'Last name'
             })
           )
         );
@@ -31411,7 +31417,7 @@ var SessionForm = function (_React$Component) {
     key: 'demosignin',
     value: function demosignin(e) {
       e.preventDefault();
-      var user = { first_name: "Ewa", last_name: "Klimek", email: "ewa@gmail.com", password: "123456" };
+      var user = { email: "ewa@gmail.com", password: "123456" };
       this.props.signin({ user: user });
     }
   }, {
@@ -31431,26 +31437,25 @@ var SessionForm = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'sign-form' },
-            _react2.default.createElement('br', null),
             _react2.default.createElement(
               'label',
               null,
-              'Email:',
               _react2.default.createElement('input', { type: 'text',
                 value: this.state.email,
                 onChange: this.update('email'),
-                className: 'sign-input'
+                className: 'sign-input',
+                placeholder: 'Email address'
               })
             ),
             _react2.default.createElement('br', null),
             _react2.default.createElement(
               'label',
               null,
-              'Password:',
               _react2.default.createElement('input', { type: 'password',
                 value: this.state.password,
                 onChange: this.update('password'),
-                className: 'sign-input'
+                className: 'sign-input',
+                placeholder: 'password'
               })
             ),
             _react2.default.createElement('br', null),
