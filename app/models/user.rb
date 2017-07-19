@@ -23,7 +23,7 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  belongs_to :city
+  # belongs_to :city
 
   has_many :registrations
 
@@ -53,8 +53,7 @@ class User < ApplicationRecord
 
   def reset_session_token!
     self.session_token = new_session_token
-    ensure_session_token_uniqueness
-    self.save
+    self.save!
     self.session_token
   end
 
