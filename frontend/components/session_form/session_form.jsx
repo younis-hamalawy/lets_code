@@ -12,6 +12,7 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.signupFields = this.signupFields.bind(this);
+    this.demosignin = this.demosignin.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -77,6 +78,12 @@ class SessionForm extends React.Component {
 		}
 	}
 
+  demosignin(e) {
+		e.preventDefault();
+		const user = {first_name: "Ewa",last_name: "Klimek", email: "ewa@gmail.com", password: "123456"};
+		this.props.signin({user});
+	}
+
   render() {
 
     return (
@@ -84,8 +91,8 @@ class SessionForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="sign-form-box">
           Welcome to let's Code!
           <br/>
-          {this.signupFields()}
           {this.renderErrors()}
+          {this.signupFields()}
           <div className="sign-form">
             <br/>
             <label>Email:
@@ -104,7 +111,8 @@ class SessionForm extends React.Component {
               />
             </label>
             <br/>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Let's Code!" />
+            <button type="submit" className="button" onClick={this.demosignin}>Demo</button>
           </div>
         </form>
       </div>

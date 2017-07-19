@@ -31102,6 +31102,8 @@ var _session_form_container = __webpack_require__(367);
 
 var _session_form_container2 = _interopRequireDefault(_session_form_container);
 
+var _route_util = __webpack_require__(369);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
@@ -31116,9 +31118,13 @@ var App = function App() {
         null,
         'Let\'s Code!'
       ),
-      _react2.default.createElement(_greeting_container2.default, null),
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/signin', component: _session_form_container2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/signup', component: _session_form_container2.default })
+      _react2.default.createElement(_greeting_container2.default, null)
+    ),
+    _react2.default.createElement(
+      _reactRouterDom.Switch,
+      null,
+      _react2.default.createElement(_route_util.AuthRoute, { path: '/signin', component: _session_form_container2.default }),
+      _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _session_form_container2.default })
     )
   );
 };
@@ -31310,6 +31316,7 @@ var SessionForm = function (_React$Component) {
     };
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     _this.signupFields = _this.signupFields.bind(_this);
+    _this.demosignin = _this.demosignin.bind(_this);
     return _this;
   }
 
@@ -31401,6 +31408,13 @@ var SessionForm = function (_React$Component) {
       }
     }
   }, {
+    key: 'demosignin',
+    value: function demosignin(e) {
+      e.preventDefault();
+      var user = { first_name: "Ewa", last_name: "Klimek", email: "ewa@gmail.com", password: "123456" };
+      this.props.signin({ user: user });
+    }
+  }, {
     key: 'render',
     value: function render() {
 
@@ -31412,8 +31426,8 @@ var SessionForm = function (_React$Component) {
           { onSubmit: this.handleSubmit, className: 'sign-form-box' },
           'Welcome to let\'s Code!',
           _react2.default.createElement('br', null),
-          this.signupFields(),
           this.renderErrors(),
+          this.signupFields(),
           _react2.default.createElement(
             'div',
             { className: 'sign-form' },
@@ -31440,7 +31454,12 @@ var SessionForm = function (_React$Component) {
               })
             ),
             _react2.default.createElement('br', null),
-            _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
+            _react2.default.createElement('input', { type: 'submit', value: 'Let\'s Code!' }),
+            _react2.default.createElement(
+              'button',
+              { type: 'submit', className: 'button', onClick: this.demosignin },
+              'Demo'
+            )
           )
         )
       );
@@ -31451,6 +31470,43 @@ var SessionForm = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = (0, _reactRouterDom.withRouter)(SessionForm);
+
+/***/ }),
+/* 369 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.AuthRoute = undefined;
+
+var _react = __webpack_require__(119);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(327);
+
+var _reactRouterDom = __webpack_require__(338);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Auth = function Auth(_ref) {
+  var Component = _ref.component,
+      path = _ref.path,
+      signedIn = _ref.signedIn;
+  return _react2.default.createElement(_reactRouterDom.Route, { path: path, render: function render(props) {
+      return !signedIn ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' });
+    } });
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return { signedIn: Boolean(state.session.currentUser) };
+};
+
+var AuthRoute = exports.AuthRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Auth));
 
 /***/ })
 /******/ ]);
