@@ -11,7 +11,7 @@ class Api::SessionsController < ApplicationController
       render "api/users/show"
     else
       render(
-        json: ["Invalid username/password combination"],
+        json: ["Invalid email/password combination"],
         status: 401
       )
     end
@@ -20,7 +20,7 @@ class Api::SessionsController < ApplicationController
   def destroy
     @user = current_user
     if @user
-      logout
+      sign_out!
       render "api/users/show"
     else
       render(

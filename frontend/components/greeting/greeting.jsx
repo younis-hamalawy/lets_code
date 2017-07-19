@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const sessionLinks = () => (
   <nav className="sign-button">
-    <Link to="/login">Sign In</Link>
+    <Link to="/signin">Sign In</Link>
     &nbsp;or&nbsp;
     <Link to="/signup">Sign up!</Link>
   </nav>
