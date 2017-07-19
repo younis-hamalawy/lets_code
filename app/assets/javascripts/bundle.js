@@ -11104,7 +11104,7 @@ var _root = __webpack_require__(326);
 
 var _root2 = _interopRequireDefault(_root);
 
-var _session_api_util = __webpack_require__(117);
+var _session_actions = __webpack_require__(307);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11113,9 +11113,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var store = (0, _store2.default)();
   window.getState = store.getState;
-  window.signin = _session_api_util.signin;
-  window.signout = _session_api_util.signout;
-  window.signup = _session_api_util.signup;
+  window.dispatch = store.dispatch;
+  window.signin = _session_actions.signin;
+  window.signout = _session_actions.signout;
+  window.signup = _session_actions.signup;
 
   _reactDom2.default.render(_react2.default.createElement(_root2.default, { store: store }), root);
 });
