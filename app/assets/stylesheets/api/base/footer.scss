@@ -1,0 +1,14 @@
+.footer {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  align-content: center;
+  justify-content: center;
+  align-content: center;
+  padding: 1rem;
+  p {
+    font-family: 'Sacramento', cursive;
+    max-width: 50%;
+    font-size: 1.3rem;
+  }
+}

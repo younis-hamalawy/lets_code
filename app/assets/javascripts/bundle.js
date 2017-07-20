@@ -31102,6 +31102,10 @@ var _session_form_container = __webpack_require__(367);
 
 var _session_form_container2 = _interopRequireDefault(_session_form_container);
 
+var _footer_container = __webpack_require__(370);
+
+var _footer_container2 = _interopRequireDefault(_footer_container);
+
 var _route_util = __webpack_require__(369);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -31121,11 +31125,16 @@ var App = function App() {
       _react2.default.createElement(_greeting_container2.default, { className: 'button-container' })
     ),
     _react2.default.createElement(
-      _reactRouterDom.Switch,
-      null,
-      _react2.default.createElement(_route_util.AuthRoute, { path: '/signin', component: _session_form_container2.default }),
-      _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _session_form_container2.default })
-    )
+      'div',
+      { className: 'main-page' },
+      _react2.default.createElement(
+        _reactRouterDom.Switch,
+        null,
+        _react2.default.createElement(_route_util.AuthRoute, { path: '/signin', component: _session_form_container2.default }),
+        _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _session_form_container2.default })
+      )
+    ),
+    _react2.default.createElement(_footer_container2.default, { className: 'footer-container' })
   );
 };
 
@@ -31535,6 +31544,94 @@ var mapStateToProps = function mapStateToProps(state) {
 var AuthRoute = exports.AuthRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Auth));
 
 var ProtectedRoute = exports.ProtectedRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Protected));
+
+/***/ }),
+/* 370 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(327);
+
+var _footer = __webpack_require__(371);
+
+var _footer2 = _interopRequireDefault(_footer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var session = _ref.session;
+  return {
+    currentUser: session.currentUser
+  };
+};
+
+// const mapDispatchToProps = dispatch => ({
+//   signout: () => dispatch(signout())
+// });
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(_footer2.default);
+
+/***/ }),
+/* 371 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(119);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(338);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Footer = function Footer() {
+  return _react2.default.createElement(
+    'nav',
+    { className: 'footer' },
+    _react2.default.createElement(
+      'div',
+      { className: 'footer-buttons' },
+      _react2.default.createElement(
+        'button',
+        { className: 'sign-button' },
+        'Cities'
+      ),
+      _react2.default.createElement(
+        'button',
+        { className: 'sign-button' },
+        'Hosting'
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'footer-paragraph' },
+      _react2.default.createElement(
+        'p',
+        null,
+        'Let\'s Code is all about making coding more fun. We\'re more connected than ever before, but we\'re also more alone. And all we want to do is bring people together - the world is better that way.'
+      ),
+      _react2.default.createElement(
+        'p',
+        null,
+        'Be it a grandmother or a long lost high school friend, you never know who you\'ll encounter when coding with strangers.'
+      )
+    )
+  );
+};
+
+exports.default = Footer;
 
 /***/ })
 /******/ ]);
