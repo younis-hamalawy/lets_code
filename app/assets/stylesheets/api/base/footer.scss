@@ -1,14 +1,23 @@
-.footer {
+nav.footer {
   display: flex;
-  flex: 1;
-  width: 100%;
-  align-content: center;
-  justify-content: center;
-  align-content: center;
+  justify-content: space-around;
   padding: 1rem;
+  max-width: 70%;
   p {
+    padding: 1rem;
     font-family: 'Sacramento', cursive;
-    max-width: 50%;
+    max-width: 100%;
     font-size: 1.3rem;
+    text-align: center;
   }
+  div.footer-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.footer-div {
+  display: flex;
+  justify-content: center;
 }

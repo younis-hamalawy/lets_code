@@ -7,7 +7,7 @@ import FooterContainer from './footer/footer_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
-  <div>
+  <div className="main-app">
       <navbar className="navbar">
         <h1>Let's Code!</h1>
         <GreetingContainer className="button-container"/>

@@ -3,14 +3,22 @@ import { Link } from 'react-router-dom';
 
 const sessionLinks = () => (
   <nav className="header-buttons">
-    <button className="sign-button">
-    <Link to="/signin">Sign In</Link>
+    <button className="sign-button">Cities
+    </button>
+    <button className="sign-button">Hosting
     </button>
 
-    <button className="sign-button">
-    <Link to="/signup">Sign Up!</Link>
-    </button>
+    <Link to="/signin">
+      <button className="sign-button">Sign In</button>
+    </Link>
+
+    <Link to="/signup">
+      <button className="sign-button">Sign Up!</button>
+    </Link>
+
   </nav>
+
+
 );
 
 const endsessionLink = (currentUser, signout) => (
