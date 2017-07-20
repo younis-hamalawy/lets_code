@@ -31394,7 +31394,7 @@ var SessionForm = function (_React$Component) {
       if (this.props.formType === "signup") {
         return _react2.default.createElement(
           'div',
-          { className: 'sign-form' },
+          { className: 'signup-form' },
           _react2.default.createElement(
             'label',
             null,
@@ -31436,13 +31436,17 @@ var SessionForm = function (_React$Component) {
         _react2.default.createElement(
           'form',
           { onSubmit: this.handleSubmit, className: 'sign-form-box' },
-          'Welcome to Let\'s Code!',
+          _react2.default.createElement(
+            'p',
+            { className: 'p1' },
+            'Welcome to Let\'s Code!'
+          ),
           _react2.default.createElement('br', null),
           this.renderErrors(),
-          this.signupFields(),
           _react2.default.createElement(
             'div',
             { className: 'sign-form' },
+            this.signupFields(),
             _react2.default.createElement(
               'label',
               null,
@@ -31453,7 +31457,6 @@ var SessionForm = function (_React$Component) {
                 placeholder: 'Email address'
               })
             ),
-            _react2.default.createElement('br', null),
             _react2.default.createElement(
               'label',
               null,
@@ -31461,15 +31464,18 @@ var SessionForm = function (_React$Component) {
                 value: this.state.password,
                 onChange: this.update('password'),
                 className: 'sign-input',
-                placeholder: 'password'
+                placeholder: 'Password'
               })
             ),
-            _react2.default.createElement('br', null),
-            _react2.default.createElement('input', { className: 'sign-button', type: 'submit', value: 'Let\'s Code!' }),
             _react2.default.createElement(
-              'button',
-              { type: 'submit', className: 'sign-button', onClick: this.demosignin },
-              'Demo Login'
+              'div',
+              { className: 'form-buttons' },
+              _react2.default.createElement('input', { className: 'sign-button', type: 'submit', value: 'Let\'s Code!' }),
+              _react2.default.createElement(
+                'button',
+                { type: 'submit', className: 'sign-button', onClick: this.demosignin },
+                'Demo Login'
+              )
             )
           )
         )
@@ -31492,7 +31498,7 @@ exports.default = (0, _reactRouterDom.withRouter)(SessionForm);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.AuthRoute = undefined;
+exports.ProtectedRoute = exports.AuthRoute = undefined;
 
 var _react = __webpack_require__(119);
 
@@ -31513,11 +31519,22 @@ var Auth = function Auth(_ref) {
     } });
 };
 
+var Protected = function Protected(_ref2) {
+  var Component = _ref2.component,
+      path = _ref2.path,
+      loggedIn = _ref2.loggedIn;
+  return _react2.default.createElement(_reactRouterDom.Route, { path: path, render: function render(props) {
+      return loggedIn ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/login' });
+    } });
+};
+
 var mapStateToProps = function mapStateToProps(state) {
   return { signedIn: Boolean(state.session.currentUser) };
 };
 
 var AuthRoute = exports.AuthRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Auth));
+
+var ProtectedRoute = exports.ProtectedRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Protected));
 
 /***/ })
 /******/ ]);

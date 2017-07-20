@@ -56,7 +56,7 @@ class SessionForm extends React.Component {
   signupFields() {
 		if (this.props.formType === "signup") {
 			return (
-        <div className="sign-form">
+        <div className="signup-form">
           <label>
             <input type="text"
               value={this.state.first_name}
@@ -90,11 +90,11 @@ class SessionForm extends React.Component {
     return (
       <div className="sign-form-container">
         <form onSubmit={this.handleSubmit} className="sign-form-box">
-          Welcome to Let's Code!
+          <p className="p1">Welcome to Let's Code!</p>
           <br/>
           {this.renderErrors()}
-          {this.signupFields()}
           <div className="sign-form">
+            {this.signupFields()}
             <label>
               <input type="text"
                 value={this.state.email}
@@ -103,18 +103,20 @@ class SessionForm extends React.Component {
                 placeholder="Email address"
               />
             </label>
-            <br/>
+            
             <label>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 className="sign-input"
-                placeholder="password"
+                placeholder="Password"
               />
             </label>
-            <br/>
+
+            <div className="form-buttons">
             <input className="sign-button" type="submit" value="Let's Code!" />
             <button type="submit" className="sign-button" onClick={this.demosignin}>Demo Login</button>
+            </div>
           </div>
         </form>
       </div>
