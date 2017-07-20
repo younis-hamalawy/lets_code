@@ -90,7 +90,7 @@ class SessionForm extends React.Component {
     return (
       <div className="sign-form-container">
         <form onSubmit={this.handleSubmit} className="sign-form-box">
-          Welcome to let's Code!
+          Welcome to Let's Code!
           <br/>
           {this.renderErrors()}
           {this.signupFields()}
@@ -113,8 +113,8 @@ class SessionForm extends React.Component {
               />
             </label>
             <br/>
-            <input type="submit" value="Let's Code!" />
-            <button type="submit" className="button" onClick={this.demosignin}>Demo</button>
+            <input className="sign-button" type="submit" value="Let's Code!" />
+            <button type="submit" className="sign-button" onClick={this.demosignin}>Demo Login</button>
           </div>
         </form>
       </div>

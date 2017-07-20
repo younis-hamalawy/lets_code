@@ -31112,13 +31112,13 @@ var App = function App() {
     null,
     _react2.default.createElement(
       'navbar',
-      null,
+      { className: 'navbar' },
       _react2.default.createElement(
         'h1',
         null,
         'Let\'s Code!'
       ),
-      _react2.default.createElement(_greeting_container2.default, null)
+      _react2.default.createElement(_greeting_container2.default, { className: 'button-container' })
     ),
     _react2.default.createElement(
       _reactRouterDom.Switch,
@@ -31191,17 +31191,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var sessionLinks = function sessionLinks() {
   return _react2.default.createElement(
     'nav',
-    { className: 'sign-button' },
+    { className: 'header-buttons' },
     _react2.default.createElement(
-      _reactRouterDom.Link,
-      { to: '/signin' },
-      'Sign In'
+      'button',
+      { className: 'sign-button' },
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: '/signin' },
+        'Sign In'
+      )
     ),
-    '\xA0or\xA0',
     _react2.default.createElement(
-      _reactRouterDom.Link,
-      { to: '/signup' },
-      'Sign Up!'
+      'button',
+      { className: 'sign-button' },
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: '/signup' },
+        'Sign Up!'
+      )
     )
   );
 };
@@ -31209,11 +31216,11 @@ var sessionLinks = function sessionLinks() {
 var endsessionLink = function endsessionLink(currentUser, signout) {
   return _react2.default.createElement(
     'nav',
-    { className: 'sign-button' },
+    { className: 'header-buttons' },
     _react2.default.createElement(
       'button',
       { className: 'sign-button', onClick: signout },
-      'Log Out'
+      'Sign Out'
     )
   );
 };
@@ -31429,7 +31436,7 @@ var SessionForm = function (_React$Component) {
         _react2.default.createElement(
           'form',
           { onSubmit: this.handleSubmit, className: 'sign-form-box' },
-          'Welcome to let\'s Code!',
+          'Welcome to Let\'s Code!',
           _react2.default.createElement('br', null),
           this.renderErrors(),
           this.signupFields(),
@@ -31458,11 +31465,11 @@ var SessionForm = function (_React$Component) {
               })
             ),
             _react2.default.createElement('br', null),
-            _react2.default.createElement('input', { type: 'submit', value: 'Let\'s Code!' }),
+            _react2.default.createElement('input', { className: 'sign-button', type: 'submit', value: 'Let\'s Code!' }),
             _react2.default.createElement(
               'button',
-              { type: 'submit', className: 'button', onClick: this.demosignin },
-              'Demo'
+              { type: 'submit', className: 'sign-button', onClick: this.demosignin },
+              'Demo Login'
             )
           )
         )

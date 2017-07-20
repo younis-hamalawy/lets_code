@@ -1,8 +1,8 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-navbar {
+$base: 0.75rem;
+.navbar {
   h1{
     // font-family: 'Helvetica Neue', sans-serif;
     // font-size: $base*2;
@@ -17,5 +17,38 @@ navbar {
 
   font: 400 60px/1.3 'Fredericka the Great', cursive;
     color: #111;
-   }
+  }
+    font-family: 'Josefin Slab', serif;
+
  }
+
+ // a {
+ //   font-family: 'Josefin Slab', serif;
+ //   font-weight: bold;
+ //   font-size: $base*2;
+ // }
+
+.sign-button {
+
+  font-family: 'Josefin Slab', serif;
+  font-weight: bold;
+  font-size: $base;
+  border:solid 2px #41403E;
+  align-self:center;
+  margin-bottom:2rem;
+  background:transparent;
+  padding:0.85rem 1rem;
+  margin:1rem;
+  transition:all .5s ease;
+  color:#41403E;
+
+  letter-spacing:1px;
+  outline:none;
+  box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+
+}
+
+.sign-button:hover{
+  box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
+}

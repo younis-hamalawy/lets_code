@@ -2,16 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const sessionLinks = () => (
-  <nav className="sign-button">
+  <nav className="header-buttons">
+    <button className="sign-button">
     <Link to="/signin">Sign In</Link>
-    &nbsp;or&nbsp;
+    </button>
+
+    <button className="sign-button">
     <Link to="/signup">Sign Up!</Link>
+    </button>
   </nav>
 );
 
 const endsessionLink = (currentUser, signout) => (
-	<nav className="sign-button">
-    <button className="sign-button" onClick={signout}>Log Out</button>
+	<nav className="header-buttons">
+    <button className="sign-button" onClick={signout}>Sign Out</button>
 	</nav>
 );
 
