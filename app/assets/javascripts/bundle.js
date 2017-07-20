@@ -5363,7 +5363,7 @@ module.exports = getMapData;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.signout = exports.signin = exports.signup = exports.receiveErrors = exports.receiveCurrentUser = exports.RECEIVE_ERRORS = exports.RECEIVE_CURRENT_USER = undefined;
+exports.signout = exports.signin = exports.signup = exports.clearErrors = exports.receiveErrors = exports.receiveCurrentUser = exports.CLEAR_ERRORS = exports.RECEIVE_ERRORS = exports.RECEIVE_CURRENT_USER = undefined;
 
 var _session_api_util = __webpack_require__(327);
 
@@ -5373,6 +5373,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var RECEIVE_CURRENT_USER = exports.RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var RECEIVE_ERRORS = exports.RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+var CLEAR_ERRORS = exports.CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 var receiveCurrentUser = exports.receiveCurrentUser = function receiveCurrentUser(currentUser) {
   return {
@@ -5387,11 +5388,16 @@ var receiveErrors = exports.receiveErrors = function receiveErrors(errors) {
     errors: errors
   };
 };
+var clearErrors = exports.clearErrors = function clearErrors() {
+  return {
+    type: CLEAR_ERRORS
+  };
+};
 
 var signup = exports.signup = function signup(user) {
   return function (dispatch) {
     return APIUtil.signup(user).then(function (user) {
-      return dispatch(receiveCurrentUser(user));
+      return dispatch(receiveCurrentUser(user)), dispatch(clearErrors());
     }, function (err) {
       return dispatch(receiveErrors(err.responseJSON));
     });
@@ -5401,7 +5407,7 @@ var signup = exports.signup = function signup(user) {
 var signin = exports.signin = function signin(user) {
   return function (dispatch) {
     return APIUtil.signin(user).then(function (user) {
-      return dispatch(receiveCurrentUser(user));
+      return dispatch(receiveCurrentUser(user)), dispatch(clearErrors());
     }, function (err) {
       return dispatch(receiveErrors(err.responseJSON));
     });
@@ -25995,6 +26001,11 @@ var sessionReducer = function sessionReducer() {
       return (0, _merge2.default)({}, nullUser, {
         errors: errors
       });
+    case _session_actions.CLEAR_ERRORS:
+      console.log("clearErrors");
+      return (0, _merge2.default)({}, nullUser, {
+        errors: []
+      });
     default:
       return state;
   }
@@ -31118,9 +31129,13 @@ var App = function App() {
       'navbar',
       { className: 'navbar' },
       _react2.default.createElement(
-        'h1',
-        null,
-        'Let\'s Code!'
+        _reactRouterDom.Link,
+        { to: '/' },
+        _react2.default.createElement(
+          'h1',
+          null,
+          'Let\'s Code!'
+        )
       ),
       _react2.default.createElement(_greeting_container2.default, { className: 'button-container' })
     ),
@@ -31397,7 +31412,7 @@ var SessionForm = function (_React$Component) {
     value: function renderErrors() {
       return _react2.default.createElement(
         'ul',
-        null,
+        { className: 'errors' },
         this.props.errors.map(function (error, i) {
           return _react2.default.createElement(
             'li',
@@ -31463,11 +31478,6 @@ var SessionForm = function (_React$Component) {
           _react2.default.createElement('br', null),
           _react2.default.createElement(
             'div',
-            { className: 'errors' },
-            this.renderErrors()
-          ),
-          _react2.default.createElement(
-            'div',
             { className: 'sign-form' },
             this.signupFields(),
             _react2.default.createElement(
@@ -31489,6 +31499,11 @@ var SessionForm = function (_React$Component) {
                 className: 'sign-input',
                 placeholder: 'Password'
               })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'errors' },
+              this.renderErrors()
             ),
             _react2.default.createElement(
               'div',

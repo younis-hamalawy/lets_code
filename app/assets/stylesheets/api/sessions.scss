@@ -26,10 +26,10 @@ $base: 0.75rem;
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 
 
-  width: 90%;
-  padding: 0.3rem;
+  width: 95%;
+  padding: 0.2rem 0.3rem;
   // margin: 0.7rem;
-  margin-right: 3rem;
+  // margin-right: 3rem;
  }
 
 
@@ -108,5 +108,12 @@ $base: 0.75rem;
 
 .errors {
   list-style-type: none;
-  border: red;
+  font-family: 'Raleway', sans-serif;
+  font-size: $base;
+}
+
+div.errors {
+  display: flex;
+  justify-content: center;
+  // margin-left: 2rem;
 }

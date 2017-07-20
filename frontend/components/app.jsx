@@ -9,7 +9,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 const App = () => (
   <div className="main-app">
       <navbar className="navbar">
-        <h1>Let's Code!</h1>
+        <Link to="/"><h1>Let's Code!</h1></Link>
         <GreetingContainer className="button-container"/>
       </navbar>
       <div className="main-page">

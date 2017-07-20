@@ -43,7 +43,7 @@ class SessionForm extends React.Component {
 
   renderErrors() {
     return(
-      <ul>
+      <ul className="errors">
         {this.props.errors.map((error, i) => (
           <li key={`error-${i}`}>
             {error}
@@ -92,7 +92,6 @@ class SessionForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="sign-form-box">
           <p className="p1">Welcome to Let's Code!</p>
           <br/>
-          <div className="errors">{this.renderErrors()}</div>
           <div className="sign-form">
             {this.signupFields()}
             <label>
@@ -112,6 +111,7 @@ class SessionForm extends React.Component {
                 placeholder="Password"
               />
             </label>
+            <div className="errors">{this.renderErrors()}</div>
 
             <div className="form-buttons">
             <input className="sign-button" type="submit" value="Let's Code!" />
