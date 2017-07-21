@@ -23,6 +23,10 @@ const sessionLinks = () => (
 
 const endsessionLink = (currentUser, signout) => (
 	<nav className="header-buttons">
+    <button className="sign-button">Cities
+    </button>
+    <button className="sign-button">Hosting
+    </button>
     <button className="sign-button" onClick={signout}>Sign Out</button>
 	</nav>
 );

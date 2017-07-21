@@ -25953,10 +25953,15 @@ var _session_reducer = __webpack_require__(259);
 
 var _session_reducer2 = _interopRequireDefault(_session_reducer);
 
+var _cities_reducer = __webpack_require__(372);
+
+var _cities_reducer2 = _interopRequireDefault(_cities_reducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var rootReducer = (0, _redux.combineReducers)({
-  session: _session_reducer2.default
+  session: _session_reducer2.default,
+  cities: _cities_reducer2.default
 });
 
 exports.default = rootReducer;
@@ -25985,7 +25990,7 @@ var nullUser = Object.freeze({
   errors: []
 });
 
-var sessionReducer = function sessionReducer() {
+var SessionReducer = function SessionReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : nullUser;
   var action = arguments[1];
 
@@ -26002,8 +26007,7 @@ var sessionReducer = function sessionReducer() {
         errors: errors
       });
     case _session_actions.CLEAR_ERRORS:
-      console.log("clearErrors");
-      return (0, _merge2.default)({}, nullUser, {
+      return (0, _merge2.default)({}, state, {
         errors: []
       });
     default:
@@ -26011,7 +26015,7 @@ var sessionReducer = function sessionReducer() {
   }
 };
 
-exports.default = sessionReducer;
+exports.default = SessionReducer;
 
 /***/ }),
 /* 260 */
@@ -31117,6 +31121,10 @@ var _footer_container = __webpack_require__(369);
 
 var _footer_container2 = _interopRequireDefault(_footer_container);
 
+var _cities_container = __webpack_require__(375);
+
+var _cities_container2 = _interopRequireDefault(_cities_container);
+
 var _route_util = __webpack_require__(371);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -31146,7 +31154,8 @@ var App = function App() {
         _reactRouterDom.Switch,
         null,
         _react2.default.createElement(_route_util.AuthRoute, { path: '/signin', component: _session_form_container2.default }),
-        _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _session_form_container2.default })
+        _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _session_form_container2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/cities', component: _cities_container2.default })
       )
     ),
     _react2.default.createElement(_footer_container2.default, { className: 'footer-container' })
@@ -31251,6 +31260,16 @@ var endsessionLink = function endsessionLink(currentUser, signout) {
   return _react2.default.createElement(
     'nav',
     { className: 'header-buttons' },
+    _react2.default.createElement(
+      'button',
+      { className: 'sign-button' },
+      'Cities'
+    ),
+    _react2.default.createElement(
+      'button',
+      { className: 'sign-button' },
+      'Hosting'
+    ),
     _react2.default.createElement(
       'button',
       { className: 'sign-button', onClick: signout },
@@ -31548,7 +31567,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var mapStateToProps = function mapStateToProps(_ref) {
   var session = _ref.session;
   return {
-    currentUser: session.currentUser
+    signedIn: Boolean(session.currentUser)
   };
 };
 
@@ -31603,12 +31622,12 @@ var Footer = function Footer() {
         { className: 'footer-paragraph' },
         _react2.default.createElement(
           'p',
-          null,
+          { className: 'footer-paragraph' },
           'Let\'s Code is all about making coding more fun. We\'re more connected than ever before, but we\'re also more alone. And all we want to do is bring people together - the world is better that way.'
         ),
         _react2.default.createElement(
           'p',
-          null,
+          { className: 'footer-paragraph' },
           'Be it a grandmother or a long lost high school friend, you never know who you\'ll encounter when coding with strangers.'
         )
       )
@@ -31652,9 +31671,9 @@ var Auth = function Auth(_ref) {
 var Protected = function Protected(_ref2) {
   var Component = _ref2.component,
       path = _ref2.path,
-      loggedIn = _ref2.loggedIn;
+      signedIn = _ref2.signedIn;
   return _react2.default.createElement(_reactRouterDom.Route, { path: path, render: function render(props) {
-      return loggedIn ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/login' });
+      return signedIn ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/signin' });
     } });
 };
 
@@ -31665,6 +31684,155 @@ var mapStateToProps = function mapStateToProps(state) {
 var AuthRoute = exports.AuthRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Auth));
 
 var ProtectedRoute = exports.ProtectedRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Protected));
+
+/***/ }),
+/* 372 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _merge2 = __webpack_require__(260);
+
+var _merge3 = _interopRequireDefault(_merge2);
+
+var _cities_actions = __webpack_require__(373);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var defaultState = {
+  name: "",
+  city_abrv: "",
+  image_url: ""
+};
+
+var CitiesReducer = function CitiesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
+  var action = arguments[1];
+
+  Object.freeze(state);
+  var newState = (0, _merge3.default)({}, state);
+
+  switch (action.type) {
+    case _cities_actions.RECEIVE_ALL_CITIES:
+      return (0, _merge3.default)({}, action.cities);
+    case _cities_actions.RECEIEVE_SINGLE_CITY:
+      return (0, _merge3.default)({}, state, _defineProperty({}, action.city.id, action.city));
+    default:
+      return state;
+  }
+};
+
+exports.default = CitiesReducer;
+
+/***/ }),
+/* 373 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetchSingleCity = exports.fetchAllCities = exports.receiveSingleCity = exports.receiveAllCities = exports.RECEIEVE_SINGLE_CITY = exports.RECEIVE_ALL_CITIES = undefined;
+
+var _city_api_util = __webpack_require__(374);
+
+var CitiesAPIUtil = _interopRequireWildcard(_city_api_util);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var RECEIVE_ALL_CITIES = exports.RECEIVE_ALL_CITIES = 'RECEIVE_ALL_CITIES';
+var RECEIEVE_SINGLE_CITY = exports.RECEIEVE_SINGLE_CITY = 'RECEIEVE_SINGLE_CITY';
+
+var receiveAllCities = exports.receiveAllCities = function receiveAllCities(cities) {
+  return {
+    type: RECEIVE_ALL_CITIES,
+    cities: cities
+  };
+};
+
+var receiveSingleCity = exports.receiveSingleCity = function receiveSingleCity(city) {
+  return {
+    type: RECEIEVE_SINGLE_CITY,
+    city: city
+  };
+};
+
+var fetchAllCities = exports.fetchAllCities = function fetchAllCities() {
+  return function (dispatch) {
+    return CitiesAPIUtil.fetchAllCities().then(function (cities) {
+      return dispatch(receiveAllCities(cities));
+    });
+  };
+};
+
+var fetchSingleCity = exports.fetchSingleCity = function fetchSingleCity(cityId) {
+  return function (dispatch) {
+    return CitiesAPIUtil.fetchSingleCity(cityId).then(function (city) {
+      return dispatch(receiveSingleCity(city));
+    });
+  };
+};
+
+/***/ }),
+/* 374 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var fetchAllCities = exports.fetchAllCities = function fetchAllCities() {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/cities'
+  });
+};
+
+var fetchSingleCity = exports.fetchSingleCity = function fetchSingleCity(cityId) {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/cities'
+  });
+};
+
+/***/ }),
+/* 375 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// import { connect } from 'react-redux';
+// import lodash from 'lodash';
+//
+// import { fetchAllCities, fetchSingleCity } from '../../actions/cities_actions';
+// import Cities from './cities';
+//
+//
+// const mapStateToProps = ( { cities, session } ) => ({
+//   cities: lodash.values(state.cities),
+//   currentUser: session.currentUser
+// });
+//
+// const mapDispatchToProps = dispatch => ({
+//   fetchAllCities: () => dispatch(fetchAllCities()),
+//   fetchSingleCity: (cityId) => dispatch(fetchSingleCity(cityId))
+// });
+//
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(Cities);
+
 
 /***/ })
 /******/ ]);

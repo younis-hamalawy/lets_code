@@ -12,17 +12,15 @@
         errors: []
   }
   users: {
-    entities{
-      1: {
-        id: 1,
-        first_name: "Kurt",
-        imgae_url: "http/www.hghgs.com/3645326"
-      },
-      3: {
-        id: 3,
-        first_name: "Zoe",
-        imgae_url: "http/www.hghgs.com/3644326"
-      }
+    1: {
+      id: 1,
+      first_name: "Kurt",
+      imgae_url: "http/www.hghgs.com/3645326"
+    },
+    3: {
+      id: 3,
+      first_name: "Zoe",
+      imgae_url: "http/www.hghgs.com/3644326"
     }
   }
   cities: {
