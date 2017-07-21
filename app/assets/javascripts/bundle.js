@@ -31349,9 +31349,13 @@ var sessionLinks = function sessionLinks() {
     'nav',
     { className: 'header-buttons' },
     _react2.default.createElement(
-      'button',
-      { className: 'sign-button' },
-      'Cities'
+      _reactRouterDom.Link,
+      { to: '/cities' },
+      _react2.default.createElement(
+        'button',
+        { className: 'sign-button' },
+        'Cities'
+      )
     ),
     _react2.default.createElement(
       'button',
@@ -31384,9 +31388,13 @@ var endsessionLink = function endsessionLink(currentUser, signout) {
     'nav',
     { className: 'header-buttons' },
     _react2.default.createElement(
-      'button',
-      { className: 'sign-button' },
-      'Cities'
+      _reactRouterDom.Link,
+      { to: '/cities' },
+      _react2.default.createElement(
+        'button',
+        { className: 'sign-button' },
+        'Cities'
+      )
     ),
     _react2.default.createElement(
       'button',
@@ -31599,7 +31607,7 @@ var SessionForm = function (_React$Component) {
     key: 'demosignin',
     value: function demosignin(e) {
       e.preventDefault();
-      var user = { email: "ewa@gmail.com", password: "123456" };
+      var user = { email: "stuntman@gmail.com", password: "password" };
       this.props.signin({ user: user });
     }
   }, {
@@ -31730,9 +31738,13 @@ var Footer = function Footer() {
         'div',
         { className: 'footer-buttons' },
         _react2.default.createElement(
-          'button',
-          { className: 'sign-button' },
-          'Cities'
+          _reactRouterDom.Link,
+          { to: '/cities' },
+          _react2.default.createElement(
+            'button',
+            { className: 'sign-button' },
+            'Cities'
+          )
         ),
         _react2.default.createElement(
           'button',
