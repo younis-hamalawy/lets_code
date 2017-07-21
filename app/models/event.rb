@@ -20,7 +20,7 @@ class Event < ApplicationRecord
   belongs_to :host,
               foreign_key: :host_id,
               primary_key: :id,
-              class_name: :Users
+              class_name: "User"
 
   has_many :registrations
 

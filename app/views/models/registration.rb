@@ -10,7 +10,7 @@
 #
 
 class Registration < ApplicationRecord
-  belongs_to :registred_user,
+  belongs_to :registered_user,
               foreign_key: :user_id,
               primary_key: :id,
               class_name: "User"

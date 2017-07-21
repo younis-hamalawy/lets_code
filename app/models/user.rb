@@ -30,7 +30,7 @@ class User < ApplicationRecord
   has_many :hosted_events,
             foreign_key: :host_id,
             primary_key: :id,
-            class_name: :Events
+            class_name: "Event"
 
   has_many :registered_events,
             through: :registrations,

@@ -11,7 +11,7 @@ class CreateEvents < ActiveRecord::Migration[5.1]
       t.timestamps null: false
     end
 
-    add_index :events, :city_id, unique: true
-    add_index :events, :host_id, unique: true
+    add_index :events, :city_id
+    add_index :events, :host_id
   end
 end

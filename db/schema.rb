@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 20170718205648) do
     t.integer "host_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["city_id"], name: "index_events_on_city_id", unique: true
-    t.index ["host_id"], name: "index_events_on_host_id", unique: true
+    t.index ["city_id"], name: "index_events_on_city_id"
+    t.index ["host_id"], name: "index_events_on_host_id"
   end
 
   create_table "registrations", force: :cascade do |t|
