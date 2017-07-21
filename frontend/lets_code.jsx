@@ -4,6 +4,7 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 import { signin, signout, signup } from './actions/session_actions';
+import { fetchAllCities, fetchSingleCity } from './actions/cities_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -21,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.signin = signin;
   window.signout = signout;
   window.signup = signup;
+  window.fetchAllCities = fetchAllCities;
+  window.fetchSingleCity = fetchSingleCity;
 
   ReactDOM.render(<Root store={ store }/>, root);
 });
