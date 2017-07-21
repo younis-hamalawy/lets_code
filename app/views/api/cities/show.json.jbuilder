@@ -19,7 +19,7 @@ json.events do
           if signed_in?
             json.attending !!current_user.registrations.find_by(event_id: event.id)
           end
-          if logged_in?
+          if signed_in?
             json.hosting !!current_user.hosts.find_by(event_id: event.id)
           end
         end

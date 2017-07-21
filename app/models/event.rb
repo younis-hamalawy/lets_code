@@ -26,6 +26,6 @@ class Event < ApplicationRecord
 
   has_many :registered_users,
           through: :registrations,
-          source: :registered_user
+          source: :user
 
 end
