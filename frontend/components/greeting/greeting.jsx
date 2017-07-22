@@ -32,7 +32,7 @@ const endsessionLink = (currentUser, signout) => (
 
     <button className="sign-button">Hosting
     </button>
-    
+
     <button className="sign-button" onClick={signout}>Sign Out</button>
 	</nav>
 );

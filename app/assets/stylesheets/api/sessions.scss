@@ -117,3 +117,12 @@ div.errors {
   justify-content: center;
   // margin-left: 2rem;
 }
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  img {
+    padding-left: 1rem;
+  }
+}

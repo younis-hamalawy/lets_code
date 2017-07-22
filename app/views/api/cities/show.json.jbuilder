@@ -13,14 +13,14 @@ json.events do
       json.address event.address
       json.registered_users do
         event.registered_users.each do |user|
-          json.id user.id
-          json.first_name user.first_name
-          json.image_url user.image_url
-          if signed_in?
-            json.attending !!current_user.registrations.find_by(event_id: event.id)
-          end
-          if signed_in?
-            json.hosting !!current_user.hosts.find_by(event_id: event.id)
+          json.set! user.id do
+            json.id user.id
+            json.first_name user.first_name
+            json.image_url user.image_url
+            if @current_user
+              json.attending !!(@current_user.registered_events.find_by(event_id: event.id))
+              json.hosting !!(@current_user.hosted_events.find_by(event_id: event.id))
+            end
           end
         end
       end

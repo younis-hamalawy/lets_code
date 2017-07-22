@@ -45415,7 +45415,7 @@ var fetchAllCities = exports.fetchAllCities = function fetchAllCities() {
 var fetchSingleCity = exports.fetchSingleCity = function fetchSingleCity(cityId) {
   return $.ajax({
     method: 'GET',
-    url: 'api/cities'
+    url: 'api/cities/' + cityId
   });
 };
 
@@ -48377,6 +48377,10 @@ var _cities_container = __webpack_require__(376);
 
 var _cities_container2 = _interopRequireDefault(_cities_container);
 
+var _city_container = __webpack_require__(380);
+
+var _city_container2 = _interopRequireDefault(_city_container);
+
 var _route_util = __webpack_require__(379);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -48389,12 +48393,17 @@ var App = function App() {
       'navbar',
       { className: 'navbar' },
       _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: '/' },
+        'div',
+        { className: 'logo' },
+        _react2.default.createElement('img', { src: 'http://res.cloudinary.com/flying-monkey/image/upload/c_scale,h_173,q_100/v1500688575/Logomakr_6c8O0u_hdqiac.png', alt: 'logo', height: '70', width: '165', className: 'logo-img' }),
         _react2.default.createElement(
-          'h1',
-          null,
-          'Let\'s Code!'
+          _reactRouterDom.Link,
+          { to: '/' },
+          _react2.default.createElement(
+            'h1',
+            null,
+            'Let\'s Code!'
+          )
         )
       ),
       _react2.default.createElement(_greeting_container2.default, { className: 'button-container' })
@@ -48405,9 +48414,11 @@ var App = function App() {
       _react2.default.createElement(
         _reactRouterDom.Switch,
         null,
-        _react2.default.createElement(_route_util.AuthRoute, { path: '/signin', component: _session_form_container2.default }),
-        _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _session_form_container2.default }),
-        _react2.default.createElement(_reactRouterDom.Route, { path: '/cities', component: _cities_container2.default })
+        _react2.default.createElement(_route_util.AuthRoute, { exact: true, path: '/signin', component: _session_form_container2.default }),
+        _react2.default.createElement(_route_util.AuthRoute, { exact: true, path: '/signup', component: _session_form_container2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/cities', component: _cities_container2.default }),
+        _react2.default.createElement(_route_util.ProtectedRoute, { exact: true, path: '/cities/:id', component: _city_container2.default }),
+        _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' })
       )
     ),
     _react2.default.createElement(_footer_container2.default, { className: 'footer-container' })
@@ -49126,6 +49137,119 @@ var mapStateToProps = function mapStateToProps(state) {
 var AuthRoute = exports.AuthRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Auth));
 
 var ProtectedRoute = exports.ProtectedRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Protected));
+
+/***/ }),
+/* 380 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(27);
+
+var _cities_actions = __webpack_require__(52);
+
+var _city = __webpack_require__(381);
+
+var _city2 = _interopRequireDefault(_city);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import lodash from 'lodash';
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var city = _ref.city,
+      session = _ref.session;
+  return {
+    // cities: lodash.values(state.cities),
+    currentUser: session.currentUser,
+    city: city
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchAllCities: function fetchAllCities() {
+      return dispatch((0, _cities_actions.fetchAllCities)());
+    },
+    fetchSingleCity: function fetchSingleCity(cityId) {
+      return dispatch((0, _cities_actions.fetchSingleCity)(cityId));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_city2.default);
+
+/***/ }),
+/* 381 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(17);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import CitiesItem from './cities_item';
+
+var City = function (_React$Component) {
+  _inherits(City, _React$Component);
+
+  function City(props) {
+    _classCallCheck(this, City);
+
+    return _possibleConstructorReturn(this, (City.__proto__ || Object.getPrototypeOf(City)).call(this, props));
+  }
+
+  _createClass(City, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.props.fetchSingleCity(this.props.match.params.cityId);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var city = this.props.city;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'city-container' },
+        _react2.default.createElement('div', { className: 'city-header1' }),
+        _react2.default.createElement(
+          'div',
+          { className: 'city-header2' },
+          'HELLO!'
+        ),
+        _react2.default.createElement('div', { className: 'city-list' })
+      );
+    }
+  }]);
+
+  return City;
+}(_react2.default.Component);
+
+exports.default = City;
 
 /***/ })
 /******/ ]);

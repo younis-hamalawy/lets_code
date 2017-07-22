@@ -8,6 +8,6 @@ export const fetchAllCities = () => {
 export const fetchSingleCity = (cityId) => {
   return $.ajax({
     method: 'GET',
-    url: `api/cities`
+    url: `api/cities/${cityId}`
   });
 };
