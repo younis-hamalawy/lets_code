@@ -9,11 +9,11 @@ class City extends React.Component {
   }
 
   componentWillMount() {
-    this.props.fetchSingleCity(this.props.match.params.cityId);
+    this.props.fetchSingleCity(this.props.match.params.id);
   }
 
   render() {
-    const { city } = this.props
+
     return (
       <div className="city-container">
         <div className="city-header1">

@@ -34,7 +34,7 @@ class User < ApplicationRecord
 
   has_many :registered_events,
             through: :registrations,
-            source: :events
+            source: :event
 
   def password= password
     self.password_digest = BCrypt::Password.create(password)
