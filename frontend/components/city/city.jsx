@@ -7,6 +7,7 @@ import CityEventItem from './city_event_item';
 class City extends React.Component {
   constructor(props) {
     super(props)
+    this.renderEvents = this.renderEvents.bind(this);
   }
 
   componentWillMount() {
@@ -14,17 +15,12 @@ class City extends React.Component {
   }
 
   renderEvents () {
-    const { events } = this.props.city
-    console.log(city.events);
+    const { events } = this.props
     return events.map ( event => (
       <div>
-        <CityEventItem key={event.id} event={event} currentUser={this.props.currentUser} registerEvent={this.props.registerEvent} />
+        <CityEventItem key={event.id} event={event} currentUser={this.props.currentUser} />
       </div>
     ))
-    // Object.keys(cities).map((city) => {(
-    //     <CitiesItem key={city.id} city={city} />
-    //   )}
-    // )
   }
 
   render() {
@@ -35,16 +31,17 @@ class City extends React.Component {
         <div className="city-header1">
         </div>
         <div className="city-header2">
-          <h3>Tea Time is a conversation between a few people who know nothing about each other.</h3>
-          <h4>You'll never leave without questions, new perspectives, and the reminder that we're far more the same than we are different.</h4>
+          <h3>Code Time is a conversation between a few people who know nothing about each other.</h3>
+          <h4>You'll never leave without questions, new perspectives, and the reminder that we understand something better each time we explain it to someone else.</h4>
         </div>
         <div className="event">
           {this.renderEvents()}
         </div>
         <div>
           <h4>The Host Community is full of amazing stories.</h4>
-          <p>How else would someone end up regularly bringing strangers together for conversations? Before each of them were invited to community, they were attendees that fed their tea times with their questions, open-mindedness, and presence.</p>
+          <p>How else would someone end up regularly bringing strangers together for Code Time? Before each of them were invited to community, they were attendees that fed their Code Times with their questions, open-mindedness, and presence.</p>
         </div>
+
       </div>
     )
   }

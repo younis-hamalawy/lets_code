@@ -48946,9 +48946,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import lodash from 'lodash';
 
 var mapStateToProps = function mapStateToProps(state) {
-  // console.log(selectAllCities(state));
   return {
-    // cities: lodash.values(state.cities),
     currentUser: state.session.currentUser,
     cities: (0, _selectors.selectAllCities)(state)
   };
@@ -49028,16 +49026,8 @@ var Cities = function (_React$Component) {
       var cities = this.props.cities;
 
       return cities.map(function (city) {
-        return _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(_cities_item2.default, { key: city.id, city: city, currentUser: _this2.props.currentUser, setCity: _this2.props.setCity })
-        );
+        return _react2.default.createElement(_cities_item2.default, { key: city.id, city: city, currentUser: _this2.props.currentUser, setCity: _this2.props.setCity });
       });
-      // Object.keys(cities).map((city) => {(
-      //     <CitiesItem key={city.id} city={city} />
-      //   )}
-      // )
     }
   }, {
     key: 'render',
@@ -49155,7 +49145,6 @@ var CitiesItem = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-
       return _react2.default.createElement(
         'div',
         { key: this.props.city.id, className: 'city-item-container' },
@@ -49193,19 +49182,20 @@ var _city = __webpack_require__(380);
 
 var _city2 = _interopRequireDefault(_city);
 
+var _selectors = __webpack_require__(382);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import lodash from 'lodash';
-
-var mapStateToProps = function mapStateToProps(_ref) {
-  var city = _ref.city,
-      session = _ref.session;
+var mapStateToProps = function mapStateToProps(state) {
   return {
     // cities: lodash.values(state.cities),
-    currentUser: session.currentUser,
-    city: city
+
+    currentUser: state.session.currentUser,
+    city: state.city,
+    events: (0, _selectors.selectAllEvents)(state.city)
   };
 };
+// import lodash from 'lodash';
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
@@ -49272,7 +49262,10 @@ var City = function (_React$Component) {
   function City(props) {
     _classCallCheck(this, City);
 
-    return _possibleConstructorReturn(this, (City.__proto__ || Object.getPrototypeOf(City)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (City.__proto__ || Object.getPrototypeOf(City)).call(this, props));
+
+    _this.renderEvents = _this.renderEvents.bind(_this);
+    return _this;
   }
 
   _createClass(City, [{
@@ -49285,20 +49278,15 @@ var City = function (_React$Component) {
     value: function renderEvents() {
       var _this2 = this;
 
-      var events = this.props.city.events;
+      var events = this.props.events;
 
-      console.log(city.events);
       return events.map(function (event) {
         return _react2.default.createElement(
           'div',
           null,
-          _react2.default.createElement(_city_event_item2.default, { key: event.id, event: event, currentUser: _this2.props.currentUser, registerEvent: _this2.props.registerEvent })
+          _react2.default.createElement(_city_event_item2.default, { key: event.id, event: event, currentUser: _this2.props.currentUser })
         );
       });
-      // Object.keys(cities).map((city) => {(
-      //     <CitiesItem key={city.id} city={city} />
-      //   )}
-      // )
     }
   }, {
     key: 'render',
@@ -49315,12 +49303,12 @@ var City = function (_React$Component) {
           _react2.default.createElement(
             'h3',
             null,
-            'Tea Time is a conversation between a few people who know nothing about each other.'
+            'Code Time is a conversation between a few people who know nothing about each other.'
           ),
           _react2.default.createElement(
             'h4',
             null,
-            'You\'ll never leave without questions, new perspectives, and the reminder that we\'re far more the same than we are different.'
+            'You\'ll never leave without questions, new perspectives, and the reminder that we understand something better each time we explain it to someone else.'
           )
         ),
         _react2.default.createElement(
@@ -49339,7 +49327,7 @@ var City = function (_React$Component) {
           _react2.default.createElement(
             'p',
             null,
-            'How else would someone end up regularly bringing strangers together for conversations? Before each of them were invited to community, they were attendees that fed their tea times with their questions, open-mindedness, and presence.'
+            'How else would someone end up regularly bringing strangers together for Code Time? Before each of them were invited to community, they were attendees that fed their Code Times with their questions, open-mindedness, and presence.'
           )
         )
       );
@@ -49409,13 +49397,18 @@ var ProtectedRoute = exports.ProtectedRoute = (0, _reactRouterDom.withRouter)((0
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.selectAllCities = undefined;
+exports.selectAllEvents = exports.selectAllCities = undefined;
 
 var _lodash = __webpack_require__(133);
 
 var selectAllCities = exports.selectAllCities = function selectAllCities(_ref) {
   var cities = _ref.cities;
   return (0, _lodash.values)(cities);
+};
+
+var selectAllEvents = exports.selectAllEvents = function selectAllEvents(_ref2) {
+  var events = _ref2.events;
+  return (0, _lodash.values)(events);
 };
 
 /***/ }),
@@ -49512,43 +49505,52 @@ var CityEventItem = function (_React$Component) {
   function CityEventItem(props) {
     _classCallCheck(this, CityEventItem);
 
-    var _this = _possibleConstructorReturn(this, (CityEventItem.__proto__ || Object.getPrototypeOf(CityEventItem)).call(this, props));
-
-    _this.handleClick = _this.handleClick.bind(_this);
-    _this.registerEventButton = _this.registerEventButton.bind(_this);
-    return _this;
+    return _possibleConstructorReturn(this, (CityEventItem.__proto__ || Object.getPrototypeOf(CityEventItem)).call(this, props));
+    // this.handleClick = this.handleClick.bind(this);
+    // this.registerEventButton = this.registerEventButton.bind(this);
   }
 
-  _createClass(CityEventItem, [{
-    key: 'handleClick',
-    value: function handleClick(e) {
-      e.preventDefault();
-      // let newRegistration = Object.assign({}, {user_id: this.props.currentUser.id, event_id: this.props.event.id});
-      // console.log(newUser);
-      // console.log(newUser);
+  // handleClick(e) {
+  //   e.preventDefault();
+  //
+  //   this.props.registerEvent(this.props.event.id, this.props.currentUser.id)
+  // }
+  //
+  // registerEventButton() {
+  //   if (this.props.currentUser){
+  //     return (
+  //       <button className="sign-button" onClick={this.handleClick}>Join Event</button>
+  //     )
+  //   }
+  // }
 
-      this.props.registerEvent(this.props.event.id, this.props.currentUser.id);
-    }
-  }, {
-    key: 'registerEventButton',
-    value: function registerEventButton() {
-      if (this.props.currentUser) {
-        return _react2.default.createElement(
-          'button',
-          { className: 'sign-button', onClick: this.handleClick },
-          'Set Home City'
-        );
-      }
-    }
-  }, {
+  _createClass(CityEventItem, [{
     key: 'render',
     value: function render() {
 
       return _react2.default.createElement(
         'div',
         { key: this.props.event.id, className: 'city-event-item-container' },
-        'event.name event.date event.description event.address',
-        this.registerEventButton()
+        _react2.default.createElement(
+          'p',
+          { className: 'event-city-name' },
+          this.props.event.name
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: 'event-date' },
+          this.props.event.date
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: 'event-description' },
+          this.props.event.description
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: 'event-address' },
+          this.props.event.address
+        )
       );
     }
   }]);

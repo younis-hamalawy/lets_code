@@ -28,7 +28,6 @@ class CitiesItem extends React.Component {
     }
 
     render () {
-
       return (
         <div key={this.props.city.id} className="city-item-container">
           <Link to={`/cities/${this.props.city.id}`}><img className="city-image" src={this.props.city.image_url} alt={this.props.city.name}/></Link>

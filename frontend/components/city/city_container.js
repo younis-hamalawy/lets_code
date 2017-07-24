@@ -4,11 +4,15 @@ import { connect } from 'react-redux';
 import { fetchAllCities, fetchSingleCity } from '../../actions/cities_actions';
 import City from './city';
 
+import { selectAllEvents } from '../../reducers/selectors'
 
-const mapStateToProps = ( { city, session } ) => ({
+
+const mapStateToProps = ( state ) => ({
   // cities: lodash.values(state.cities),
-  currentUser: session.currentUser,
-  city
+
+  currentUser: state.session.currentUser,
+  city: state.city,
+  events: selectAllEvents(state.city)
 });
 
 const mapDispatchToProps = dispatch => ({

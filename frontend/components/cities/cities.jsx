@@ -18,14 +18,10 @@ class Cities extends React.Component {
   renderCities () {
     const { cities } = this.props
     return cities.map ( city => (
-      <div>
+
         <CitiesItem key={city.id} city={city} currentUser={this.props.currentUser} setCity={this.props.setCity} />
-      </div>
+
     ))
-    // Object.keys(cities).map((city) => {(
-    //     <CitiesItem key={city.id} city={city} />
-    //   )}
-    // )
   }
 
   render() {
