@@ -11,7 +11,7 @@ class CitiesItem extends React.Component {
 
     handleClick(e) {
       e.preventDefault();
-      let newUser = Object.assign({}, {user: this.props.currentUser});
+      let newUser = Object.assign({}, this.props.currentUser);
       // console.log(newUser);
       newUser["city_id"] = this.props.city.id;
       // console.log(newUser);
@@ -22,17 +22,22 @@ class CitiesItem extends React.Component {
     setCityButton() {
       if (this.props.currentUser){
         return (
-          <button className="sign-button" onClick={this.handleClick}>Set Home City</button>
+          <button className="sign-button" onClick={this.handleClick}>set as home city</button>
         )
       }
     }
 
     render () {
       return (
-        <div key={this.props.city.id} className="city-item-container">
-          <Link to={`/cities/${this.props.city.id}`}><img className="city-image" src={this.props.city.image_url} alt={this.props.city.name}/></Link>
-          {this.setCityButton()}
+      <div className="city-container">
+        <div key={this.props.city.id} className={this.props.city.city_abrv}>
+
+          <Link to={`/cities/${this.props.city.id}`}><p className="img-text">{this.props.city.name}</p></Link>
+
         </div>
+        {this.setCityButton()}
+
+      </div>
       )
   }
 }

@@ -1,3 +1,64 @@
 // Place all the styles related to the api/cities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.cities-container {
+  display: flex;
+  flex-direction: column;
+  // flex-wrap: wrap;
+  align-items: center;
+  padding: 2rem;
+  justify-content: space-between;
+
+}
+.cities-list {
+  // height: 23rem;
+  // width: 23orrem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 2rem 6rem;
+}
+
+p.img-text {
+  z-index:100;
+  color:red;
+  font-size:24px;
+  font-weight:bold;
+  ;
+}
+.SF {
+  background-image: url("http://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500917215/sf_t5qwmt.jpg");
+  background-repeat: no-repeat;
+  height: auto;
+  width: auto;
+  background-size: cover;
+  min-height: inherit;
+  min-width: inherit;
+
+  p.img-text {
+    font-family: 'Fjalla One', sans-serif;
+  }
+}
+
+.city-container {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  align-content: space-between;
+  min-height: 12rem;
+  min-width: 20rem;
+  button.sign-button {
+    border-width: 0px;
+  }
+}
+
+.cities-header1, .cities-header2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2, h3 {
+    padding: 1rem;
+
+  }
+
+}

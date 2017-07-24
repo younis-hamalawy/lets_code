@@ -36,7 +36,7 @@ class Cities extends React.Component {
           {this.renderCities()}
         </div>
         <div className="cities-header1">
-          <h1>Set your home city</h1>
+          <h2>Set your home city</h2>
           <h3>Make sure you're the first to hear about Let's Code updates relevant to you!</h3>
         </div>
       </div>

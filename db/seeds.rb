@@ -27,12 +27,12 @@ User.create!(first_name: "Mr. Pink", last_name: ".", email: "email15@gmail.com",
 
 City.destroy_all
 
-City.create!(name: "SAN FRANCISCO", city_abrv:"SF", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/c_scale,h_1080,q_100/v1500674057/NYC_btamou.jpg")
-City.create!(name: "NEW YORK CITY", city_abrv: "NYC", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/c_scale,h_1080,q_100/v1500674057/NYC_btamou.jpg")
-City.create!(name: "PORTLAND", city_abrv: "PRL", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/c_scale,h_1080,q_100/v1500674057/NYC_btamou.jpg")
-City.create!(name: "LONDON", city_abrv: "LDN", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/c_scale,h_1080,q_100/v1500674057/NYC_btamou.jpg")
-City.create!(name: "BOSTON", city_abrv: "BST", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/c_scale,h_1080,q_100/v1500674057/NYC_btamou.jpg")
-City.create!(name: "CHICAGO", city_abrv: "CHG", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/c_scale,h_1080,q_100/v1500674057/NYC_btamou.jpg")
+City.create!(name: "SAN FRANCISCO", city_abrv:"SF", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500917215/sf_t5qwmt.jpg")
+City.create!(name: "NEW YORK CITY", city_abrv: "NYC", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500917188/nyc_ow7rzd.jpg")
+City.create!(name: "PORTLAND", city_abrv: "PRL", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500917194/portland_tqvwwi.jpg")
+City.create!(name: "LONDON", city_abrv: "LDN", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500917208/london2_ss1p70.jpg")
+City.create!(name: "BOSTON", city_abrv: "BST", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500917428/boston_sgejl8.jpg")
+City.create!(name: "CHICAGO", city_abrv: "CHG", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500917221/chicago_cptebs.jpg")
 
 
 Event.destroy_all
@@ -90,3 +90,5 @@ Registration.create!(user_id: 2, event_id: 4)
 Registration.create!(user_id: 1, event_id: 4)
 Registration.create!(user_id: 2, event_id: 5)
 Registration.create!(user_id: 3, event_id: 5)
+Registration.create!(user_id: 6, event_id: 2)
+Registration.create!(user_id: 5, event_id: 1)
