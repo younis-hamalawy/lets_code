@@ -3,12 +3,18 @@ nav.footer {
   justify-content: space-around;
   padding: 1rem;
   max-width: 60%;
-  p {
-    padding: 1.5rem 1rem;
-    font-family: 'Sacramento', cursive;
-    // font-size: 275px;
+  .footer-paragraph1 {
+    padding: 1.8rem 1rem 1rem 1rem;
+    font-family: 'Lato', sans-serif;
     max-width: 100%;
-    font-size: 1.3rem;
+    font-size: .8rem;
+    text-align: center;
+  }
+  .footer-paragraph2 {
+    padding: 1rem 1rem 0rem 1rem;
+    font-family: 'Lato', sans-serif;
+    max-width: 100%;
+    font-size: .8rem;
     text-align: center;
   }
   div.footer-buttons {
