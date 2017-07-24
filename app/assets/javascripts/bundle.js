@@ -49014,8 +49014,8 @@ var Cities = function (_React$Component) {
   }
 
   _createClass(Cities, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
       this.props.fetchAllCities();
       // console.log(this.state);
       // console.log(this.props);
@@ -49214,7 +49214,20 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchSingleCity: function fetchSingleCity(cityId) {
       return dispatch((0, _cities_actions.fetchSingleCity)(cityId));
-    }
+    },
+    registerEvent: function (_registerEvent) {
+      function registerEvent(_x, _x2) {
+        return _registerEvent.apply(this, arguments);
+      }
+
+      registerEvent.toString = function () {
+        return _registerEvent.toString();
+      };
+
+      return registerEvent;
+    }(function (eventId, userId) {
+      return dispatch(registerEvent(eventId, userId));
+    })
   };
 };
 
@@ -49238,6 +49251,10 @@ var _react = __webpack_require__(4);
 var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(16);
+
+var _city_event_item = __webpack_require__(385);
+
+var _city_event_item2 = _interopRequireDefault(_city_event_item);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49264,19 +49281,66 @@ var City = function (_React$Component) {
       this.props.fetchSingleCity(this.props.match.params.id);
     }
   }, {
+    key: 'renderEvents',
+    value: function renderEvents() {
+      var _this2 = this;
+
+      var events = this.props.events;
+
+      return events.map(function (event) {
+        return _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_city_event_item2.default, { key: event.id, event: event, currentUser: _this2.props.currentUser, registerEvent: _this2.props.registerEvent })
+        );
+      });
+      // Object.keys(cities).map((city) => {(
+      //     <CitiesItem key={city.id} city={city} />
+      //   )}
+      // )
+    }
+  }, {
     key: 'render',
     value: function render() {
 
       return _react2.default.createElement(
         'div',
         { className: 'city-container' },
+        _react2.default.createElement('img', { className: 'city-image', src: this.props.city.image_url, alt: this.props.city.name }),
         _react2.default.createElement('div', { className: 'city-header1' }),
         _react2.default.createElement(
           'div',
           { className: 'city-header2' },
-          'HELLO!'
+          _react2.default.createElement(
+            'h3',
+            null,
+            'Tea Time is a conversation between a few people who know nothing about each other.'
+          ),
+          _react2.default.createElement(
+            'h4',
+            null,
+            'You\'ll never leave without questions, new perspectives, and the reminder that we\'re far more the same than we are different.'
+          )
         ),
-        _react2.default.createElement('div', { className: 'city-list' })
+        _react2.default.createElement(
+          'div',
+          { className: 'event' },
+          this.renderEvents()
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'h4',
+            null,
+            'The Host Community is full of amazing stories.'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'How else would someone end up regularly bringing strangers together for conversations? Before each of them were invited to community, they were attendees that fed their tea times with their questions, open-mindedness, and presence.'
+          )
+        )
       );
     }
   }]);
@@ -49363,7 +49427,7 @@ var selectAllCities = exports.selectAllCities = function selectAllCities(_ref) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.setCity = exports.receiveCurrentUser = exports.RECEIVE_CURRENT_USER = undefined;
+exports.registerEvent = exports.setCity = exports.receiveCurrentUser = exports.RECEIVE_CURRENT_USER = undefined;
 
 var _user_api_util = __webpack_require__(384);
 
@@ -49388,6 +49452,12 @@ var setCity = exports.setCity = function setCity(id, user) {
   };
 };
 
+var registerEvent = exports.registerEvent = function registerEvent(event_id, user_id) {
+  return dispatch(UserAPIUtil.registerEvent(event_id, user_id).then(function (user) {
+    return dispatch(receiveCurrentUser(user));
+  }));
+};
+
 /***/ }),
 /* 384 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -49405,6 +49475,92 @@ var setCity = exports.setCity = function setCity(id, user) {
     data: user
   });
 };
+
+/***/ }),
+/* 385 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(16);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import merge from 'lodash/merge';
+
+var CityEventItem = function (_React$Component) {
+  _inherits(CityEventItem, _React$Component);
+
+  function CityEventItem(props) {
+    _classCallCheck(this, CityEventItem);
+
+    var _this = _possibleConstructorReturn(this, (CityEventItem.__proto__ || Object.getPrototypeOf(CityEventItem)).call(this, props));
+
+    _this.handleClick = _this.handleClick.bind(_this);
+    _this.setCityButton = _this.setCityButton.bind(_this);
+    return _this;
+  }
+
+  _createClass(CityEventItem, [{
+    key: 'handleClick',
+    value: function handleClick(e) {
+      e.preventDefault();
+      var newUser = Object.assign({}, { user: this.props.currentUser });
+      // console.log(newUser);
+      newUser["city_id"] = this.props.city.id;
+      // console.log(newUser);
+
+      this.props.setCity(this.props.currentUser.id, newUser);
+    }
+  }, {
+    key: 'setCityButton',
+    value: function setCityButton() {
+      if (this.props.currentUser) {
+        return _react2.default.createElement(
+          'button',
+          { className: 'sign-button', onClick: this.handleClick },
+          'Set Home City'
+        );
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.createElement(
+        'div',
+        { key: this.props.city.id, className: 'city-item-container' },
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/cities/' + this.props.city.id },
+          _react2.default.createElement('img', { className: 'city-image', src: this.props.city.image_url, alt: this.props.city.name })
+        ),
+        this.setCityButton()
+      );
+    }
+  }]);
+
+  return CityEventItem;
+}(_react2.default.Component);
+
+exports.default = CityEventItem;
 
 /***/ })
 /******/ ]);

@@ -9,7 +9,7 @@ class Cities extends React.Component {
   this.renderCities = this.renderCities.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchAllCities();
     // console.log(this.state);
     // console.log(this.props);

@@ -13,7 +13,8 @@ const mapStateToProps = ( { city, session } ) => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchAllCities: () => dispatch(fetchAllCities()),
-  fetchSingleCity: (cityId) => dispatch(fetchSingleCity(cityId))
+  fetchSingleCity: (cityId) => dispatch(fetchSingleCity(cityId)),
+  registerEvent: (eventId, userId) => dispatch(registerEvent(eventId, userId))
 });
 
 export default connect(

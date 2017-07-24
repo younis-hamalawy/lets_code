@@ -13,3 +13,9 @@ export const setCity = (id, user) => dispatch => (
     dispatch(receiveCurrentUser(user))
   ))
 );
+
+export const registerEvent = (event_id, user_id) => dispatch (
+  UserAPIUtil.registerEvent(event_id, user_id).then(user => (
+    dispatch(receiveCurrentUser(user))
+  ))
+);
