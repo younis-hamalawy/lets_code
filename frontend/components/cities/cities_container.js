@@ -8,7 +8,7 @@ import { selectAllCities } from '../../reducers/selectors'
 import { setCity } from '../../actions/user_actions';
 
 const mapStateToProps = ( state ) => {
-  console.log(selectAllCities(state));
+  // console.log(selectAllCities(state));
   return {
   // cities: lodash.values(state.cities),
   currentUser: state.session.currentUser,

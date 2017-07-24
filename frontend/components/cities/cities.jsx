@@ -29,7 +29,7 @@ class Cities extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+
     return (
       <div className="cities-container">
         <div className="cities-header2">

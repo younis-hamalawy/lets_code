@@ -48946,7 +48946,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import lodash from 'lodash';
 
 var mapStateToProps = function mapStateToProps(state) {
-  console.log((0, _selectors.selectAllCities)(state));
+  // console.log(selectAllCities(state));
   return {
     // cities: lodash.values(state.cities),
     currentUser: state.session.currentUser,
@@ -49042,7 +49042,7 @@ var Cities = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      console.log(this.props);
+
       return _react2.default.createElement(
         'div',
         { className: 'cities-container' },
@@ -49107,10 +49107,6 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(16);
 
-var _merge = __webpack_require__(262);
-
-var _merge2 = _interopRequireDefault(_merge);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -49118,6 +49114,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import merge from 'lodash/merge';
 
 var CitiesItem = function (_React$Component) {
   _inherits(CitiesItem, _React$Component);
@@ -49128,6 +49126,7 @@ var CitiesItem = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (CitiesItem.__proto__ || Object.getPrototypeOf(CitiesItem)).call(this, props));
 
     _this.handleClick = _this.handleClick.bind(_this);
+    _this.setCityButton = _this.setCityButton.bind(_this);
     return _this;
   }
 
@@ -49136,16 +49135,27 @@ var CitiesItem = function (_React$Component) {
     value: function handleClick(e) {
       e.preventDefault();
       var newUser = Object.assign({}, { user: this.props.currentUser });
-      console.log(newUser);
+      // console.log(newUser);
       newUser["city_id"] = this.props.city.id;
-      console.log(newUser);
+      // console.log(newUser);
 
       this.props.setCity(this.props.currentUser.id, newUser);
     }
   }, {
+    key: 'setCityButton',
+    value: function setCityButton() {
+      if (this.props.currentUser) {
+        return _react2.default.createElement(
+          'button',
+          { className: 'sign-button', onClick: this.handleClick },
+          'Set Home City'
+        );
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
-      console.log("PROPS", this.props);
+
       return _react2.default.createElement(
         'div',
         { key: this.props.city.id, className: 'city-item-container' },
@@ -49154,11 +49164,7 @@ var CitiesItem = function (_React$Component) {
           { to: '/cities/' + this.props.city.id },
           _react2.default.createElement('img', { className: 'city-image', src: this.props.city.image_url, alt: this.props.city.name })
         ),
-        _react2.default.createElement(
-          'button',
-          { className: 'sign-button', onClick: this.handleClick },
-          'Set Home City'
-        )
+        this.setCityButton()
       );
     }
   }]);
