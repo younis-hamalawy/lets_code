@@ -14,7 +14,8 @@ class City extends React.Component {
   }
 
   renderEvents () {
-    const { events } = this.props
+    const { events } = this.props.city
+    console.log(city.events);
     return events.map ( event => (
       <div>
         <CityEventItem key={event.id} event={event} currentUser={this.props.currentUser} registerEvent={this.props.registerEvent} />

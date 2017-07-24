@@ -25,7 +25,6 @@ json.events do
             json.first_name user.first_name
             json.image_url user.image_url
             if @current_user
-
               json.attending !!(@current_user.registered_events.find_by(id: event.id))
               json.hosting !!(@current_user.hosted_events.find_by(id: event.id))
             end

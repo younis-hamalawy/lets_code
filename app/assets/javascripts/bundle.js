@@ -49285,8 +49285,9 @@ var City = function (_React$Component) {
     value: function renderEvents() {
       var _this2 = this;
 
-      var events = this.props.events;
+      var events = this.props.city.events;
 
+      console.log(city.events);
       return events.map(function (event) {
         return _react2.default.createElement(
           'div',
@@ -49514,7 +49515,7 @@ var CityEventItem = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (CityEventItem.__proto__ || Object.getPrototypeOf(CityEventItem)).call(this, props));
 
     _this.handleClick = _this.handleClick.bind(_this);
-    _this.setCityButton = _this.setCityButton.bind(_this);
+    _this.registerEventButton = _this.registerEventButton.bind(_this);
     return _this;
   }
 
@@ -49522,16 +49523,15 @@ var CityEventItem = function (_React$Component) {
     key: 'handleClick',
     value: function handleClick(e) {
       e.preventDefault();
-      var newUser = Object.assign({}, { user: this.props.currentUser });
+      // let newRegistration = Object.assign({}, {user_id: this.props.currentUser.id, event_id: this.props.event.id});
       // console.log(newUser);
-      newUser["city_id"] = this.props.city.id;
       // console.log(newUser);
 
-      this.props.setCity(this.props.currentUser.id, newUser);
+      this.props.registerEvent(this.props.event.id, this.props.currentUser.id);
     }
   }, {
-    key: 'setCityButton',
-    value: function setCityButton() {
+    key: 'registerEventButton',
+    value: function registerEventButton() {
       if (this.props.currentUser) {
         return _react2.default.createElement(
           'button',
@@ -49546,13 +49546,9 @@ var CityEventItem = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        { key: this.props.city.id, className: 'city-item-container' },
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/cities/' + this.props.city.id },
-          _react2.default.createElement('img', { className: 'city-image', src: this.props.city.image_url, alt: this.props.city.name })
-        ),
-        this.setCityButton()
+        { key: this.props.event.id, className: 'city-event-item-container' },
+        'event.name event.date event.description event.address',
+        this.registerEventButton()
       );
     }
   }]);

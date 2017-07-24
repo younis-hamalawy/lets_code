@@ -6,20 +6,19 @@ class CityEventItem extends React.Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this);
-    this.setCityButton = this.setCityButton.bind(this);
+    this.registerEventButton = this.registerEventButton.bind(this);
     }
 
     handleClick(e) {
       e.preventDefault();
-      let newUser = Object.assign({}, {user: this.props.currentUser});
+      // let newRegistration = Object.assign({}, {user_id: this.props.currentUser.id, event_id: this.props.event.id});
       // console.log(newUser);
-      newUser["city_id"] = this.props.city.id;
       // console.log(newUser);
 
-      this.props.setCity(this.props.currentUser.id, newUser)
+      this.props.registerEvent(this.props.event.id, this.props.currentUser.id)
     }
 
-    setCityButton() {
+    registerEventButton() {
       if (this.props.currentUser){
         return (
           <button className="sign-button" onClick={this.handleClick}>Set Home City</button>
@@ -30,9 +29,12 @@ class CityEventItem extends React.Component {
     render () {
 
       return (
-        <div key={this.props.city.id} className="city-item-container">
-          <Link to={`/cities/${this.props.city.id}`}><img className="city-image" src={this.props.city.image_url} alt={this.props.city.name}/></Link>
-          {this.setCityButton()}
+        <div key={this.props.event.id} className="city-event-item-container">
+          event.name
+          event.date
+          event.description
+          event.address
+          {this.registerEventButton()}
         </div>
       )
   }
