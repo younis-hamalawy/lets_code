@@ -45450,7 +45450,10 @@ var _cities_actions = __webpack_require__(35);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var defaultState = {};
+var defaultState = {
+  entities: {},
+  currentCityId: null
+};
 
 var CitiesReducer = function CitiesReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
@@ -45460,9 +45463,12 @@ var CitiesReducer = function CitiesReducer() {
 
   switch (action.type) {
     case _cities_actions.RECEIVE_ALL_CITIES:
+      return merge({}, state, {
+        byId: action.cities
+      });
       return action.cities;
-    // case RECEIEVE_SINGLE_CITY:
-    //   return _.values(action.city)
+    case _cities_actions.RECEIEVE_SINGLE_CITY:
+      return action.city;
     default:
       return state;
   }
@@ -45499,164 +45505,39 @@ var fetchSingleCity = exports.fetchSingleCity = function fetchSingleCity(cityId)
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _lodash = __webpack_require__(78);
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
-var _cities_actions = __webpack_require__(35);
-
-var _registrations_actions = __webpack_require__(335);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var defaultState = {};
-
-var CityReducer = function CityReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
-  var action = arguments[1];
-
-  Object.freeze(state);
-
-  switch (action.type) {
-    case _cities_actions.RECEIEVE_SINGLE_CITY:
-      return action.city;
-    // case RECEIEVE_SINGLE_REGISTRATION:
-    //   return merge({}, state, {
-    //     action.city.event[event.id].registered_users
-    //   })
-    // case RECEIVE_ERRORS:
-    //   return action.city.event[event.id].registered_users
-    // case DELETE_REGISTRATION:
-    //   return action.city
-
-    default:
-      return state;
-  }
-};
-
-exports.default = CityReducer;
-
-/***/ }),
-/* 335 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.destroyRegistration = exports.createRegistration = exports.fetchSingleRegistration = exports.deleteRegistration = exports.receiveSingleRegistration = exports.DELETE_REGISTRATION = exports.RECEIEVE_SINGLE_REGISTRATION = undefined;
-
-var _registration_api_util = __webpack_require__(336);
-
-var RegistrationsAPIUtil = _interopRequireWildcard(_registration_api_util);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-// export const RECEIVE_ALL_REGISTRATIONS = 'RECEIVE_ALL_REGISTRATIONSS';
-
-var RECEIEVE_SINGLE_REGISTRATION = exports.RECEIEVE_SINGLE_REGISTRATION = 'RECEIEVE_SINGLE_REGISTRATION';
-var DELETE_REGISTRATION = exports.DELETE_REGISTRATION = "DELETE_REGISTRATION";
-// export const receiveAllRegistrations = registrations => ({
-//   type: RECEIVE_ALL_REGISTRATIONS,
-//   registrations
-// });
-
-var receiveSingleRegistration = exports.receiveSingleRegistration = function receiveSingleRegistration(registration) {
-  return {
-    type: RECEIEVE_SINGLE_REGISTRATION,
-    registration: registration
-  };
-};
-
-var deleteRegistration = exports.deleteRegistration = function deleteRegistration(registration) {
-  return {
-    type: DELETE_REGISTRATION,
-    registration: registration
-  };
-};
-
-// export const fetchAllRegistrations = () => dispatch => (
-//   RegistrationsAPIUtil.fetchAllRegistrations().then(Registrations => (
-//       dispatch(receiveAllRegistrations(Registrations))
-//   ))
-// );
-
-var fetchSingleRegistration = exports.fetchSingleRegistration = function fetchSingleRegistration(registrationId) {
-  return function (dispatch) {
-    return RegistrationAPIUtil.fetchSingleRegistration(registrationId).then(function (registration) {
-      return dispatch(receiveSingleRegistration(registration));
-    });
-  };
-};
-
-var createRegistration = exports.createRegistration = function createRegistration(registration) {
-  return function (dispatch) {
-    return RegistrationsAPIUtil.createRegistration(registration).then(function (registration) {
-      return dispatch(receiveSingleRegistration(registration));
-    }, function (errors) {
-      return dispatch(receiveErrors(errors));
-    });
-  };
-};
-
-var destroyRegistration = exports.destroyRegistration = function destroyRegistration(registrationId) {
-  return function (dispatch) {
-    return RegistrationsAPIUtil.destroyRegistration(registrationId).then(function (registration) {
-      return dispatch(deleteRegistration(registration));
-    });
-  };
-};
-
-/***/ }),
-/* 336 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var fetchAllRegistrations = exports.fetchAllRegistrations = function fetchAllRegistrations() {
-  return $.ajax({
-    method: 'GET',
-    url: 'api/registrations/'
-  });
-};
-
-// export const fetchSingleRegistration = (registration_id) => {
-//   return $.ajax({
-//     method: 'GET',
-//     url: `api/cities/${city_id}/registrations`
-//   });
+// import _ from 'lodash';
+//
+// import {
+//   RECEIEVE_SINGLE_CITY
+// } from '../actions/cities_actions';
+//
+// import {
+//    RECEIEVE_SINGLE_REGISTRATION, RECEIVE_ERRORS, DELETE_REGISTRATION
+// } from '../actions/registrations_actions';
+//
+//
+//
+// const defaultState = {};
+//
+//
+// const CityReducer = (state = defaultState, action) => {
+//   Object.freeze(state)
+//
+//   switch (action.type) {
+//     case RECEIEVE_SINGLE_CITY:
+//       return action.city
+//
+//     default:
+//       return state;
+//   }
 // };
+//
+// export default CityReducer;
 
-var createRegistration = exports.createRegistration = function createRegistration(_ref) {
-  var registration = _ref.registration;
-
-  return $.ajax({
-    method: 'POST',
-    url: 'api/registrations',
-    data: { registration: registration }
-  });
-};
-
-var destroyRegistration = exports.destroyRegistration = function destroyRegistration(registrationId) {
-  return $.ajax({
-    method: 'DELETE',
-    url: 'api/registrations/' + registrationId
-  });
-};
 
 /***/ }),
+/* 335 */,
+/* 336 */,
 /* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 

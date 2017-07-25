@@ -2,10 +2,13 @@ import _ from 'lodash';
 
 import {
   RECEIVE_ALL_CITIES,
-  // RECEIEVE_SINGLE_CITY
+  RECEIEVE_SINGLE_CITY
 } from '../actions/cities_actions';
 
-const defaultState = {};
+const defaultState = {
+  entities: {},
+  currentCityId: null
+};
 
 
 const CitiesReducer = (state = defaultState, action) => {
@@ -14,9 +17,12 @@ const CitiesReducer = (state = defaultState, action) => {
 
   switch (action.type) {
     case RECEIVE_ALL_CITIES:
+    return merge({}, state, {
+      byId: action.cities
+    })
       return action.cities
-    // case RECEIEVE_SINGLE_CITY:
-    //   return _.values(action.city)
+    case RECEIEVE_SINGLE_CITY:
+      return action.city
     default:
       return state;
   }
