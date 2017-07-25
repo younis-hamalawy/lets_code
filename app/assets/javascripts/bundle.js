@@ -25120,7 +25120,7 @@ var matchPath = function matchPath(pathname) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.selectAllEvents = exports.selectAllCities = undefined;
+exports.selectAllRegisteredUsers = exports.selectAllEvents = exports.selectAllCities = undefined;
 
 var _lodash = __webpack_require__(77);
 
@@ -25132,6 +25132,10 @@ var selectAllCities = exports.selectAllCities = function selectAllCities(_ref) {
 var selectAllEvents = exports.selectAllEvents = function selectAllEvents(_ref2) {
   var events = _ref2.events;
   return (0, _lodash.values)(events);
+};
+
+var selectAllRegisteredUsers = exports.selectAllRegisteredUsers = function selectAllRegisteredUsers(city, eventId) {
+  return (0, _lodash.values)(city.events[eventId].registered_users);
 };
 
 /***/ }),
@@ -45507,6 +45511,8 @@ var _lodash2 = _interopRequireDefault(_lodash);
 
 var _cities_actions = __webpack_require__(35);
 
+var _registrations_actions = __webpack_require__(387);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var defaultState = {};
@@ -45520,6 +45526,15 @@ var CityReducer = function CityReducer() {
   switch (action.type) {
     case _cities_actions.RECEIEVE_SINGLE_CITY:
       return action.city;
+    // case RECEIEVE_SINGLE_REGISTRATION:
+    //   return merge({}, state, {
+    //     action.city.event[event.id].registered_users
+    //   })
+    // case RECEIVE_ERRORS:
+    //   return action.city.event[event.id].registered_users
+    // case DELETE_REGISTRATION:
+    //   return action.city
+
     default:
       return state;
   }
@@ -49201,8 +49216,8 @@ var CitiesItem = function (_React$Component) {
     value: function setCityButton() {
       if (this.props.currentUser) {
         return _react2.default.createElement(
-          'button',
-          { className: 'sign-button', onClick: this.handleClick },
+          'a',
+          { className: 'button-link', href: '#', onClick: this.handleClick },
           'set as home city'
         );
       }
@@ -49333,9 +49348,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(15);
 
-var _city_event_item = __webpack_require__(384);
+var _city_event_item_container = __webpack_require__(386);
 
-var _city_event_item2 = _interopRequireDefault(_city_event_item);
+var _city_event_item_container2 = _interopRequireDefault(_city_event_item_container);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49367,15 +49382,13 @@ var City = function (_React$Component) {
   }, {
     key: 'renderEvents',
     value: function renderEvents() {
-      var _this2 = this;
-
       var events = this.props.events;
 
       return events.map(function (event) {
         return _react2.default.createElement(
           'div',
           null,
-          _react2.default.createElement(_city_event_item2.default, { key: event.id, event: event, currentUser: _this2.props.currentUser })
+          _react2.default.createElement(_city_event_item_container2.default, { key: event.id, event: event })
         );
       });
     }
@@ -49465,29 +49478,61 @@ var CityEventItem = function (_React$Component) {
   function CityEventItem(props) {
     _classCallCheck(this, CityEventItem);
 
-    return _possibleConstructorReturn(this, (CityEventItem.__proto__ || Object.getPrototypeOf(CityEventItem)).call(this, props));
-    // this.handleClick = this.handleClick.bind(this);
-    // this.registerEventButton = this.registerEventButton.bind(this);
+    var _this = _possibleConstructorReturn(this, (CityEventItem.__proto__ || Object.getPrototypeOf(CityEventItem)).call(this, props));
+
+    _this.handleRegister = _this.handleRegister.bind(_this);
+    // this.handleDeregister = this.handleDeregister.bind(this);
+    _this.registerEventButton = _this.registerEventButton.bind(_this);
+    return _this;
   }
 
-  // handleClick(e) {
-  //   e.preventDefault();
-  //
-  //   this.props.registerEvent(this.props.event.id, this.props.currentUser.id)
-  // }
-  //
-  // registerEventButton() {
-  //   if (this.props.currentUser){
-  //     return (
-  //       <button className="sign-button" onClick={this.handleClick}>Join Event</button>
-  //     )
-  //   }
-  // }
-
   _createClass(CityEventItem, [{
+    key: 'handleRegister',
+    value: function handleRegister(e) {
+      e.preventDefault();
+
+      this.props.registerEvent(this.props.event.id, this.props.currentUser.id);
+    }
+
+    // handleDeregister(e) {
+    //   e.preventDefault();
+    //
+    //   this.props.deregisterEvent(this.props.event.id, this.props.currentUser.id)
+    // }
+
+  }, {
+    key: 'registerEventButton',
+    value: function registerEventButton() {
+      if (this.props.currentUser) {
+        if (this.props.event.host.id === this.props.currentUser.id) {
+          return _react2.default.createElement(
+            'button',
+            { className: 'sign-button', disabled: true },
+            'Leave Event!'
+          );
+        }
+
+        if (this.props.registeredUsers.map(function (user) {
+          return user.id;
+        }).includes(this.props.currentUser.id)) {
+          return _react2.default.createElement(
+            'button',
+            { className: 'sign-button', onClick: this.handleDeregister },
+            'Leave Event'
+          );
+        }
+
+        return _react2.default.createElement(
+          'button',
+          { className: 'sign-button', onClick: this.handleRegister },
+          'Join Event'
+        );
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
-
+      console.log(this.props);
       return _react2.default.createElement(
         'div',
         { key: this.props.event.id, className: 'city-event-item-container' },
@@ -49510,7 +49555,8 @@ var CityEventItem = function (_React$Component) {
           'p',
           { className: 'event-address' },
           this.props.event.address
-        )
+        ),
+        this.registerEventButton()
       );
     }
   }]);
@@ -49567,6 +49613,179 @@ var mapStateToProps = function mapStateToProps(state) {
 var AuthRoute = exports.AuthRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Auth));
 
 var ProtectedRoute = exports.ProtectedRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(Protected));
+
+/***/ }),
+/* 386 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(21);
+
+var _city_event_item = __webpack_require__(384);
+
+var _city_event_item2 = _interopRequireDefault(_city_event_item);
+
+var _selectors = __webpack_require__(83);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import lodash from 'lodash';
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    currentUser: state.session.currentUser,
+    registeredUsers: (0, _selectors.selectAllRegisteredUsers)(state.city, ownProps.event.id)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    registerEvent: function (_registerEvent) {
+      function registerEvent(_x, _x2) {
+        return _registerEvent.apply(this, arguments);
+      }
+
+      registerEvent.toString = function () {
+        return _registerEvent.toString();
+      };
+
+      return registerEvent;
+    }(function (eventId, userId) {
+      return dispatch(registerEvent(eventId, userId));
+    })
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_city_event_item2.default);
+
+/***/ }),
+/* 387 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.destroyRegistration = exports.createRegistration = exports.fetchSingleRegistration = exports.receiveErrors = exports.deleteRegistration = exports.receiveSingleRegistration = exports.DELETE_REGISTRATION = exports.RECEIVE_ERRORS = exports.RECEIEVE_SINGLE_REGISTRATION = undefined;
+
+var _registration_api_util = __webpack_require__(388);
+
+var RegistrationsAPIUtil = _interopRequireWildcard(_registration_api_util);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+// export const RECEIVE_ALL_REGISTRATIONS = 'RECEIVE_ALL_REGISTRATIONSS';
+
+var RECEIEVE_SINGLE_REGISTRATION = exports.RECEIEVE_SINGLE_REGISTRATION = 'RECEIEVE_SINGLE_REGISTRATION';
+var RECEIVE_ERRORS = exports.RECEIVE_ERRORS = "RECEIVE_ERRORS";
+var DELETE_REGISTRATION = exports.DELETE_REGISTRATION = "DELETE_REGISTRATION";
+
+// export const receiveAllRegistrations = registrations => ({
+//   type: RECEIVE_ALL_REGISTRATIONS,
+//   registrations
+// });
+
+var receiveSingleRegistration = exports.receiveSingleRegistration = function receiveSingleRegistration(registration) {
+  return {
+    type: RECEIEVE_SINGLE_REGISTRATION,
+    registration: registration
+  };
+};
+
+var deleteRegistration = exports.deleteRegistration = function deleteRegistration(registration) {
+  return {
+    type: DELETE_REGISTRATION,
+    registration: registration
+  };
+};
+
+var receiveErrors = exports.receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_ERRORS,
+    errors: errors
+  };
+};
+
+// export const fetchAllRegistrations = () => dispatch => (
+//   RegistrationsAPIUtil.fetchAllRegistrations().then(Registrations => (
+//       dispatch(receiveAllRegistrations(Registrations))
+//   ))
+// );
+
+var fetchSingleRegistration = exports.fetchSingleRegistration = function fetchSingleRegistration(registrationId) {
+  return function (dispatch) {
+    return RegistrationAPIUtil.fetchSingleRegistration(registrationId).then(function (registration) {
+      return dispatch(receiveSingleRegistration(registration));
+    });
+  };
+};
+
+var createRegistration = exports.createRegistration = function createRegistration(registration) {
+  return function (dispatch) {
+    return RegistrationsAPIUtil.createRegistration(registration).then(function (registration) {
+      return dispatch(receiveSingleRegistration(registration));
+    }, function (errors) {
+      return dispatch(receiveErrors(errors));
+    });
+  };
+};
+
+var destroyRegistration = exports.destroyRegistration = function destroyRegistration(registrationId) {
+  return function (dispatch) {
+    return RegistrationsAPIUtil.destroyRegistration(registrationId).then(function (registration) {
+      return dispatch(deleteRegistration(registration));
+    });
+  };
+};
+
+/***/ }),
+/* 388 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var fetchAllRegistrations = exports.fetchAllRegistrations = function fetchAllRegistrations() {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/registrations/'
+  });
+};
+
+// export const fetchSingleRegistration = (registration_id) => {
+//   return $.ajax({
+//     method: 'GET',
+//     url: `api/cities/${city_id}/registrations`
+//   });
+// };
+
+var createRegistration = exports.createRegistration = function createRegistration(_ref) {
+  var registration = _ref.registration;
+
+  return $.ajax({
+    method: 'POST',
+    url: 'api/registrations',
+    data: { registration: registration }
+  });
+};
+
+var destroyRegistration = exports.destroyRegistration = function destroyRegistration(registrationId) {
+  return $.ajax({
+    method: 'DELETE',
+    url: 'api/registrations/' + registrationId
+  });
+};
 
 /***/ })
 /******/ ]);

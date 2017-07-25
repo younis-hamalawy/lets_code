@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import CityEventItem from './city_event_item';
+import CityEventItemContainer from './city_event_item_container';
 // import CitiesItem from './cities_item';
 
 class City extends React.Component {
@@ -18,7 +18,7 @@ class City extends React.Component {
     const { events } = this.props
     return events.map ( event => (
       <div>
-        <CityEventItem key={event.id} event={event} currentUser={this.props.currentUser} />
+        <CityEventItemContainer key={event.id} event={event}/>
       </div>
     ))
   }

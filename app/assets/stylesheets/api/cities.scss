@@ -1,6 +1,7 @@
 // Place all the styles related to the api/cities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$base: 0.75rem;
 .cities-container {
   display: flex;
   flex-direction: column;
@@ -47,9 +48,13 @@ p.img-text {
   align-content: space-between;
   min-height: 12rem;
   min-width: 20rem;
-  button.sign-button {
-    border-width: 0px;
+  .button-link {
+    padding: 1rem;
+    font-family: 'Josefin Slab', serif;
+    font-weight: bold;
+    font-size: $base;
   }
+
 }
 
 .cities-header1, .cities-header2 {
@@ -61,4 +66,49 @@ p.img-text {
 
   }
 
+}
+//////////////////////////////////////////////////////
+button-link {
+position: relative;
+display: inline-block;
+margin: 15px 25px;
+outline: none;
+color: #fff;
+text-decoration: none;
+text-transform: uppercase;
+letter-spacing: 1px;
+font-weight: 400;
+text-shadow: 0 0 1px rgba(255,255,255,0.3);
+font-size: 1.35em;
+}
+button-link:hover, button-link:focus {
+outline: none;
+}
+/* Effect 1: Brackets */
+.button-link::before, .button-link::after {
+display: inline-block;
+opacity: 0;
+-webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+-moz-transition: -moz-transform 0.3s, opacity 0.2s;
+transition: transform 0.3s, opacity 0.2s;
+}
+.button-link::before {
+margin-right: 10px;
+content: '[';
+-webkit-transform: translateX(20px);
+-moz-transform: translateX(20px);
+transform: translateX(20px);
+}
+.button-link::after {
+margin-left: 10px;
+content: ']';
+-webkit-transform: translateX(-20px);
+-moz-transform: translateX(-20px);
+transform: translateX(-20px);
+}
+.button-link:hover::before, .button-link:hover::after, .button-link:focus::before, .button-link:focus::after {
+opacity: 1;
+-webkit-transform: translateX(0px);
+-moz-transform: translateX(0px);
+transform: translateX(0px);
 }

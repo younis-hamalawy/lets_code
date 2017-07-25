@@ -22,7 +22,7 @@ class CitiesItem extends React.Component {
     setCityButton() {
       if (this.props.currentUser){
         return (
-          <button className="sign-button" onClick={this.handleClick}>set as home city</button>
+          <a className="button-link" href="#" onClick={this.handleClick}>set as home city</a>
         )
       }
     }

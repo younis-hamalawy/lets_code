@@ -2,8 +2,8 @@ import * as EventsAPIUtil from '../util/events_api_util';
 
 export const RECEIVE_ALL_EVENTS = "RECEIEVE_ALL_EVENTS";
 export const RECEIVE_SINGLE_EVENT = "RECEIEVE_SINGLE_EVENT";
-export const "RECEIVE_ERRORS" = "RECEIVE_ERRORS";
-export const "DELETE_EVENT" = "DELETE_EVENT";
+export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const DELETE_EVENT = "DELETE_EVENT";
 
 export const receiveAllEvents = events => ({
   type: RECEIVE_ALL_EVENTS,
@@ -40,8 +40,8 @@ export const destroyEvent = (eventId) => dispatch => (
   EventsAPIUtil.destroyEvent(eventId).then(event => dispatch(deleteEvent(event)))
 );
 
-export const createEvent = ({ event }) => (dispatch) => (
-  EventsAPIUtil.createEvent({ event })
+export const createEvent = ( event ) => (dispatch) => (
+  EventsAPIUtil.createEvent( event )
     .then((events) => dispatch(receiveAllEvents(events)),
                   (errors) => dispatch(receiveErrors(errors)))
 );

@@ -23,6 +23,6 @@ export const createEvent = ({ event }) => {
 export const destroyEvent = (eventId) => {
   return $.ajax({
     method: 'DELETE',
-    url: `api/events/${event_id}`
+    url: `api/events/${eventId}`
   });
 };
