@@ -1,25 +1,17 @@
 $base: 0.75rem;
 div.big-city-container {
-  .city-container {
-    display: flex;
-    flex-direction: column;
-    // flex-wrap: wrap;
-    align-items: center;
-    // padding: 0rem 4rem;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    // min-height: 9rem;
-    // min-width: 15rem;
-    // padding: 0.5rem 1rem;
-    h3, p {
-      padding: 0.5rem;
-      font-family: 'Cabin', sans-serif;
-      color: rgb(92, 92, 92);
-      font-weight: bold;
-      max-width: 70%;
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  // flex-wrap: wrap;
+  align-items: center;
+  // padding: 0rem 4rem;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  // min-height: 9rem;
+  // min-width: 15rem;
+  // padding: 0.5rem 1rem;
+
   .SF {
     background-image: url("http://res.cloudinary.com/flying-monkey/image/upload/c_crop,h_712,q_100,w_2580,x_0,y_680/v1500917215/sf_t5qwmt.jpg");
     background-repeat: no-repeat;
@@ -115,4 +107,18 @@ div.img-text {
   align-content: flex-end;
   align-items: flex-end;
   margin: 0;
+}
+
+h3, p {
+  padding: 0.5rem;
+  font-family: 'Cabin', sans-serif;
+  color: rgb(92, 92, 92);
+  font-weight: bold;
+}
+
+.city-header1, .city-header2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 70%;
 }

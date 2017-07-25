@@ -36,7 +36,7 @@ class City extends React.Component {
               </div>
           </div>
         </div>
-        </div>
+
         <div className="city-header1">
           <h3>Code Time is a programming experience between a few people who know nothing about each other.</h3>
           <p>You'll never leave without questions, new perspectives, and the reminder that we understand something better each time we explain it to someone else.</p>
@@ -44,12 +44,11 @@ class City extends React.Component {
         <div className="event">
           {this.renderEvents()}
         </div>
-        <div className="city-header1">
+        <div className="city-header2">
           <h3>The Host Community is full of amazing stories.</h3>
           <p>How else would someone end up regularly bringing strangers together for Code Time? Before each of them were invited to community, they were attendees that fed their Code Times with their questions, open-mindedness, and presence.</p>
         </div>
 
-        </div>
       </div>
     )
   }
