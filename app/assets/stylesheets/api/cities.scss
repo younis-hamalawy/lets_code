@@ -94,7 +94,7 @@ p.img-text:hover {
   align-content: space-between;
   min-height: 9rem;
   min-width: 15rem;
-  padding: 0rem 1rem;
+  padding: 0.5rem 1rem;
   .button-link {
     padding: 0.5rem 0rem 1rem 0rem;
     font-family: 'Josefin Slab', serif;
@@ -110,8 +110,9 @@ p.img-text:hover {
   align-items: center;
   h2, h3 {
     padding: 0.5rem;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Cabin', sans-serif;
     color: rgb(92, 92, 92);
+    font-weight: bold;
   }
   h2 {
 
