@@ -27,7 +27,9 @@ class City extends React.Component {
 
     return (
       <div className="city-container">
-        <img className="city-image" src={this.props.city.image_url} alt={this.props.city.name}/>
+        <div key={this.props.city.id} className={this.props.city.city_abrv}>
+          <p className="img-text">{this.props.city.name}</p>
+        </div>
         <div className="city-header1">
         </div>
         <div className="city-header2">

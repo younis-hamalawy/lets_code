@@ -1,0 +1,32 @@
+$base: 0.75rem;
+.city-container {
+  display: flex;
+  flex-direction: column;
+  // flex-wrap: wrap;
+  align-items: center;
+  // padding: 0rem 4rem;
+  justify-content: space-between;
+  // min-height: 9rem;
+  // min-width: 15rem;
+  // padding: 0.5rem 1rem;
+}
+
+.SF {
+  background-image: url("http://res.cloudinary.com/flying-monkey/image/upload/c_crop,h_1117,q_100,w_2580,y_420/v1500917215/sf_t5qwmt.jpg");
+  background-repeat: no-repeat;
+  height: auto;
+  width: 100%;
+  background-size: cover;
+  min-height: inherit;
+  min-width: inherit;
+}
+
+p.img-text {
+  z-index:1;
+  color:red;
+  font-weight:bold;
+  font-family: 'Fjalla One', sans-serif;
+  font-size: $base*2.5;
+
+
+}
