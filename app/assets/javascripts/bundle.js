@@ -49232,12 +49232,16 @@ var CitiesItem = function (_React$Component) {
           'div',
           { key: this.props.city.id, className: this.props.city.city_abrv },
           _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: '/cities/' + this.props.city.id },
+            'div',
+            { className: 'transbox' },
             _react2.default.createElement(
-              'p',
-              { className: 'img-text' },
-              this.props.city.name
+              _reactRouterDom.Link,
+              { to: '/cities/' + this.props.city.id },
+              _react2.default.createElement(
+                'p',
+                { className: 'img-text' },
+                this.props.city.name
+              )
             )
           )
         ),

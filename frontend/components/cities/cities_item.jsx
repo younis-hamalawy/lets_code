@@ -31,9 +31,9 @@ class CitiesItem extends React.Component {
       return (
       <div className="city-container">
         <div key={this.props.city.id} className={this.props.city.city_abrv}>
-
-          <Link to={`/cities/${this.props.city.id}`}><p className="img-text">{this.props.city.name}</p></Link>
-
+          <div className="transbox">
+            <Link to={`/cities/${this.props.city.id}`}><p className="img-text">{this.props.city.name}</p></Link>
+          </div>
         </div>
         {this.setCityButton()}
 
