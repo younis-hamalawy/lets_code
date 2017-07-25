@@ -49525,48 +49525,74 @@ var City = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'city-container' },
+        { className: 'big-city-container' },
         _react2.default.createElement(
           'div',
           { key: this.props.city.id, className: this.props.city.city_abrv },
           _react2.default.createElement(
-            'p',
-            { className: 'img-text' },
-            this.props.city.name
+            'div',
+            { className: 'transbox' },
+            _react2.default.createElement(
+              'div',
+              { className: 'city-text' },
+              _react2.default.createElement(
+                'div',
+                { className: 'img-text5' },
+                _react2.default.createElement(
+                  'p',
+                  { className: 'img-text2' },
+                  this.props.city.name,
+                  '\xA0\xA0\xA0\xA0\xA0\xA0'
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'img-text4' },
+                _react2.default.createElement(
+                  'p',
+                  { className: 'img-text3' },
+                  '\xA0\xA0\xA0Let\'s Code together!'
+                )
+              )
+            )
           )
         ),
-        _react2.default.createElement('div', { className: 'city-header1' }),
         _react2.default.createElement(
           'div',
-          { className: 'city-header2' },
+          { className: 'city-container' },
+          _react2.default.createElement('div', { className: 'city-header1' }),
           _react2.default.createElement(
-            'h3',
-            null,
-            'Code Time is a conversation between a few people who know nothing about each other.'
+            'div',
+            { className: 'city-header2' },
+            _react2.default.createElement(
+              'h3',
+              null,
+              'Code Time is a programming experience between a few people who know nothing about each other.'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              'You\'ll never leave without questions, new perspectives, and the reminder that we understand something better each time we explain it to someone else.'
+            )
           ),
           _react2.default.createElement(
-            'h4',
-            null,
-            'You\'ll never leave without questions, new perspectives, and the reminder that we understand something better each time we explain it to someone else.'
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'event' },
-          this.renderEvents()
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(
-            'h4',
-            null,
-            'The Host Community is full of amazing stories.'
+            'div',
+            { className: 'event' },
+            this.renderEvents()
           ),
           _react2.default.createElement(
-            'p',
+            'div',
             null,
-            'How else would someone end up regularly bringing strangers together for Code Time? Before each of them were invited to community, they were attendees that fed their Code Times with their questions, open-mindedness, and presence.'
+            _react2.default.createElement(
+              'h4',
+              null,
+              'The Host Community is full of amazing stories.'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              'How else would someone end up regularly bringing strangers together for Code Time? Before each of them were invited to community, they were attendees that fed their Code Times with their questions, open-mindedness, and presence.'
+            )
           )
         )
       );

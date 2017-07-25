@@ -10,23 +10,100 @@ $base: 0.75rem;
   // min-width: 15rem;
   // padding: 0.5rem 1rem;
 }
+div.big-city-container {
+  .SF {
+    background-image: url("http://res.cloudinary.com/flying-monkey/image/upload/c_crop,h_712,q_100,w_2580,x_0,y_680/v1500917215/sf_t5qwmt.jpg");
+    background-repeat: no-repeat;
+    height: auto;
+    width: 101%;
+    background-size: cover;
+    min-height: 18rem;
+    min-width: 15rem;
+  }
 
-.SF {
-  background-image: url("http://res.cloudinary.com/flying-monkey/image/upload/c_crop,h_1117,q_100,w_2580,y_420/v1500917215/sf_t5qwmt.jpg");
-  background-repeat: no-repeat;
-  height: auto;
-  width: 100%;
-  background-size: cover;
-  min-height: inherit;
-  min-width: inherit;
+  .NYC {
+    background-image: url("http://res.cloudinary.com/flying-monkey/image/upload/c_crop,h_1330,q_100,w_4820,y_1448/v1500917188/nyc_ow7rzd.jpg");
+    background-repeat: no-repeat;
+    height: auto;
+    width: auto;
+    background-size: cover;
+    min-height: inherit;
+    min-width: inherit;
+  }
+  .PRL {
+    background-image: url("http://res.cloudinary.com/flying-monkey/image/upload/c_crop,h_1432,q_100,w_5192,y_1000/v1500917194/portland_tqvwwi.jpg");
+    background-repeat: no-repeat;
+    height: auto;
+    width: auto;
+    background-size: cover;
+    min-height: inherit;
+    min-width: inherit;
+  }
+  .LDN {
+    background-image: url("http://res.cloudinary.com/flying-monkey/image/upload/c_crop,h_1510,q_100,w_5472,y_850/v1500958980/london3jpg_exw9tj.jpg");
+    background-repeat: no-repeat;
+    height: auto;
+    width: auto;
+    background-size: cover;
+    min-height: inherit;
+    min-width: inherit;
+  }
+  .BST {
+    background-image: url("http://res.cloudinary.com/flying-monkey/image/upload/c_crop,h_988,q_100,w_3583,y_595/v1500917428/boston_sgejl8.jpg");
+    background-repeat: no-repeat;
+    height: auto;
+    width: auto;
+    background-size: cover;
+    min-height: inherit;
+    min-width: inherit;
+  }
+
+  .CHG {
+    background-image: url("http://res.cloudinary.com/flying-monkey/image/upload/c_crop,h_1457,q_100,w_5282/v1500917221/chicago_cptebs.jpg");
+    background-repeat: no-repeat;
+    height: auto;
+    width: auto;
+    background-size: cover;
+    min-height: inherit;
+    min-width: inherit;
+  }
 }
-
-p.img-text {
+p.img-text2 {
   z-index:1;
   color:red;
   font-weight:bold;
   font-family: 'Fjalla One', sans-serif;
-  font-size: $base*2.5;
+  font-size: $base*6;
+  display: flex;
+  align-items: baseline;
+  align-content: baseline;
+}
+p.img-text3 {
+  z-index:1;
+  color:black;
+  font-weight:bold;
+  font-family: 'Fjalla One', sans-serif;
+  font-size: $base*2;
+  // padding-bottom: 2rem;
+}
+
+div.transbox {
+  display: flex;
+
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  background-color: #f7e094;
+  opacity: 0.7;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+  // background-size: cover;
+  min-height: inherit;
+  min-width: inherit;
+}
 
 
+div.img-text {
+  align-content: flex-end;
+  align-items: flex-end;
+  margin: 0;
 }
