@@ -19,10 +19,3 @@ export const createRegistration = (registration) => {
     data: {registration}
   });
 };
-
-export const destroyRegistration = (registrationId) => {
-  return $.ajax({
-    method: 'DELETE',
-    url: `api/registrations/${registrationId}`
-  });
-};

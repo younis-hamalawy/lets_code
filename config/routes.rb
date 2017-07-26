@@ -6,9 +6,9 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :cities, only: [:index, :show]
     resources :events, only: [:index, :create, :show, :destroy] do
-      resources :registrations, only: %i[destroy]
+      resources :registrations, only: [:create, :destroy]
     end
-    resources :registrations, only: [:index, :create]
+    resources :registrations, only: [:index]
   end
 
   root to: 'static_pages#root'

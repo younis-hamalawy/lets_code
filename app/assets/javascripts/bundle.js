@@ -45773,13 +45773,6 @@ var createRegistration = exports.createRegistration = function createRegistratio
   });
 };
 
-var destroyRegistration = exports.destroyRegistration = function destroyRegistration(registrationId) {
-  return $.ajax({
-    method: 'DELETE',
-    url: 'api/registrations/' + registrationId
-  });
-};
-
 /***/ }),
 /* 338 */
 /***/ (function(module, exports, __webpack_require__) {
