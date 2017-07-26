@@ -1,7 +1,8 @@
 class Api::RegistrationsController < ApplicationController
 
   def create
-  	@registration = Registration.new(registration_params)
+    @event = Event.find_by(id: params[:event_id])
+  	@registration = Registration.new(event_id: @event.id, user_id: current_user.id)
   	if @registration.save
       @event = @registration.event
   		render "api/events/show"

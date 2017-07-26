@@ -45655,16 +45655,16 @@ var destroyEvent = exports.destroyEvent = function destroyEvent(event_id) {
 var registerEvent = exports.registerEvent = function registerEvent(event_id, user_id) {
   return $.ajax({
     method: 'POST',
-    url: '/api/events/' + event_id + '/registrations',
-    data: { registration: { event_id: event_id, user_id: user_id } }
+    url: '/api/events/' + event_id + '/registrations'
+    // data: { registration: {event_id, user_id} }
   });
 };
 
 var deregisterEvent = exports.deregisterEvent = function deregisterEvent(event_id, user_id) {
   return $.ajax({
     method: 'Delete',
-    url: '/api/events/' + event_id + '/registrations/' + user_id,
-    data: { registration: { event_id: event_id, user_id: user_id } }
+    url: '/api/events/' + event_id + '/registrations/' + user_id
+    // data: { registration: {event_id, user_id} }
   });
 };
 
