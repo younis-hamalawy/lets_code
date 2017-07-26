@@ -10,13 +10,13 @@ import { setCity } from '../../actions/users_actions';
 const mapStateToProps = ( state ) => {
   return {
   currentUser: state.session.currentUser,
-  cities: selectAllCities(state)
+  cities: selectAllCities(state.cities)
   };
 }
 
 const mapDispatchToProps = dispatch => ({
   fetchAllCities: () => dispatch(fetchAllCities()),
-  setCity: (id, user) => dispatch(setCity(id, user))
+  setCity: (cityId, user) => dispatch(setCity(cityId, user))
 });
 
 export default connect(

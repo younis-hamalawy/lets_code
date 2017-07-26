@@ -5483,8 +5483,8 @@ exports.selectAllRegisteredUsers = exports.selectAllEvents = exports.selectAllCi
 var _lodash = __webpack_require__(134);
 
 var selectAllCities = exports.selectAllCities = function selectAllCities(_ref) {
-  var cities = _ref.cities;
-  return (0, _lodash.values)(cities);
+  var entities = _ref.entities;
+  return (0, _lodash.values)(entities);
 };
 
 var selectAllEvents = exports.selectAllEvents = function selectAllEvents(_ref2) {
@@ -48995,7 +48995,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var mapStateToProps = function mapStateToProps(state) {
   return {
     currentUser: state.session.currentUser,
-    cities: (0, _selectors.selectAllCities)(state)
+    cities: (0, _selectors.selectAllCities)(state.cities)
   };
 };
 
@@ -49004,8 +49004,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     fetchAllCities: function fetchAllCities() {
       return dispatch((0, _cities_actions.fetchAllCities)());
     },
-    setCity: function setCity(id, user) {
-      return dispatch((0, _users_actions.setCity)(id, user));
+    setCity: function setCity(cityId, user) {
+      return dispatch((0, _users_actions.setCity)(cityId, user));
     }
   };
 };
@@ -49701,7 +49701,7 @@ var receiveAllEvents = exports.receiveAllEvents = function receiveAllEvents(even
 
 var receiveSingleEvent = exports.receiveSingleEvent = function receiveSingleEvent(event) {
   return {
-    type: RECEIEVE_SINGLE_EVENT,
+    type: RECEIVE_SINGLE_EVENT,
     event: event
   };
 };

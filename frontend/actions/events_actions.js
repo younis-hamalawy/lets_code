@@ -12,7 +12,7 @@ export const receiveAllEvents = events => ({
 });
 
 export const receiveSingleEvent = event => ({
-  type: RECEIEVE_SINGLE_EVENT,
+  type: RECEIVE_SINGLE_EVENT,
   event
 });
 

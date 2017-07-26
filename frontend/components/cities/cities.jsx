@@ -16,6 +16,7 @@ class Cities extends React.Component {
   }
 
   renderCities () {
+
     const { cities } = this.props
     return cities.map ( city => (
 
