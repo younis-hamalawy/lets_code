@@ -8,22 +8,25 @@ import { selectAllEvents } from '../../reducers/selectors'
 import { selectAllCities } from '../../reducers/selectors';
 
 const mapStateToProps = ( state, ownProps) => {
-  console.log(ownProps);
+
   const currentCityId = parseInt(ownProps.location.pathname.slice(8));
-  console.log(typeof(currentCityId));
+
+  let cities = selectAllCities(state.cities);
+  // console.log(cities);
+  const city = cities[currentCityId];
   return ({
-    cities: selectAllCities(state.cities),
     currentCityId: currentCityId,
     currentUser: state.session.currentUser,
+    city
     // city: state.cities[state.cities],
-    // events: selectAllEvents(state.cities[this.props.match.params.])
+    events: selectAllEvents(state.cities[currentCityId])
 
   })
 };
 
 const mapDispatchToProps = dispatch => ({
   fetchAllCities: () => dispatch(fetchAllCities()),
-  // fetchSingleCity: (cityId) => dispatch(fetchSingleCity(cityId)),
+  fetchSingleCity: (cityId) => dispatch(fetchSingleCity(cityId)),
   registerEvent: (eventId, userId) => dispatch(registerEvent(eventId, userId))
 });
 

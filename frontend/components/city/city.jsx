@@ -7,17 +7,19 @@ import CityEventItemContainer from './city_event_item_container';
 class City extends React.Component {
   constructor(props) {
     super(props)
-    console.log(this.props.cities);
-    console.log(this.props.currentCityId);
+    // console.log(this.props.city);
+    // console.log(this.props.currentCityId);
     this.renderEvents = this.renderEvents.bind(this);
   }
 
   componentWillMount() {
     this.props.fetchSingleCity(this.props.match.params.id);
+
   }
 
   renderEvents () {
     const { events } = this.props
+    console.log(events);
     return events.map ( event => (
       <div>
         <CityEventItemContainer key={event.id} event={event}/>

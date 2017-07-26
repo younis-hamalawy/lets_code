@@ -2,7 +2,7 @@ import merge from 'lodash/merge';
 
 import {
   RECEIVE_ALL_CITIES,
-  // RECEIEVE_SINGLE_CITY
+  RECEIEVE_SINGLE_CITY
 } from '../actions/cities_actions';
 
 const defaultState = {
@@ -21,11 +21,8 @@ const CitiesReducer = (state = {}, action) => {
       // return merge({}, state, {
       //   cities: action.cities
       // });
-    // case RECEIEVE_SINGLE_CITY:
-    //   return merge({}, state, {
-    //     entities: action.city.city,
-    //     currentCity: action.city.currentCity
-    //   })
+    case RECEIEVE_SINGLE_CITY:
+      return merge({}, state, action.city)
     default:
       return state;
   }
