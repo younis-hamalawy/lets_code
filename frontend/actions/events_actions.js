@@ -56,3 +56,8 @@ export const registerEvent = (event_id, user_id) => dispatch => (
     dispatch(receiveSingleEvent(event))
   ))
 );
+export const deregisterEvent = (event_id, user_id) => dispatch => (
+  EventsAPIUtil.deregisterEvent(event_id, user_id).then(event => (
+    dispatch(receiveSingleEvent(event))
+  ))
+);

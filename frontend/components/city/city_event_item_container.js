@@ -14,7 +14,8 @@ const mapStateToProps = ( state , ownProps ) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  registerEvent: (eventId, userId) => dispatch(registerEvent(eventId, userId))
+  registerEvent: (eventId, userId) => dispatch(registerEvent(eventId, userId)),
+  deregisterEvent: (eventId, userId) => dispatch(deregisterEvent(eventId, userId))
 });
 
 export default connect(

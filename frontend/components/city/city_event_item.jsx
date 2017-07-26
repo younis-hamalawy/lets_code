@@ -7,7 +7,7 @@ class CityEventItem extends React.Component {
     super(props)
     console.log(this.props);
     this.handleRegister = this.handleRegister.bind(this);
-    // this.handleDeregister = this.handleDeregister.bind(this);
+    this.handleDeregister = this.handleDeregister.bind(this);
     this.registerEventButton = this.registerEventButton.bind(this);
     }
 
@@ -17,11 +17,11 @@ class CityEventItem extends React.Component {
       this.props.registerEvent(this.props.event.id, this.props.currentUser.id)
     }
 
-    // handleDeregister(e) {
-    //   e.preventDefault();
-    //
-    //   this.props.deregisterEvent(this.props.event.id, this.props.currentUser.id)
-    // }
+    handleDeregister(e) {
+      e.preventDefault();
+
+      this.props.deregisterEvent(this.props.event.id, this.props.currentUser.id)
+    }
 
     registerEventButton() {
       if (this.props.currentUser){
