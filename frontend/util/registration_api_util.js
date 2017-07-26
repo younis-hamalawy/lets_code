@@ -11,11 +11,3 @@ export const fetchAllRegistrations = () => {
 //     url: `api/cities/${city_id}/registrations`
 //   });
 // };
-
-export const createRegistration = (registration) => {
-  return $.ajax({
-    method: 'POST',
-    url: `api/registrations`,
-    data: {registration}
-  });
-};

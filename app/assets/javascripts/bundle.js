@@ -45655,7 +45655,7 @@ var destroyEvent = exports.destroyEvent = function destroyEvent(event_id) {
 var registerEvent = exports.registerEvent = function registerEvent(event_id, user_id) {
   return $.ajax({
     method: 'POST',
-    url: '/api/registrations',
+    url: '/api/events/' + event_id + '/registrations',
     data: { registration: { event_id: event_id, user_id: user_id } }
   });
 };
@@ -45764,14 +45764,6 @@ var fetchAllRegistrations = exports.fetchAllRegistrations = function fetchAllReg
 //     url: `api/cities/${city_id}/registrations`
 //   });
 // };
-
-var createRegistration = exports.createRegistration = function createRegistration(registration) {
-  return $.ajax({
-    method: 'POST',
-    url: 'api/registrations',
-    data: { registration: registration }
-  });
-};
 
 /***/ }),
 /* 338 */
