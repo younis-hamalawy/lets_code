@@ -47,8 +47,11 @@ export const destroyEvent = (eventId) => dispatch => (
 
 export const createEvent = ( event ) => (dispatch) => (
   EventsAPIUtil.createEvent( event )
-    .then((event) => dispatch(receiveSingleEvent(event)),
-                  (errors) => dispatch(receiveErrors(errors)))
+    .then((event) => {
+      return(
+        dispatch(receiveSingleEvent(event)),
+        dispatch(clearErrors())
+      )}, (errors) => dispatch(receiveErrors(errors)))
 );
 
 export const registerEvent = (event_id, user_id) => dispatch => (

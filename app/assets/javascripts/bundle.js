@@ -24798,7 +24798,7 @@ var destroyEvent = exports.destroyEvent = function destroyEvent(eventId) {
 var createEvent = exports.createEvent = function createEvent(event) {
   return function (dispatch) {
     return EventsAPIUtil.createEvent(event).then(function (event) {
-      return dispatch(receiveSingleEvent(event));
+      return dispatch(receiveSingleEvent(event)), dispatch(clearErrors());
     }, function (errors) {
       return dispatch(receiveErrors(errors));
     });
@@ -45633,7 +45633,7 @@ var fetchAllEvents = exports.fetchAllEvents = function fetchAllEvents() {
 var fetchSingleEvent = exports.fetchSingleEvent = function fetchSingleEvent(event_id) {
   return $.ajax({
     method: 'GET',
-    url: 'api/events'
+    url: 'api/events/' + event_id
   });
 };
 

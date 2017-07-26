@@ -8,7 +8,7 @@ export const fetchAllEvents = () => {
 export const fetchSingleEvent = (event_id) => {
   return $.ajax({
     method: 'GET',
-    url: `api/events`
+    url: `api/events/${event_id}`
   });
 };
 
