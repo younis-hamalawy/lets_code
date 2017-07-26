@@ -30345,7 +30345,7 @@ Link.contextTypes = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.fetchAllUsers = exports.registerEvent = exports.setCity = exports.receiveAllUsers = exports.receiveCurrentUser = exports.RECEIVE_ALL_USERS = exports.RECEIVE_CURRENT_USER = undefined;
+exports.fetchAllUsers = exports.setCity = exports.receiveAllUsers = exports.receiveCurrentUser = exports.RECEIVE_ALL_USERS = exports.RECEIVE_CURRENT_USER = undefined;
 
 var _user_api_util = __webpack_require__(381);
 
@@ -30370,19 +30370,19 @@ var receiveAllUsers = exports.receiveAllUsers = function receiveAllUsers(users) 
   };
 };
 
-var setCity = exports.setCity = function setCity(id, user) {
+var setCity = exports.setCity = function setCity(cityId, user) {
   return function (dispatch) {
-    return UserAPIUtil.setCity(id, user).then(function (user) {
+    return UserAPIUtil.setCity(cityId, user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
     });
   };
 };
 
-var registerEvent = exports.registerEvent = function registerEvent(event_id, user_id) {
-  return dispatch(UserAPIUtil.registerEvent(event_id, user_id).then(function (user) {
-    return dispatch(receiveCurrentUser(user));
-  }));
-};
+// export const registerEvent = (event_id, user_id) => dispatch => (
+//   UserAPIUtil.registerEvent(event_id, user_id).then(user => (
+//     dispatch(receiveCurrentUser(user))
+//   ))
+// );
 
 var fetchAllUsers = exports.fetchAllUsers = function fetchAllUsers() {
   return dispatch(UsersAPIUtil.fetchAllusers().then(function (users) {
@@ -49400,12 +49400,12 @@ var City = function (_React$Component) {
       var _this2 = this;
 
       var events = this.props.events;
+      // console.log(events);
 
-      console.log(events);
       events = events.filter(function (event) {
         return event.city_id === _this2.props.currentCityId;
       });
-      console.log(events);
+      // console.log(events);
       return events.map(function (event) {
         return _react2.default.createElement(_city_event_item_container2.default, { key: event.id, event: event });
       });
@@ -49413,7 +49413,7 @@ var City = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      console.log(this.props);
+      // console.log(this.props);
       if ((0, _lodash.isEmpty)(this.props.cities)) {
         return _react2.default.createElement(
           'div',
@@ -49515,10 +49515,14 @@ var _city_event_item = __webpack_require__(385);
 
 var _city_event_item2 = _interopRequireDefault(_city_event_item);
 
+var _events_actions = __webpack_require__(387);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // import { selectAllRegisteredUsers } from '../../reducers/selectors'
 
+
+// import lodash from 'lodash';
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
@@ -49526,23 +49530,12 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     // registeredUsers: selectAllRegisteredUsers(state.city, ownProps.event.id)
   };
 };
-// import lodash from 'lodash';
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    registerEvent: function (_registerEvent) {
-      function registerEvent(_x, _x2) {
-        return _registerEvent.apply(this, arguments);
-      }
-
-      registerEvent.toString = function () {
-        return _registerEvent.toString();
-      };
-
-      return registerEvent;
-    }(function (eventId, userId) {
-      return dispatch(registerEvent(eventId, userId));
-    })
+    registerEvent: function registerEvent(eventId, userId) {
+      return dispatch((0, _events_actions.registerEvent)(eventId, userId));
+    }
   };
 };
 
@@ -49585,6 +49578,7 @@ var CityEventItem = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (CityEventItem.__proto__ || Object.getPrototypeOf(CityEventItem)).call(this, props));
 
+    console.log(_this.props);
     _this.handleRegister = _this.handleRegister.bind(_this);
     // this.handleDeregister = this.handleDeregister.bind(this);
     _this.registerEventButton = _this.registerEventButton.bind(_this);
@@ -49609,7 +49603,7 @@ var CityEventItem = function (_React$Component) {
     key: 'registerEventButton',
     value: function registerEventButton() {
       if (this.props.currentUser) {
-        if (this.props.event.host.id === this.props.currentUser.id) {
+        if (this.props.event.host_id === this.props.currentUser.id) {
           return _react2.default.createElement(
             'button',
             { className: 'sign-button', disabled: true },
@@ -49617,9 +49611,10 @@ var CityEventItem = function (_React$Component) {
           );
         }
 
-        if (this.props.registeredUsers.map(function (user) {
-          return user.id;
-        }).includes(this.props.currentUser.id)) {
+        // if (this.props.registeredUsers.map ( user => (
+        //   user.id
+        // )).includes(this.props.currentUser.id) ){
+        if (this.props.event.attending === true) {
           return _react2.default.createElement(
             'button',
             { className: 'sign-button', onClick: this.handleDeregister },
@@ -49660,7 +49655,8 @@ var CityEventItem = function (_React$Component) {
           'p',
           { className: 'event-address' },
           this.props.event.address
-        )
+        ),
+        this.registerEventButton()
       );
     }
   }]);
@@ -49728,7 +49724,7 @@ var ProtectedRoute = exports.ProtectedRoute = (0, _reactRouterDom.withRouter)((0
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.createEvent = exports.destroyEvent = exports.fetchSingleEvent = exports.fetchAllEvents = exports.clearErrors = exports.receiveErrors = exports.deleteEvent = exports.receiveSingleEvent = exports.receiveAllEvents = exports.DELETE_EVENT = exports.CLEAR_ERRORS = exports.RECEIVE_ERRORS = exports.RECEIVE_SINGLE_EVENT = exports.RECEIVE_ALL_EVENTS = undefined;
+exports.registerEvent = exports.createEvent = exports.destroyEvent = exports.fetchSingleEvent = exports.fetchAllEvents = exports.clearErrors = exports.receiveErrors = exports.deleteEvent = exports.receiveSingleEvent = exports.receiveAllEvents = exports.DELETE_EVENT = exports.CLEAR_ERRORS = exports.RECEIVE_ERRORS = exports.RECEIVE_SINGLE_EVENT = exports.RECEIVE_ALL_EVENTS = undefined;
 
 var _event_api_util = __webpack_require__(389);
 
@@ -49806,6 +49802,14 @@ var createEvent = exports.createEvent = function createEvent(event) {
       return dispatch(receiveSingleEvent(event));
     }, function (errors) {
       return dispatch(receiveErrors(errors));
+    });
+  };
+};
+
+var registerEvent = exports.registerEvent = function registerEvent(event_id, user_id) {
+  return function (dispatch) {
+    return EventsAPIUtil.registerEvent(event_id, user_id).then(function (event) {
+      return dispatch(receiveSingleEvent(event));
     });
   };
 };
@@ -49894,6 +49898,14 @@ var destroyEvent = exports.destroyEvent = function destroyEvent(eventId) {
   return $.ajax({
     method: 'DELETE',
     url: 'api/events/' + eventId
+  });
+};
+
+var registerEvent = exports.registerEvent = function registerEvent(event_id, user_id) {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/registrations',
+    data: { registration: { event_id: event_id, user_id: user_id } }
   });
 };
 

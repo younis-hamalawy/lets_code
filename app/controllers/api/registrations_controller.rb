@@ -3,7 +3,8 @@ class Api::RegistrationsController < ApplicationController
   def create
   	@registration = Registration.new(registration_params)
   	if @registration.save
-  		render "api/registrations/show"
+      @event = @registration.event
+  		render "api/events/show"
   	else
   		render json: @registration.errors.full_messages, status: 422
   	end

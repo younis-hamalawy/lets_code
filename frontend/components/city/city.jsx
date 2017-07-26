@@ -38,18 +38,18 @@ class City extends React.Component {
   renderEvents () {
 
     let { events } = this.props
-    console.log(events);
+    // console.log(events);
     events = events.filter( event => event.city_id === this.props.currentCityId);
-    console.log(events);
+    // console.log(events);
     return events.map ( event => (
-      
+
         <CityEventItemContainer key={event.id} event={event}/>
 
     ))
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     if (isEmpty(this.props.cities)) {
       return <div>Loading...</div>;
     }

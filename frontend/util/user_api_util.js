@@ -6,6 +6,7 @@ export const setCity = (id, user) => (
   })
 );
 
+
 export const fetchAllUsers = () => {
   return $.ajax({
     method: 'GET',

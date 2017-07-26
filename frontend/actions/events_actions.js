@@ -50,3 +50,9 @@ export const createEvent = ( event ) => (dispatch) => (
     .then((event) => dispatch(receiveSingleEvent(event)),
                   (errors) => dispatch(receiveErrors(errors)))
 );
+
+export const registerEvent = (event_id, user_id) => dispatch => (
+  EventsAPIUtil.registerEvent(event_id, user_id).then(event => (
+    dispatch(receiveSingleEvent(event))
+  ))
+);

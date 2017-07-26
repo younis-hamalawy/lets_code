@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 // import lodash from 'lodash';
 
 import CityEventItem from './city_event_item';
-
+import { registerEvent } from '../../actions/events_actions';
 // import { selectAllRegisteredUsers } from '../../reducers/selectors'
 
 

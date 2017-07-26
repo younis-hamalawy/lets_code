@@ -26,3 +26,12 @@ export const destroyEvent = (eventId) => {
     url: `api/events/${eventId}`
   });
 };
+
+
+export const registerEvent = (event_id, user_id) => (
+  $.ajax({
+    method: 'POST',
+    url: `/api/registrations`,
+    data: { registration: {event_id, user_id} }
+  })
+);
