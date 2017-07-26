@@ -1,40 +1,65 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { values } from 'lodash';
 import CityEventItemContainer from './city_event_item_container';
+import { isEmpty } from 'lodash';
 // import CitiesItem from './cities_item';
 
 class City extends React.Component {
   constructor(props) {
     super(props)
-    // console.log(this.props.city);
+    console.log(this.props);
     // console.log(this.props.currentCityId);
     this.renderEvents = this.renderEvents.bind(this);
+    // const cities = values(this.props.cities);
+    // this.city = cities[this.props.currentCityId]
+    // console.log("xxxx",this.city);
   }
 
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.match.params.id !== this.props.match.params.id) {
+  //     this.props.fetchCity(this.props.match.params.id)
+  //   }
+  // }
+
+
   componentWillMount() {
+    this.props.fetchAllCities();
+    this.props.fetchAllEvents();
     this.props.fetchSingleCity(this.props.match.params.id);
 
   }
+  // componentWillUnmount() {
+  //   this.props.fetchAllCities();
+  //   this.props.fetchSingleCity(this.props.match.params.id);
+  //
+  // }
 
   renderEvents () {
-    const { events } = this.props
+
+    let { events } = this.props
+    console.log(events);
+    events = events.filter( event => event.city_id === this.props.currentCityId);
     console.log(events);
     return events.map ( event => (
-      <div>
+      
         <CityEventItemContainer key={event.id} event={event}/>
-      </div>
+
     ))
   }
 
   render() {
-
+    console.log(this.props);
+    if (isEmpty(this.props.cities)) {
+      return <div>Loading...</div>;
+    }
+    const city = this.props.cities[this.props.currentCityId];
     return (
       <div className="big-city-container">
-        <div key={this.props.city.id} className={this.props.city.city_abrv}>
+        <div key={this.props.currentCityId} className={city.city_abrv}>
           <div className="transbox">
             <div className="city-text">
-              <div className="img-text5"><p className="img-text2">{this.props.city.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></div>
+              <div className="img-text5"><p className="img-text2">{city.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></div>
               <div className="img-text4"><p className="img-text3">&nbsp;&nbsp;&nbsp;Let's Code together!</p>
               </div>
               </div>

@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 
 import CityEventItem from './city_event_item';
 
-import { selectAllRegisteredUsers } from '../../reducers/selectors'
+// import { selectAllRegisteredUsers } from '../../reducers/selectors'
 
 
 const mapStateToProps = ( state , ownProps ) => {
   return {
     currentUser: state.session.currentUser,
-    registeredUsers: selectAllRegisteredUsers(state.city, ownProps.event.id)
+    // registeredUsers: selectAllRegisteredUsers(state.city, ownProps.event.id)
   };
 };
 

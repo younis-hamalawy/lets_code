@@ -45,14 +45,14 @@ class CityEventItem extends React.Component {
     }
 
     render () {
-      console.log(this.props);
+      // console.log(this.props);
       return (
         <div key={this.props.event.id} className="city-event-item-container">
           <p className="event-city-name">{this.props.event.name}</p>
           <p className="event-date">{this.props.event.date}</p>
           <p className="event-description">{this.props.event.description}</p>
           <p className="event-address">{this.props.event.address}</p>
-          {this.registerEventButton()}
+
         </div>
       )
   }
