@@ -1,21 +1,21 @@
-export const fetchAllEvents = (city_id) => {
+export const fetchAllEvents = () => {
   return $.ajax({
     method: 'GET',
-    url: `api/cities/${city_id}/events`
+    url: `api/events`
   });
 };
 
-// export const fetchSingleEvent = (event_id) => {
-//   return $.ajax({
-//     method: 'GET',
-//     url: `api/cities/${city_id}/events`
-//   });
-// };
+export const fetchSingleEvent = (event_id) => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/events`
+  });
+};
 
-export const createEvent = ({ event }) => {
+export const createEvent = (event) => {
   return $.ajax({
     method: 'POST',
-    url: `api/cities/${event.city_id}/events`,
+    url: `api/events`,
     data: {event}
   });
 };

@@ -15,7 +15,7 @@ class Api::EventsController < ApplicationController
   end
 
   def index
-   @events = Event.all
+    @events = Event.all
   end
 
   def show
@@ -29,4 +29,5 @@ class Api::EventsController < ApplicationController
   def event_params
   	params.require(:event).permit(:name, :description, :date, :address, :city_id, :host_id)
   end
+
 end

@@ -5,3 +5,10 @@ export const setCity = (id, user) => (
     data: { user: user }
   })
 );
+
+export const fetchAllUsers = () => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/users/`
+  });
+};

@@ -7,11 +7,11 @@ import City from './city';
 import { selectAllEvents } from '../../reducers/selectors'
 
 
-const mapStateToProps = ( state ) => ({
+const mapStateToProps = ( state, ownProps) => ({
   // cities: lodash.values(state.cities),
 
   currentUser: state.session.currentUser,
-  city: state.city,
+  city: state.cities.entities[state.cities.currentCity],
   events: selectAllEvents(state.city)
 });
 

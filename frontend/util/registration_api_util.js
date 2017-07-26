@@ -12,7 +12,7 @@ export const fetchAllRegistrations = () => {
 //   });
 // };
 
-export const createRegistration = ({ registration }) => {
+export const createRegistration = (registration) => {
   return $.ajax({
     method: 'POST',
     url: `api/registrations`,

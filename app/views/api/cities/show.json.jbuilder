@@ -1,5 +1,10 @@
-json.partial! '/api/cities/city', city: @city
 
+json.city do
+  json.set! @city.id do
+    json.partial! '/api/cities/city', city: @city
+  end
+end
+json.currentCity @city.id
 # json.id @city.id
 # json.name @city.name
 # json.image_url @city.image_url
