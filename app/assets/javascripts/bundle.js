@@ -45645,10 +45645,10 @@ var createEvent = exports.createEvent = function createEvent(event) {
   });
 };
 
-var destroyEvent = exports.destroyEvent = function destroyEvent(eventId) {
+var destroyEvent = exports.destroyEvent = function destroyEvent(event_id) {
   return $.ajax({
     method: 'DELETE',
-    url: 'api/events/' + eventId
+    url: 'api/events/' + event_id
   });
 };
 
@@ -45656,6 +45656,14 @@ var registerEvent = exports.registerEvent = function registerEvent(event_id, use
   return $.ajax({
     method: 'POST',
     url: '/api/registrations',
+    data: { registration: { event_id: event_id, user_id: user_id } }
+  });
+};
+
+var deregisterEvent = exports.deregisterEvent = function deregisterEvent(event_id, user_id) {
+  return $.ajax({
+    method: 'Delete',
+    url: '/api/events/' + event_id + '/registrations/' + user_id,
     data: { registration: { event_id: event_id, user_id: user_id } }
   });
 };
@@ -49849,19 +49857,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     registerEvent: function registerEvent(eventId, userId) {
       return dispatch((0, _events_actions.registerEvent)(eventId, userId));
     },
-    deregisterEvent: function (_deregisterEvent) {
-      function deregisterEvent(_x, _x2) {
-        return _deregisterEvent.apply(this, arguments);
-      }
-
-      deregisterEvent.toString = function () {
-        return _deregisterEvent.toString();
-      };
-
-      return deregisterEvent;
-    }(function (eventId, userId) {
-      return dispatch(deregisterEvent(eventId, userId));
-    })
+    deregisterEvent: function deregisterEvent(eventId, userId) {
+      return dispatch((0, _events_actions.deregisterEvent)(eventId, userId));
+    }
   };
 };
 
@@ -49950,9 +49948,9 @@ var CityEventItem = function (_React$Component) {
   function CityEventItem(props) {
     _classCallCheck(this, CityEventItem);
 
+    // console.log(this.props);
     var _this = _possibleConstructorReturn(this, (CityEventItem.__proto__ || Object.getPrototypeOf(CityEventItem)).call(this, props));
 
-    console.log(_this.props);
     _this.handleRegister = _this.handleRegister.bind(_this);
     _this.handleDeregister = _this.handleDeregister.bind(_this);
     _this.registerEventButton = _this.registerEventButton.bind(_this);

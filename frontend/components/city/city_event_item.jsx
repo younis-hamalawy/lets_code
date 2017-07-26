@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class CityEventItem extends React.Component {
   constructor(props) {
     super(props)
-    console.log(this.props);
+    // console.log(this.props);
     this.handleRegister = this.handleRegister.bind(this);
     this.handleDeregister = this.handleDeregister.bind(this);
     this.registerEventButton = this.registerEventButton.bind(this);

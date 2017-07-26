@@ -23,7 +23,7 @@ class Api::RegistrationsController < ApplicationController
   end
 
   def index
-   @registrations = Registration.all
+    @registrations = Registration.all
   end
 
 
@@ -31,6 +31,6 @@ class Api::RegistrationsController < ApplicationController
   private
 
   def registration_params
-  	params.require(:registration).permit(:event_id, :user_id)
+    params.require(:registration).permit(:event_id, :user_id)
   end
 end

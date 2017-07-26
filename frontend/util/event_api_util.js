@@ -20,10 +20,10 @@ export const createEvent = (event) => {
   });
 };
 
-export const destroyEvent = (eventId) => {
+export const destroyEvent = (event_id) => {
   return $.ajax({
     method: 'DELETE',
-    url: `api/events/${eventId}`
+    url: `api/events/${event_id}`
   });
 };
 
@@ -32,6 +32,14 @@ export const registerEvent = (event_id, user_id) => (
   $.ajax({
     method: 'POST',
     url: `/api/registrations`,
+    data: { registration: {event_id, user_id} }
+  })
+);
+
+export const deregisterEvent = (event_id, user_id) => (
+  $.ajax({
+    method: 'Delete',
+    url: `/api/events/${event_id}/registrations/${user_id}`,
     data: { registration: {event_id, user_id} }
   })
 );
