@@ -1,6 +1,6 @@
 import { values } from 'lodash';
 
-export const selectAllCities = ({ entities }) => values(entities);
+export const selectAllCities = cities => values(cities);
 
 export const selectAllEvents = ({ events }) => values(events);
 

@@ -5482,13 +5482,12 @@ exports.selectAllRegisteredUsers = exports.selectAllEvents = exports.selectAllCi
 
 var _lodash = __webpack_require__(134);
 
-var selectAllCities = exports.selectAllCities = function selectAllCities(_ref) {
-  var entities = _ref.entities;
-  return (0, _lodash.values)(entities);
+var selectAllCities = exports.selectAllCities = function selectAllCities(cities) {
+  return (0, _lodash.values)(cities);
 };
 
-var selectAllEvents = exports.selectAllEvents = function selectAllEvents(_ref2) {
-  var events = _ref2.events;
+var selectAllEvents = exports.selectAllEvents = function selectAllEvents(_ref) {
+  var events = _ref.events;
   return (0, _lodash.values)(events);
 };
 
@@ -30413,13 +30412,15 @@ var _root2 = _interopRequireDefault(_root);
 
 var _events_actions = __webpack_require__(387);
 
+var _cities_actions = __webpack_require__(52);
+
+var _selectors = __webpack_require__(53);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import { signin, signout, signup } from './actions/session_actions';
-// import { fetchAllCities, fetchSingleCity } from './actions/cities_actions'
-// import {selectAllCities} from './reducers/selectors'
 // import { setCity } from './actions/users_actions'
 
+// import { signin, signout, signup } from './actions/session_actions';
 document.addEventListener('DOMContentLoaded', function () {
   var root = document.getElementById('root');
 
@@ -30437,6 +30438,9 @@ document.addEventListener('DOMContentLoaded', function () {
   window.fetchSingleEvent = _events_actions.fetchSingleEvent;
   window.createEvent = _events_actions.createEvent;
   window.destroyEvent = _events_actions.destroyEvent;
+  window.fetchAllCities = _cities_actions.fetchAllCities;
+  window.fetchSingleCity = _cities_actions.fetchSingleCity;
+  window.selectAllCities = _selectors.selectAllCities;
 
   _reactDom2.default.render(_react2.default.createElement(_root2.default, { store: store }), root);
 });
@@ -45462,16 +45466,17 @@ var defaultState = {
 };
 
 var CitiesReducer = function CitiesReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments[1];
 
   Object.freeze(state);
 
   switch (action.type) {
     case _cities_actions.RECEIVE_ALL_CITIES:
-      return (0, _merge2.default)({}, state, {
-        entities: action.cities
-      });
+      return action.cities;
+    // return merge({}, state, {
+    //   cities: action.cities
+    // });
     // case RECEIEVE_SINGLE_CITY:
     //   return merge({}, state, {
     //     entities: action.city.city,
@@ -48993,6 +48998,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import lodash from 'lodash';
 
 var mapStateToProps = function mapStateToProps(state) {
+  // console.log(state.cities);
   return {
     currentUser: state.session.currentUser,
     cities: (0, _selectors.selectAllCities)(state.cities)
@@ -49076,7 +49082,6 @@ var Cities = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-
       return _react2.default.createElement(
         'div',
         { className: 'cities-container' },
@@ -49255,6 +49260,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _reactRedux = __webpack_require__(18);
 
 var _cities_actions = __webpack_require__(52);
@@ -49268,24 +49275,25 @@ var _selectors = __webpack_require__(53);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  console.log(ownProps);
+  var currentCityId = parseInt(ownProps.location.pathname.slice(8));
+  console.log(typeof currentCityId === 'undefined' ? 'undefined' : _typeof(currentCityId));
   return {
-    // cities: lodash.values(state.cities),
+    cities: (0, _selectors.selectAllCities)(state.cities),
+    currentCityId: currentCityId,
+    currentUser: state.session.currentUser
+    // city: state.cities[state.cities],
+    // events: selectAllEvents(state.cities[this.props.match.params.])
 
-    currentUser: state.session.currentUser,
-    city: state.cities.entities[state.cities.currentCity],
-    events: (0, _selectors.selectAllEvents)(state.city)
   };
 };
-// import lodash from 'lodash';
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchAllCities: function fetchAllCities() {
       return dispatch((0, _cities_actions.fetchAllCities)());
     },
-    fetchSingleCity: function fetchSingleCity(cityId) {
-      return dispatch((0, _cities_actions.fetchSingleCity)(cityId));
-    },
+    // fetchSingleCity: (cityId) => dispatch(fetchSingleCity(cityId)),
     registerEvent: function (_registerEvent) {
       function registerEvent(_x, _x2) {
         return _registerEvent.apply(this, arguments);
@@ -49345,6 +49353,8 @@ var City = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (City.__proto__ || Object.getPrototypeOf(City)).call(this, props));
 
+    console.log(_this.props.cities);
+    console.log(_this.props.currentCityId);
     _this.renderEvents = _this.renderEvents.bind(_this);
     return _this;
   }

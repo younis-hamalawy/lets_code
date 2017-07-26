@@ -7,6 +7,8 @@ import CityEventItemContainer from './city_event_item_container';
 class City extends React.Component {
   constructor(props) {
     super(props)
+    console.log(this.props.cities);
+    console.log(this.props.currentCityId);
     this.renderEvents = this.renderEvents.bind(this);
   }
 

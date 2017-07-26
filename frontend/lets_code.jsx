@@ -4,8 +4,8 @@ import configureStore from './store/store';
 import Root from './components/root';
 import { fetchAllEvents, fetchSingleEvent, createEvent, destroyEvent } from './actions/events_actions'
 // import { signin, signout, signup } from './actions/session_actions';
-// import { fetchAllCities, fetchSingleCity } from './actions/cities_actions'
-// import {selectAllCities} from './reducers/selectors'
+import { fetchAllCities, fetchSingleCity } from './actions/cities_actions'
+import {selectAllCities} from './reducers/selectors'
 // import { setCity } from './actions/users_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchSingleEvent = fetchSingleEvent;
   window.createEvent = createEvent;
   window.destroyEvent = destroyEvent;
+  window.fetchAllCities = fetchAllCities;
+  window.fetchSingleCity = fetchSingleCity;
+  window.selectAllCities = selectAllCities;
 
 
 

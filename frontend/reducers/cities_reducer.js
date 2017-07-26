@@ -11,15 +11,16 @@ const defaultState = {
 };
 
 
-const CitiesReducer = (state = defaultState, action) => {
+const CitiesReducer = (state = {}, action) => {
   Object.freeze(state)
 
 
   switch (action.type) {
     case RECEIVE_ALL_CITIES:
-      return merge({}, state, {
-        entities: action.cities
-      });
+      return action.cities;
+      // return merge({}, state, {
+      //   cities: action.cities
+      // });
     // case RECEIEVE_SINGLE_CITY:
     //   return merge({}, state, {
     //     entities: action.city.city,

@@ -26,7 +26,6 @@ class Cities extends React.Component {
   }
 
   render() {
-
     return (
       <div className="cities-container">
         <div className="cities-header2">
