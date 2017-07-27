@@ -49382,8 +49382,6 @@ var Cities = function (_React$Component) {
     key: 'componentWillMount',
     value: function componentWillMount() {
       this.props.fetchAllCities();
-      // console.log(this.state);
-      // console.log(this.props);
     }
   }, {
     key: 'renderCities',
@@ -49491,21 +49489,26 @@ var CitiesItem = function (_React$Component) {
     value: function handleClick(e) {
       e.preventDefault();
       var newUser = Object.assign({}, this.props.currentUser);
-      // console.log(newUser);
       newUser["city_id"] = this.props.city.id;
-      // console.log(newUser);
-
       this.props.setCity(this.props.currentUser.id, newUser);
     }
   }, {
     key: 'setCityButton',
     value: function setCityButton() {
       if (this.props.currentUser) {
-        return _react2.default.createElement(
-          'a',
-          { className: 'button-link', href: '#', onClick: this.handleClick },
-          'set as home city'
-        );
+        if (this.props.currentUser.city_id === this.props.city.id) {
+          return _react2.default.createElement(
+            'p',
+            null,
+            'Home City'
+          );
+        } else {
+          return _react2.default.createElement(
+            'a',
+            { className: 'button-link', href: '#', onClick: this.handleClick },
+            'set as home city'
+          );
+        }
       }
     }
   }, {

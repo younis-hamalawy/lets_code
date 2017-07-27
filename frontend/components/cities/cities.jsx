@@ -11,17 +11,13 @@ class Cities extends React.Component {
 
   componentWillMount() {
     this.props.fetchAllCities();
-    // console.log(this.state);
-    // console.log(this.props);
   }
 
   renderCities () {
 
     const { cities } = this.props
-    return cities.map ( city => (
-
-        <CitiesItem key={city.id} city={city} currentUser={this.props.currentUser} setCity={this.props.setCity} />
-
+    return cities.map (city => (
+      <CitiesItem key={city.id} city={city} currentUser={this.props.currentUser} setCity={this.props.setCity} />
     ))
   }
 
