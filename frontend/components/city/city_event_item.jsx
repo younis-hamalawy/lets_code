@@ -27,13 +27,9 @@ class CityEventItem extends React.Component {
       if (this.props.currentUser){
         if (this.props.event.host_id === this.props.currentUser.id){
           return (
-            <button className="sign-button" disabled>Leave Event!</button>
+            <button className="sign-button" disabled>You are the host!</button>
           )
         }
-
-        // if (this.props.registeredUsers.map ( user => (
-        //   user.id
-        // )).includes(this.props.currentUser.id) ){
         if (this.props.event.attending === true){
           return (
             <button className="sign-button" onClick={this.handleDeregister}>Leave Event</button>

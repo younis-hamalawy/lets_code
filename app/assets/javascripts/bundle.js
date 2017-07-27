@@ -49972,13 +49972,9 @@ var CityEventItem = function (_React$Component) {
           return _react2.default.createElement(
             'button',
             { className: 'sign-button', disabled: true },
-            'Leave Event!'
+            'You are the host!'
           );
         }
-
-        // if (this.props.registeredUsers.map ( user => (
-        //   user.id
-        // )).includes(this.props.currentUser.id) ){
         if (this.props.event.attending === true) {
           return _react2.default.createElement(
             'button',
