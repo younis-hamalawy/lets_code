@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { values } from 'lodash';
 
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
+    // console.log(this.props);
     this.state = {
       date: "",
       time: "",
@@ -19,22 +21,18 @@ class SessionForm extends React.Component {
     this.props.clearErrors();
   }
   componentWillReceiveProps(nextProps) {
-    // if (this.props.match.path !== nextProps.match.path){
-    //   this.props.clearErrors();
-    // }
-    // if (this.props.errors.length === nextProps.errors.length && nextProps.errors.length ){
-    //   this.props.clearErrors();
-    // }
     if (nextProps.signedin) {
       this.props.history.push('/');
     }
   }
 
+  componentWillMount() {
+    this.props.fetchAllCities();
+  }
+
   update(field) {
-    // this.props.clearErrors();
     return e => {
       this.setState({ [field]: e.currentTarget.value});
-      // this.props.clearErrors();
     };
   }
 
@@ -42,12 +40,16 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const event = this.state;
     this.props.createEvent(event).then( () => this.props.history.push(`/cities/${this.props.currentUser.city_id}`));
+    if (this.props.currentUser.city_id === null){
+      newUser["city_id"] = this.props.city.id;
+      this.props.setCity(this.props.currentUser.id, newUser)
+    }
   }
 
 
+
+
   renderErrors() {
-    // let errors = this.props.errors;
-    // let newErrors = Array.from(new Set(errors));
     return(
       <ul className="errors">
         {this.props.errors.map((error, i) => (
@@ -59,7 +61,29 @@ class SessionForm extends React.Component {
     );
   }
 
+  pickCity() {
+    let cities = values(this.props.cities);
+    if (this.props.currentUser.city_id === null ){
+      return(
+        <div className="pick-city">
+          <select name="city">
+            <option value="" disabled selected>Set default city</option>
+            {
+              cities.map( (el) => {
+                console.log(typeof(el.name));
+                return (<option
+                  key={el.id}
+                  value={el.name}
+                  >{el.name}</option>
+                );
+              })
+            }
+          </select>
+        </div>
 
+      )
+    }
+  }
 
   render() {
 
@@ -95,6 +119,7 @@ class SessionForm extends React.Component {
               className="create-event-box"
               placeholder="Description"
               />
+            {this.pickCity()}
             <br/>
             <div className="errors">{this.renderErrors()}</div>
             <input className='host-submit' type="submit" value="HOST THIS EVENT!" />

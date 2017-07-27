@@ -49608,16 +49608,10 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 
   var currentCityId = parseInt(ownProps.location.pathname.slice(8));
 
-  // const cities = selectAllCities(state.cities);
-  // console.log(state.cities);
-  // console.log(cities);
-  // const city = cities[currentCityId-1];
   return {
     cities: state.cities,
     currentCityId: currentCityId,
     currentUser: state.session.currentUser,
-    // city: city,
-    // city: state.cities[state.cities],
     events: (0, _selectors.selectAllEvents)(state.events)
 
   };
@@ -50133,13 +50127,21 @@ var _hosting_form = __webpack_require__(392);
 
 var _hosting_form2 = _interopRequireDefault(_hosting_form);
 
+var _selectors = __webpack_require__(84);
+
+var _cities_actions = __webpack_require__(51);
+
+var _users_actions = __webpack_require__(384);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
     events: state.events,
     currentUser: state.session.currentUser,
-    errors: state.events.errors
+    errors: state.events.errors,
+    cities: (0, _selectors.selectAllCities)(state.cities)
+
   };
 };
 
@@ -50150,6 +50152,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     clearErrors: function clearErrors() {
       return dispatch((0, _events_actions.clearErrors)());
+    },
+    fetchAllCities: function fetchAllCities() {
+      return dispatch((0, _cities_actions.fetchAllCities)());
+    },
+    setCity: function setCity(cityId, user) {
+      return dispatch((0, _users_actions.setCity)(cityId, user));
     }
   };
 };
@@ -50167,6 +50175,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(4);
@@ -50174,6 +50184,8 @@ var _react = __webpack_require__(4);
 var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(16);
+
+var _lodash = __webpack_require__(77);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50191,6 +50203,7 @@ var SessionForm = function (_React$Component) {
   function SessionForm(props) {
     _classCallCheck(this, SessionForm);
 
+    // console.log(this.props);
     var _this = _possibleConstructorReturn(this, (SessionForm.__proto__ || Object.getPrototypeOf(SessionForm)).call(this, props));
 
     _this.state = {
@@ -50213,25 +50226,22 @@ var SessionForm = function (_React$Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      // if (this.props.match.path !== nextProps.match.path){
-      //   this.props.clearErrors();
-      // }
-      // if (this.props.errors.length === nextProps.errors.length && nextProps.errors.length ){
-      //   this.props.clearErrors();
-      // }
       if (nextProps.signedin) {
         this.props.history.push('/');
       }
+    }
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.props.fetchAllCities();
     }
   }, {
     key: 'update',
     value: function update(field) {
       var _this2 = this;
 
-      // this.props.clearErrors();
       return function (e) {
         _this2.setState(_defineProperty({}, field, e.currentTarget.value));
-        // this.props.clearErrors();
       };
     }
   }, {
@@ -50244,12 +50254,14 @@ var SessionForm = function (_React$Component) {
       this.props.createEvent(event).then(function () {
         return _this3.props.history.push('/cities/' + _this3.props.currentUser.city_id);
       });
+      if (this.props.currentUser.city_id === null) {
+        newUser["city_id"] = this.props.city.id;
+        this.props.setCity(this.props.currentUser.id, newUser);
+      }
     }
   }, {
     key: 'renderErrors',
     value: function renderErrors() {
-      // let errors = this.props.errors;
-      // let newErrors = Array.from(new Set(errors));
       return _react2.default.createElement(
         'ul',
         { className: 'errors' },
@@ -50261,6 +50273,37 @@ var SessionForm = function (_React$Component) {
           );
         })
       );
+    }
+  }, {
+    key: 'pickCity',
+    value: function pickCity() {
+      var cities = (0, _lodash.values)(this.props.cities);
+      if (this.props.currentUser.city_id === null) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'pick-city' },
+          _react2.default.createElement(
+            'select',
+            { name: 'city' },
+            _react2.default.createElement(
+              'option',
+              { value: '', disabled: true, selected: true },
+              'Set default city'
+            ),
+            cities.map(function (el) {
+              console.log(_typeof(el.name));
+              return _react2.default.createElement(
+                'option',
+                {
+                  key: el.id,
+                  value: el.name
+                },
+                el.name
+              );
+            })
+          )
+        );
+      }
     }
   }, {
     key: 'render',
@@ -50310,6 +50353,7 @@ var SessionForm = function (_React$Component) {
               className: 'create-event-box',
               placeholder: 'Description'
             }),
+            this.pickCity(),
             _react2.default.createElement('br', null),
             _react2.default.createElement(
               'div',

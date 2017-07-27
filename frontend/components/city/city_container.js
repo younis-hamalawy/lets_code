@@ -13,16 +13,10 @@ const mapStateToProps = ( state, ownProps) => {
 
   const currentCityId = parseInt(ownProps.location.pathname.slice(8));
 
-  // const cities = selectAllCities(state.cities);
-  // console.log(state.cities);
-  // console.log(cities);
-  // const city = cities[currentCityId-1];
   return ({
     cities: state.cities,
     currentCityId: currentCityId,
     currentUser: state.session.currentUser,
-    // city: city,
-    // city: state.cities[state.cities],
     events: selectAllEvents(state.events)
 
   })
