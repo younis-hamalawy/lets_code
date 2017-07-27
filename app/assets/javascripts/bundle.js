@@ -50199,7 +50199,7 @@ var SessionForm = function (_React$Component) {
       address: "",
       description: "",
       host_id: _this.props.currentUser.id,
-      city_id: _this.props.currentUser.id
+      city_id: _this.props.currentUser.city_id
     };
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     return _this;

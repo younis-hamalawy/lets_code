@@ -10,7 +10,7 @@ class SessionForm extends React.Component {
       address: "",
       description: "",
       host_id: this.props.currentUser.id,
-      city_id: this.props.currentUser.id,
+      city_id: this.props.currentUser.city_id
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
