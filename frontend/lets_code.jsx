@@ -21,13 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.fetchAllEvents = fetchAllEvents;
-  window.fetchSingleEvent = fetchSingleEvent;
-  window.createEvent = createEvent;
-  window.destroyEvent = destroyEvent;
-  window.fetchAllCities = fetchAllCities;
-  window.fetchSingleCity = fetchSingleCity;
-  window.selectAllCities = selectAllCities;
+  // window.fetchAllEvents = fetchAllEvents;
+  // window.fetchSingleEvent = fetchSingleEvent;
+  // window.createEvent = createEvent;
+  // window.destroyEvent = destroyEvent;
+  // window.fetchAllCities = fetchAllCities;
+  // window.fetchSingleCity = fetchSingleCity;
+  // window.selectAllCities = selectAllCities;
 
 
 

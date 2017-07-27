@@ -7562,7 +7562,7 @@ module.exports = isArrayLike;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.signout = exports.signin = exports.signup = exports.clearErrors = exports.receiveErrors = exports.receiveCurrentUser = exports.CLEAR_ERRORS = exports.RECEIVE_ERRORS = exports.RECEIVE_CURRENT_USER = undefined;
+exports.signout = exports.signin = exports.signup = exports.clearErrors = exports.receiveErrors = exports.receiveCurrentUser = exports.CLEAR_SESSION_ERRORS = exports.RECEIVE_SESSION_ERRORS = exports.RECEIVE_CURRENT_USER = undefined;
 
 var _session_api_util = __webpack_require__(331);
 
@@ -7571,8 +7571,8 @@ var APIUtil = _interopRequireWildcard(_session_api_util);
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var RECEIVE_CURRENT_USER = exports.RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
-var RECEIVE_ERRORS = exports.RECEIVE_ERRORS = 'RECEIVE_ERRORS';
-var CLEAR_ERRORS = exports.CLEAR_ERRORS = 'CLEAR_ERRORS';
+var RECEIVE_SESSION_ERRORS = exports.RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+var CLEAR_SESSION_ERRORS = exports.CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
 
 var receiveCurrentUser = exports.receiveCurrentUser = function receiveCurrentUser(currentUser) {
   return {
@@ -7583,13 +7583,13 @@ var receiveCurrentUser = exports.receiveCurrentUser = function receiveCurrentUse
 
 var receiveErrors = exports.receiveErrors = function receiveErrors(errors) {
   return {
-    type: RECEIVE_ERRORS,
+    type: RECEIVE_SESSION_ERRORS,
     errors: errors
   };
 };
 var clearErrors = exports.clearErrors = function clearErrors() {
   return {
-    type: CLEAR_ERRORS
+    type: CLEAR_SESSION_ERRORS
   };
 };
 
@@ -24723,7 +24723,7 @@ var signout = exports.signout = function signout() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.deregisterEvent = exports.registerEvent = exports.createEvent = exports.destroyEvent = exports.fetchSingleEvent = exports.fetchAllEvents = exports.clearErrors = exports.receiveErrors = exports.deleteEvent = exports.receiveSingleEvent = exports.receiveAllEvents = exports.DELETE_EVENT = exports.CLEAR_ERRORS = exports.RECEIVE_ERRORS = exports.RECEIVE_SINGLE_EVENT = exports.RECEIVE_ALL_EVENTS = undefined;
+exports.deregisterEvent = exports.registerEvent = exports.createEvent = exports.destroyEvent = exports.fetchSingleEvent = exports.fetchAllEvents = exports.clearErrors = exports.receiveErrors = exports.deleteEvent = exports.receiveSingleEvent = exports.receiveAllEvents = exports.DELETE_EVENT = exports.CLEAR_EVENTS_ERRORS = exports.RECEIVE_EVENTS_ERRORS = exports.RECEIVE_SINGLE_EVENT = exports.RECEIVE_ALL_EVENTS = undefined;
 
 var _event_api_util = __webpack_require__(335);
 
@@ -24733,8 +24733,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var RECEIVE_ALL_EVENTS = exports.RECEIVE_ALL_EVENTS = "RECEIEVE_ALL_EVENTS";
 var RECEIVE_SINGLE_EVENT = exports.RECEIVE_SINGLE_EVENT = "RECEIEVE_SINGLE_EVENT";
-var RECEIVE_ERRORS = exports.RECEIVE_ERRORS = "RECEIVE_ERRORS";
-var CLEAR_ERRORS = exports.CLEAR_ERRORS = 'CLEAR_ERRORS';
+var RECEIVE_EVENTS_ERRORS = exports.RECEIVE_EVENTS_ERRORS = "RECEIVE_EVENTS_ERRORS";
+var CLEAR_EVENTS_ERRORS = exports.CLEAR_EVENTS_ERRORS = 'CLEAR_EVENTS_ERRORS';
 var DELETE_EVENT = exports.DELETE_EVENT = "DELETE_EVENT";
 
 var receiveAllEvents = exports.receiveAllEvents = function receiveAllEvents(events) {
@@ -24760,14 +24760,14 @@ var deleteEvent = exports.deleteEvent = function deleteEvent(event) {
 
 var receiveErrors = exports.receiveErrors = function receiveErrors(errors) {
   return {
-    type: RECEIVE_ERRORS,
+    type: RECEIVE_EVENTS_ERRORS,
     errors: errors
   };
 };
 
 var clearErrors = exports.clearErrors = function clearErrors() {
   return {
-    type: CLEAR_ERRORS
+    type: CLEAR_EVENTS_ERRORS
   };
 };
 
@@ -24800,7 +24800,7 @@ var createEvent = exports.createEvent = function createEvent(event) {
     return EventsAPIUtil.createEvent(event).then(function (event) {
       return dispatch(receiveSingleEvent(event)), dispatch(clearErrors());
     }, function (errors) {
-      return dispatch(receiveErrors(errors));
+      return dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };
@@ -30534,13 +30534,14 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.fetchAllEvents = _events_actions.fetchAllEvents;
-  window.fetchSingleEvent = _events_actions.fetchSingleEvent;
-  window.createEvent = _events_actions.createEvent;
-  window.destroyEvent = _events_actions.destroyEvent;
-  window.fetchAllCities = _cities_actions.fetchAllCities;
-  window.fetchSingleCity = _cities_actions.fetchSingleCity;
-  window.selectAllCities = _selectors.selectAllCities;
+  // window.fetchAllEvents = fetchAllEvents;
+  // window.fetchSingleEvent = fetchSingleEvent;
+  // window.createEvent = createEvent;
+  // window.destroyEvent = destroyEvent;
+  // window.fetchAllCities = fetchAllCities;
+  // window.fetchSingleCity = fetchSingleCity;
+  // window.selectAllCities = selectAllCities;
+
 
   _reactDom2.default.render(_react2.default.createElement(_root2.default, { store: store }), root);
 });
@@ -43338,12 +43339,12 @@ var SessionReducer = function SessionReducer() {
       return (0, _merge2.default)({}, state, {
         currentUser: currentUser
       });
-    case _session_actions.RECEIVE_ERRORS:
+    case _session_actions.RECEIVE_SESSION_ERRORS:
       var errors = action.errors;
       return (0, _merge2.default)({}, state, {
         errors: errors
       });
-    case _session_actions.CLEAR_ERRORS:
+    case _session_actions.CLEAR_SESSION_ERRORS:
       var user = state.currentUser;
       return (0, _merge2.default)({}, { currentUser: user }, {
         errors: []
@@ -45607,6 +45608,16 @@ var EventsReducer = function EventsReducer() {
       var newState = (0, _lodash.merge)({}, state);
       newState.entities[action.registration.event_id].attending = true;
       return newState;
+    case _events_actions.RECEIVE_EVENTS_ERRORS:
+      var errors = action.errors;
+      return (0, _lodash.merge)({}, state, {
+        errors: errors
+      });
+    case _events_actions.CLEAR_EVENTS_ERRORS:
+      // console.log("FART");
+      return {
+        errors: []
+      };
     default:
       return state;
   }
@@ -48813,9 +48824,13 @@ var sessionLinks = function sessionLinks() {
       )
     ),
     _react2.default.createElement(
-      'button',
-      { className: 'sign-button' },
-      'Hosting'
+      _reactRouterDom.Link,
+      { to: '/hosting' },
+      _react2.default.createElement(
+        'button',
+        { className: 'sign-button' },
+        'Hosting'
+      )
     ),
     _react2.default.createElement(
       _reactRouterDom.Link,
@@ -48852,9 +48867,13 @@ var endsessionLink = function endsessionLink(currentUser, signout) {
       )
     ),
     _react2.default.createElement(
-      'button',
-      { className: 'sign-button' },
-      'Hosting'
+      _reactRouterDom.Link,
+      { to: '/hosting' },
+      _react2.default.createElement(
+        'button',
+        { className: 'sign-button' },
+        'Hosting'
+      )
     ),
     _react2.default.createElement(
       'button',
@@ -48976,15 +48995,13 @@ var SessionForm = function (_React$Component) {
   }
 
   _createClass(SessionForm, [{
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.props.clearErrors();
+    }
+  }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      // if (this.props.match.length !== nextProps.errors.length){
-      //
-      // }
-      // if (this.props.errors.length !== 0){
-      //   this.props.clearErrors();
-      // }
-      // console.log(this.props.match);
       if (this.props.match.path !== nextProps.match.path) {
         this.props.clearErrors();
       }
@@ -49009,15 +49026,6 @@ var SessionForm = function (_React$Component) {
       var user = this.state;
       this.props.processForm({ user: user });
     }
-
-    // navLink() {
-    //   if (this.props.formType === 'signin') {
-    //     return <Link to="/signup">sign up instead</Link>;
-    //   } else {
-    //     return <Link to="/signin">sign in instead</Link>;
-    //   }
-    // }
-
   }, {
     key: 'renderErrors',
     value: function renderErrors() {
@@ -49208,9 +49216,13 @@ var Footer = function Footer() {
           )
         ),
         _react2.default.createElement(
-          'button',
-          { className: 'sign-button' },
-          'Hosting'
+          _reactRouterDom.Link,
+          { to: '/hosting' },
+          _react2.default.createElement(
+            'button',
+            { className: 'sign-button' },
+            'Hosting'
+          )
         )
       ),
       _react2.default.createElement(
@@ -49991,6 +50003,71 @@ var CityEventItem = function (_React$Component) {
       }
     }
   }, {
+    key: 'formatDay',
+    value: function formatDay() {
+      var date = new Date(this.props.event.date);
+      var day = date.getDay();
+      if (day === 6) {
+        day = 0;
+      } else {
+        day++;
+      }
+      // let month = date.getMonth();
+      switch (day) {
+        case 0:
+          return "Sunday";
+        case 1:
+          return "Monday";
+        case 2:
+          return "Tuesday";
+        case 3:
+          return "Wednesday";
+        case 4:
+          return "Thursday";
+        case 5:
+          return "Friday";
+        case 6:
+          return "Saturday";
+      }
+    }
+  }, {
+    key: 'formatMonth',
+    value: function formatMonth() {
+      var date = new Date(this.props.event.date);
+      var month = date.getMonth();
+      switch (month) {
+        case 0:
+          return "JAN";
+        case 1:
+          return "FEB";
+        case 2:
+          return "MAR";
+        case 3:
+          return "APR";
+        case 4:
+          return "MAY";
+        case 5:
+          return "JUN";
+        case 6:
+          return "JUL";
+        case 7:
+          return "AUG";
+        case 8:
+          return "SEPT";
+        case 9:
+          return "OCT";
+        case 10:
+          return "NOV";
+        case 11:
+          return "DEC";
+      }
+    }
+  }, {
+    key: 'dayNumber',
+    value: function dayNumber() {
+      return this.props.event.date.slice(this.props.event.date.length - 2);
+    }
+  }, {
     key: 'render',
     value: function render() {
       // console.log(this.props);
@@ -50004,8 +50081,18 @@ var CityEventItem = function (_React$Component) {
         ),
         _react2.default.createElement(
           'p',
-          { className: 'event-date' },
-          this.props.event.date
+          { className: 'event-day' },
+          this.formatDay()
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: 'event-month' },
+          this.formatMonth()
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: 'event-daynumber' },
+          this.dayNumber()
         ),
         _react2.default.createElement(
           'p',
@@ -50051,7 +50138,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var mapStateToProps = function mapStateToProps(state) {
   return {
     events: state.events,
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    errors: state.events.errors
   };
 };
 
@@ -50059,6 +50147,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     createEvent: function createEvent(event) {
       return dispatch((0, _events_actions.createEvent)(event));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch((0, _events_actions.clearErrors)());
     }
   };
 };
@@ -50115,8 +50206,19 @@ var SessionForm = function (_React$Component) {
   }
 
   _createClass(SessionForm, [{
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.props.clearErrors();
+    }
+  }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
+      // if (this.props.match.path !== nextProps.match.path){
+      //   this.props.clearErrors();
+      // }
+      // if (this.props.errors.length === nextProps.errors.length && nextProps.errors.length ){
+      //   this.props.clearErrors();
+      // }
       if (nextProps.signedin) {
         this.props.history.push('/');
       }
@@ -50126,8 +50228,10 @@ var SessionForm = function (_React$Component) {
     value: function update(field) {
       var _this2 = this;
 
+      // this.props.clearErrors();
       return function (e) {
-        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+        _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+        // this.props.clearErrors();
       };
     }
   }, {
@@ -50144,6 +50248,8 @@ var SessionForm = function (_React$Component) {
   }, {
     key: 'renderErrors',
     value: function renderErrors() {
+      // let errors = this.props.errors;
+      // let newErrors = Array.from(new Set(errors));
       return _react2.default.createElement(
         'ul',
         { className: 'errors' },
@@ -50205,6 +50311,11 @@ var SessionForm = function (_React$Component) {
               placeholder: 'Description'
             }),
             _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'div',
+              { className: 'errors' },
+              this.renderErrors()
+            ),
             _react2.default.createElement('input', { className: 'host-submit', type: 'submit', value: 'HOST THIS EVENT!' })
           )
         )

@@ -14,15 +14,12 @@ class SessionForm extends React.Component {
     // this.signupFields = this.signupFields.bind(this);
     this.demosignin = this.demosignin.bind(this);
   }
+  
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
 
   componentWillReceiveProps(nextProps) {
-    // if (this.props.match.length !== nextProps.errors.length){
-    //
-    // }
-    // if (this.props.errors.length !== 0){
-    //   this.props.clearErrors();
-    // }
-    // console.log(this.props.match);
     if (this.props.match.path !== nextProps.match.path){
       this.props.clearErrors();
     }
@@ -43,14 +40,6 @@ class SessionForm extends React.Component {
     const user = this.state;
     this.props.processForm({user});
   }
-
-  // navLink() {
-  //   if (this.props.formType === 'signin') {
-  //     return <Link to="/signup">sign up instead</Link>;
-  //   } else {
-  //     return <Link to="/signin">sign in instead</Link>;
-  //   }
-  // }
 
   renderErrors() {
     return(

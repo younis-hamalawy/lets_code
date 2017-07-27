@@ -9,9 +9,9 @@ const Footer = () => (
         <button className="sign-button">Cities</button>
         </Link>
 
-        <button className="sign-button">Hosting
-        </button>
-
+        <Link to="/hosting">
+          <button className="sign-button">Hosting</button>
+        </Link>
       </div>
       <div className="footer-paragraph">
         <p className="footer-paragraph1">Let's Code is all about making coding more fun. We're more connected than ever before, but we're also more alone. And all we want to do is bring people together - the world is better that way.</p>

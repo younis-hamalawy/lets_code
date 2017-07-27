@@ -2,8 +2,8 @@ import * as EventsAPIUtil from '../util/event_api_util';
 
 export const RECEIVE_ALL_EVENTS = "RECEIEVE_ALL_EVENTS";
 export const RECEIVE_SINGLE_EVENT = "RECEIEVE_SINGLE_EVENT";
-export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
-export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const RECEIVE_EVENTS_ERRORS = "RECEIVE_EVENTS_ERRORS";
+export const CLEAR_EVENTS_ERRORS = 'CLEAR_EVENTS_ERRORS';
 export const DELETE_EVENT = "DELETE_EVENT";
 
 export const receiveAllEvents = events => ({
@@ -23,12 +23,12 @@ export const deleteEvent = event => ({
 });
 
 export const receiveErrors = (errors) => ({
-  type: RECEIVE_ERRORS,
+  type: RECEIVE_EVENTS_ERRORS,
   errors
 })
 
 export const clearErrors = () => ({
-  type: CLEAR_ERRORS
+  type: CLEAR_EVENTS_ERRORS
 });
 
 export const fetchAllEvents = () => dispatch => (
@@ -51,7 +51,7 @@ export const createEvent = ( event ) => (dispatch) => (
       return(
         dispatch(receiveSingleEvent(event)),
         dispatch(clearErrors())
-      )}, (errors) => dispatch(receiveErrors(errors)))
+      )}, (errors) => dispatch(receiveErrors(errors.responseJSON)))
 );
 
 export const registerEvent = (event_id, user_id) => dispatch => (

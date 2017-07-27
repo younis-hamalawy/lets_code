@@ -2,7 +2,9 @@ import { merge } from 'lodash';
 
 import {
   RECEIVE_ALL_EVENTS,
-  RECEIVE_SINGLE_EVENT
+  RECEIVE_SINGLE_EVENT,
+  RECEIVE_EVENTS_ERRORS,
+  CLEAR_EVENTS_ERRORS
 } from '../actions/events_actions';
 
 import {
@@ -31,7 +33,17 @@ const EventsReducer = (state = defaultState, action) => {
     case RECEIVE_SINGLE_REGISTRATION:
       const newState =  merge({}, state);
       newState.entities[action.registration.event_id].attending = true;
-      return newState;
+    return newState;
+    case RECEIVE_EVENTS_ERRORS:
+      const errors = action.errors;
+      return merge({}, state, {
+        errors
+      });
+    case CLEAR_EVENTS_ERRORS:
+    // console.log("FART");
+      return {
+        errors: []
+      };
     default:
       return state;
   }

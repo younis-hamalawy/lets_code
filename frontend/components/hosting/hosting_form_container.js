@@ -1,18 +1,20 @@
 import { connect } from 'react-redux';
 
-import { createEvent } from '../../actions/events_actions';
+import { createEvent, clearErrors } from '../../actions/events_actions';
 import HostingForm from './hosting_form';
 
 
 const mapStateToProps = (state) => {
   return {
     events: state.events,
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    errors: state.events.errors
   }
 };
 
 const mapDispatchToProps = dispatch => ({
-  createEvent: (event) => dispatch(createEvent(event))
+  createEvent: (event) => dispatch(createEvent(event)),
+  clearErrors: () => dispatch(clearErrors())
 });
 
 export default connect(

@@ -15,16 +15,27 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
   componentWillReceiveProps(nextProps) {
+    // if (this.props.match.path !== nextProps.match.path){
+    //   this.props.clearErrors();
+    // }
+    // if (this.props.errors.length === nextProps.errors.length && nextProps.errors.length ){
+    //   this.props.clearErrors();
+    // }
     if (nextProps.signedin) {
       this.props.history.push('/');
     }
   }
 
   update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
+    // this.props.clearErrors();
+    return e => {
+      this.setState({ [field]: e.currentTarget.value});
+      // this.props.clearErrors();
+    };
   }
 
   handleSubmit(e) {
@@ -35,6 +46,8 @@ class SessionForm extends React.Component {
 
 
   renderErrors() {
+    // let errors = this.props.errors;
+    // let newErrors = Array.from(new Set(errors));
     return(
       <ul className="errors">
         {this.props.errors.map((error, i) => (
@@ -83,6 +96,7 @@ class SessionForm extends React.Component {
               placeholder="Description"
               />
             <br/>
+            <div className="errors">{this.renderErrors()}</div>
             <input className='host-submit' type="submit" value="HOST THIS EVENT!" />
           </div>
         </form>
