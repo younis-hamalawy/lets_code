@@ -12,11 +12,9 @@ class Api::RegistrationsController < ApplicationController
   end
 
   def destroy
-    # @registration = Registration.find(params[:id])
     @event = Event.find_by(id: params[:event_id])
     if @event
       current_user.registered_events.delete(@event)
-    # @registration.destroy
       render "api/events/show"
     else
       render json: ["Event doesn't exist"]

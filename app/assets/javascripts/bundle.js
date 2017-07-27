@@ -43344,7 +43344,8 @@ var SessionReducer = function SessionReducer() {
         errors: errors
       });
     case _session_actions.CLEAR_ERRORS:
-      return (0, _merge2.default)({}, state, {
+      var user = state.currentUser;
+      return (0, _merge2.default)({}, { currentUser: user }, {
         errors: []
       });
     default:
@@ -48913,6 +48914,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, _ref2) {
     signup: function signup(user) {
       return dispatch((0, _session_actions.signup)(user));
     },
+    clearErrors: function clearErrors() {
+      return dispatch((0, _session_actions.clearErrors)());
+    },
     processForm: function processForm(user) {
       return dispatch(_processForm(user));
     },
@@ -48974,6 +48978,17 @@ var SessionForm = function (_React$Component) {
   _createClass(SessionForm, [{
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
+      // if (this.props.match.length !== nextProps.errors.length){
+      //
+      // }
+      // if (this.props.errors.length !== 0){
+      //   this.props.clearErrors();
+      // }
+      // console.log(this.props.match);
+      if (this.props.match.path !== nextProps.match.path) {
+        this.props.clearErrors();
+      }
+
       if (nextProps.signedin) {
         this.props.history.push('/');
       }
