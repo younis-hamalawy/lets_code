@@ -33,13 +33,13 @@ class SessionForm extends React.Component {
     this.props.processForm({user});
   }
 
-  navLink() {
-    if (this.props.formType === 'signin') {
-      return <Link to="/signup">sign up instead</Link>;
-    } else {
-      return <Link to="/signin">sign in instead</Link>;
-    }
-  }
+  // navLink() {
+  //   if (this.props.formType === 'signin') {
+  //     return <Link to="/signup">sign up instead</Link>;
+  //   } else {
+  //     return <Link to="/signin">sign in instead</Link>;
+  //   }
+  // }
 
   renderErrors() {
     return(
@@ -95,7 +95,7 @@ class SessionForm extends React.Component {
           <div className="sign-form">
             {this.signupFields()}
             <label>
-              <input type="text"
+              <input type="email"
                 value={this.state.email}
                 onChange={this.update('email')}
                 className="sign-input"

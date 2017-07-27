@@ -50,10 +50,10 @@ class City extends React.Component {
 
   render() {
     // console.log(this.props);
-    if (isEmpty(this.props.cities)) {
-      return <div>Loading...</div>;
-    }
-    const city = this.props.cities[this.props.currentCityId];
+    // if (isEmpty(this.props.cities)) {
+    //   return <div>Loading...</div>;
+    // }
+    const city = this.props.cities[this.props.currentCityId] || "";
     return (
       <div className="big-city-container">
         <div key={this.props.currentCityId} className={city.city_abrv}>

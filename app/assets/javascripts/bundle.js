@@ -30526,7 +30526,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var store = void 0;
   if (window.currentUser) {
-    var preloadedState = { session: { currentUser: window.currentUser } };
+    var preloadedState = { session: { currentUser: window.currentUser, errors: [] } };
     store = (0, _store2.default)(preloadedState);
     delete window.currentUser;
   } else {
@@ -48690,6 +48690,10 @@ var _city_container = __webpack_require__(386);
 
 var _city_container2 = _interopRequireDefault(_city_container);
 
+var _hosting_form_container = __webpack_require__(391);
+
+var _hosting_form_container2 = _interopRequireDefault(_hosting_form_container);
+
 var _route_util = __webpack_require__(389);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -48727,6 +48731,7 @@ var App = function App() {
         _react2.default.createElement(_route_util.AuthRoute, { exact: true, path: '/signup', component: _session_form_container2.default }),
         _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/cities', component: _cities_container2.default }),
         _react2.default.createElement(_route_util.ProtectedRoute, { exact: true, path: '/cities/:id', component: _city_container2.default }),
+        _react2.default.createElement(_route_util.ProtectedRoute, { exact: true, path: '/hosting', component: _hosting_form_container2.default }),
         _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' })
       )
     ),
@@ -48989,23 +48994,15 @@ var SessionForm = function (_React$Component) {
       var user = this.state;
       this.props.processForm({ user: user });
     }
-  }, {
-    key: 'navLink',
-    value: function navLink() {
-      if (this.props.formType === 'signin') {
-        return _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/signup' },
-          'sign up instead'
-        );
-      } else {
-        return _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/signin' },
-          'sign in instead'
-        );
-      }
-    }
+
+    // navLink() {
+    //   if (this.props.formType === 'signin') {
+    //     return <Link to="/signup">sign up instead</Link>;
+    //   } else {
+    //     return <Link to="/signin">sign in instead</Link>;
+    //   }
+    // }
+
   }, {
     key: 'renderErrors',
     value: function renderErrors() {
@@ -49082,7 +49079,7 @@ var SessionForm = function (_React$Component) {
             _react2.default.createElement(
               'label',
               null,
-              _react2.default.createElement('input', { type: 'text',
+              _react2.default.createElement('input', { type: 'email',
                 value: this.state.email,
                 onChange: this.update('email'),
                 className: 'sign-input',
@@ -49720,14 +49717,10 @@ var City = function (_React$Component) {
     key: 'render',
     value: function render() {
       // console.log(this.props);
-      if ((0, _lodash.isEmpty)(this.props.cities)) {
-        return _react2.default.createElement(
-          'div',
-          null,
-          'Loading...'
-        );
-      }
-      var city = this.props.cities[this.props.currentCityId];
+      // if (isEmpty(this.props.cities)) {
+      //   return <div>Loading...</div>;
+      // }
+      var city = this.props.cities[this.props.currentCityId] || "";
       return _react2.default.createElement(
         'div',
         { className: 'big-city-container' },
@@ -50022,6 +50015,196 @@ var CityEventItem = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = CityEventItem;
+
+/***/ }),
+/* 391 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(21);
+
+var _events_actions = __webpack_require__(78);
+
+var _hosting_form = __webpack_require__(392);
+
+var _hosting_form2 = _interopRequireDefault(_hosting_form);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    events: state.events,
+    currentUser: state.session.currentUser
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    createEvent: function createEvent(event) {
+      return dispatch((0, _events_actions.createEvent)(event));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_hosting_form2.default);
+
+/***/ }),
+/* 392 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(16);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SessionForm = function (_React$Component) {
+  _inherits(SessionForm, _React$Component);
+
+  function SessionForm(props) {
+    _classCallCheck(this, SessionForm);
+
+    var _this = _possibleConstructorReturn(this, (SessionForm.__proto__ || Object.getPrototypeOf(SessionForm)).call(this, props));
+
+    _this.state = {
+      date: "",
+      time: "",
+      address: "",
+      description: "",
+      host_id: _this.props.currentUser.id,
+      city_id: _this.props.currentUser.id
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
+  }
+
+  _createClass(SessionForm, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.signedin) {
+        this.props.history.push('/');
+      }
+    }
+  }, {
+    key: 'update',
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+      };
+    }
+  }, {
+    key: 'handleSubmit',
+    value: function handleSubmit(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      var event = this.state;
+      this.props.createEvent(event).then(function () {
+        return _this3.props.history.push('/cities/' + _this3.props.currentUser.city_id);
+      });
+    }
+  }, {
+    key: 'renderErrors',
+    value: function renderErrors() {
+      return _react2.default.createElement(
+        'ul',
+        { className: 'errors' },
+        this.props.errors.map(function (error, i) {
+          return _react2.default.createElement(
+            'li',
+            { key: 'error-' + i },
+            error
+          );
+        })
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'create-event-form-container' },
+        _react2.default.createElement(
+          'form',
+          { onSubmit: this.handleSubmit, className: 'create-event-form-box' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            'JOIN THE HOST COMMUNITY'
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'create-event-text' },
+            'Learn to code at your own pace by bringing strangers together for a great programming experience'
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'div',
+            { className: 'create-event-form' },
+            _react2.default.createElement('input', { type: 'text',
+              value: this.state.name,
+              onChange: this.update('name'),
+              className: 'create-event-box',
+              placeholder: 'Name'
+            }),
+            _react2.default.createElement('input', { type: 'date',
+              value: this.state.date,
+              onChange: this.update('date'),
+              className: 'create-event-box',
+              placeholder: 'Date'
+            }),
+            _react2.default.createElement('input', { type: 'text',
+              value: this.state.address,
+              onChange: this.update('address'),
+              className: 'create-event-box',
+              placeholder: 'Address'
+            }),
+            _react2.default.createElement('input', { type: 'text',
+              value: this.state.description,
+              onChange: this.update('description'),
+              className: 'create-event-box',
+              placeholder: 'Description'
+            }),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('input', { className: 'host-submit', type: 'submit', value: 'HOST THIS EVENT!' })
+          )
+        )
+      );
+    }
+  }]);
+
+  return SessionForm;
+}(_react2.default.Component);
+
+exports.default = (0, _reactRouterDom.withRouter)(SessionForm);
 
 /***/ })
 /******/ ]);

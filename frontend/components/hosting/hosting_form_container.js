@@ -6,7 +6,7 @@ import HostingForm from './hosting_form';
 
 const mapStateToProps = (state) => {
   return {
-    events: state.events
+    events: state.events,
     currentUser: state.session.currentUser
   }
 };
