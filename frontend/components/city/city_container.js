@@ -9,7 +9,7 @@ import City from './city';
 import { selectAllEvents } from '../../reducers/selectors'
 import { selectAllCities } from '../../reducers/selectors';
 
-const mapStateToProps = ( state, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
 
   const currentCityId = parseInt(ownProps.location.pathname.slice(8));
 
@@ -23,10 +23,9 @@ const mapStateToProps = ( state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchAllEvents: () =>dispatch(fetchAllEvents()),
+  fetchAllEvents: () => dispatch(fetchAllEvents()),
   fetchAllCities: () => dispatch(fetchAllCities()),
-  fetchSingleCity: (cityId) => dispatch(fetchSingleCity(cityId)),
-  registerEvent: (eventId, userId) => dispatch(registerEvent(eventId, userId))
+  fetchSingleCity: cityId => dispatch(fetchSingleCity(cityId))
 });
 
 export default connect(

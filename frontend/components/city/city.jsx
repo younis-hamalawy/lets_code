@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { values } from 'lodash';
 import CityEventItemContainer from './city_event_item_container';
-import { isEmpty } from 'lodash';
 
 class City extends React.Component {
   constructor(props) {

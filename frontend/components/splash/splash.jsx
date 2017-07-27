@@ -27,7 +27,7 @@ class Splash extends React.Component {
           <div className="info-container">
             <div className="info">
               <div className="first-info">
-                <h2>Show up for an event</h2>
+                <h2>Show up for a coding meetup</h2>
                 <p>You and a few others join a host at a cafe</p>
               </div>
               <div className="first-info">

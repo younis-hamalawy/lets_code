@@ -25240,8 +25240,6 @@ var selectAllEvents = exports.selectAllEvents = function selectAllEvents(_ref) {
   return (0, _lodash.values)(entities);
 };
 
-// export const selectAllRegisteredUsers = ( city , eventId ) => values(city.events[eventId].registered_users);
-
 /***/ }),
 /* 85 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -48710,6 +48708,10 @@ var _hosting_form_container = __webpack_require__(391);
 
 var _hosting_form_container2 = _interopRequireDefault(_hosting_form_container);
 
+var _dashboard_container = __webpack_require__(395);
+
+var _dashboard_container2 = _interopRequireDefault(_dashboard_container);
+
 var _route_util = __webpack_require__(389);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -48748,6 +48750,7 @@ var App = function App() {
         _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/cities', component: _cities_container2.default }),
         _react2.default.createElement(_route_util.ProtectedRoute, { exact: true, path: '/cities/:id', component: _city_container2.default }),
         _react2.default.createElement(_route_util.ProtectedRoute, { exact: true, path: '/hosting', component: _hosting_form_container2.default }),
+        _react2.default.createElement(_route_util.ProtectedRoute, { exact: true, path: '/dashboard', component: _dashboard_container2.default }),
         _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _splash_container2.default }),
         _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' })
       )
@@ -49648,20 +49651,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchSingleCity: function fetchSingleCity(cityId) {
       return dispatch((0, _cities_actions.fetchSingleCity)(cityId));
-    },
-    registerEvent: function (_registerEvent) {
-      function registerEvent(_x, _x2) {
-        return _registerEvent.apply(this, arguments);
-      }
-
-      registerEvent.toString = function () {
-        return _registerEvent.toString();
-      };
-
-      return registerEvent;
-    }(function (eventId, userId) {
-      return dispatch(registerEvent(eventId, userId));
-    })
+    }
   };
 };
 
@@ -49835,15 +49825,11 @@ var _events_actions = __webpack_require__(78);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import { selectAllRegisteredUsers } from '../../reducers/selectors'
-
-
 // import lodash from 'lodash';
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     currentUser: state.session.currentUser
-    // registeredUsers: selectAllRegisteredUsers(state.city, ownProps.event.id)
   };
 };
 
@@ -49943,7 +49929,6 @@ var CityEventItem = function (_React$Component) {
   function CityEventItem(props) {
     _classCallCheck(this, CityEventItem);
 
-    // console.log(this.props);
     var _this = _possibleConstructorReturn(this, (CityEventItem.__proto__ || Object.getPrototypeOf(CityEventItem)).call(this, props));
 
     _this.handleRegister = _this.handleRegister.bind(_this);
@@ -50496,7 +50481,7 @@ var Splash = function (_React$Component) {
                 _react2.default.createElement(
                   'h2',
                   null,
-                  'Show up for an event'
+                  'Show up for a coding meetup'
                 ),
                 _react2.default.createElement(
                   'p',
@@ -50622,6 +50607,566 @@ var Splash = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Splash;
+
+/***/ }),
+/* 395 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(21);
+
+var _events_actions = __webpack_require__(78);
+
+var _selectors = __webpack_require__(84);
+
+var _dashboard = __webpack_require__(396);
+
+var _dashboard2 = _interopRequireDefault(_dashboard);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  console.log("XXXXX");
+  return {
+    currentUser: state.session.currentUser,
+    events: (0, _selectors.selectAllEvents)(state.events)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchAllEvents: function fetchAllEvents() {
+      return dispatch((0, _events_actions.fetchAllEvents)());
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_dashboard2.default);
+
+/***/ }),
+/* 396 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(16);
+
+var _values = __webpack_require__(398);
+
+var _values2 = _interopRequireDefault(_values);
+
+var _dashboard_item = __webpack_require__(397);
+
+var _dashboard_item2 = _interopRequireDefault(_dashboard_item);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Dashboard = function (_React$Component) {
+  _inherits(Dashboard, _React$Component);
+
+  function Dashboard(props) {
+    _classCallCheck(this, Dashboard);
+
+    var _this = _possibleConstructorReturn(this, (Dashboard.__proto__ || Object.getPrototypeOf(Dashboard)).call(this, props));
+
+    console.log(_this.props.currentUser.city);
+    return _this;
+  }
+
+  _createClass(Dashboard, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.props.fetchAllEvents();
+    }
+  }, {
+    key: 'showEvents',
+    value: function showEvents() {
+      // const pastEvents = [];
+      var joinedEvents = [];
+      var hostedEvents = [];
+      var allEvents = this.props.events || [];
+
+      for (var i = 0; i < allEvents.length; i++) {
+        if (allEvents[i].attending) {
+          joinedEvents.push(allEvents[i]);
+        } else if (allEvents[i].host_id === this.props.currentUser.id) {
+          hostedEvents.push(allEvents[i]);
+        }
+      }
+      if (joinedEvents.length === 0 && hostedEvents.length === 0) {
+        return _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'h4',
+            { className: 'dashboard-header-1' },
+            'You have no coding meetups coming up! Let\'s change that.'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'join' },
+            this.props.currentUser.city_id ? _react2.default.createElement(
+              _reactRouterDom.Link,
+              { className: 'host-button', to: '/cities/' + this.props.currentUser.city_id },
+              'Join a coding meet up!'
+            ) : _react2.default.createElement(
+              _reactRouterDom.Link,
+              { className: 'host-button', to: '/cities' },
+              'Join a coding meetup!'
+            )
+          )
+        );
+      }
+      // let joinedEventsValues = values(joinedEvents);
+      // let hostedEventsValues = values(joinedEvents);
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'h4',
+          { className: 'dashboard-header-1' },
+          'Events you\'re hosting:'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'dashboard-outer' },
+          _react2.default.createElement(
+            'ul',
+            { className: 'dashboard-ul' },
+            _react2.default.createElement(
+              'div',
+              { className: 'dashboard-hosted-events' },
+              hostedEvents.map(function (event) {
+                return _react2.default.createElement(_dashboard_item2.default, {
+                  key: event.id,
+                  event: event
+                });
+              })
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'h4',
+          { className: 'dashboard-header-1' },
+          'Events you\'ve joined:'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'dashboard-outer-current' },
+          _react2.default.createElement(
+            'ul',
+            { className: 'dashboard-ul-current' },
+            _react2.default.createElement(
+              'div',
+              { className: 'dashboard-current-events' },
+              joinedEvents.map(function (event) {
+                return _react2.default.createElement(_dashboard_item2.default, {
+                  key: event.id,
+                  event: event
+                });
+              })
+            )
+          )
+        )
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: 'join' },
+          _react2.default.createElement(
+            'div',
+            { className: 'join1' },
+            _react2.default.createElement(
+              'h4',
+              { className: 'dashboard-header-1' },
+              'Welcome home, ',
+              this.props.currentUser.first_name,
+              '!'
+            ),
+            _react2.default.createElement(
+              'h5',
+              { className: 'dashboard-header-2' },
+              'What are you grateful for today?'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'join2' },
+            this.showEvents()
+          )
+        )
+      );
+    }
+  }]);
+
+  return Dashboard;
+}(_react2.default.Component);
+
+exports.default = Dashboard;
+
+/***/ }),
+/* 397 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(16);
+
+var _lodash = __webpack_require__(77);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var DashboardItem = function (_React$Component) {
+  _inherits(DashboardItem, _React$Component);
+
+  function DashboardItem(props) {
+    _classCallCheck(this, DashboardItem);
+
+    return _possibleConstructorReturn(this, (DashboardItem.__proto__ || Object.getPrototypeOf(DashboardItem)).call(this, props));
+  }
+
+  _createClass(DashboardItem, [{
+    key: 'formatDay',
+    value: function formatDay() {
+      var date = new Date(this.props.event.date);
+      var day = date.getDay();
+      if (day === 6) {
+        day = 0;
+      } else {
+        day++;
+      }
+      // let month = date.getMonth();
+      switch (day) {
+        case 0:
+          return "Sunday";
+        case 1:
+          return "Monday";
+        case 2:
+          return "Tuesday";
+        case 3:
+          return "Wednesday";
+        case 4:
+          return "Thursday";
+        case 5:
+          return "Friday";
+        case 6:
+          return "Saturday";
+      }
+    }
+  }, {
+    key: 'formatMonth',
+    value: function formatMonth() {
+      var date = new Date(this.props.event.date);
+      var month = date.getMonth();
+      switch (month) {
+        case 0:
+          return "JAN";
+        case 1:
+          return "FEB";
+        case 2:
+          return "MAR";
+        case 3:
+          return "APR";
+        case 4:
+          return "MAY";
+        case 5:
+          return "JUN";
+        case 6:
+          return "JUL";
+        case 7:
+          return "AUG";
+        case 8:
+          return "SEPT";
+        case 9:
+          return "OCT";
+        case 10:
+          return "NOV";
+        case 11:
+          return "DEC";
+      }
+    }
+  }, {
+    key: 'dayNumber',
+    value: function dayNumber() {
+      return this.props.event.date.slice(this.props.event.date.length - 2);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'event-container' },
+        _react2.default.createElement(
+          'div',
+          { key: this.props.event.id, className: 'event-item' },
+          _react2.default.createElement(
+            'p',
+            { className: 'event-city-name' },
+            this.props.event.name
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'event-day' },
+            this.formatDay()
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'event-month' },
+            this.formatMonth()
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'event-daynumber' },
+            this.dayNumber()
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'event-description' },
+            this.props.event.description
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'event-address' },
+            this.props.event.address
+          )
+        )
+      );
+    }
+  }]);
+
+  return DashboardItem;
+}(_react2.default.Component);
+
+exports.default = DashboardItem;
+
+/***/ }),
+/* 398 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var baseValues = __webpack_require__(399),
+    keys = __webpack_require__(401);
+
+/**
+ * Creates an array of the own enumerable string keyed property values of `object`.
+ *
+ * **Note:** Non-object values are coerced to objects.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Object
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property values.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.values(new Foo);
+ * // => [1, 2] (iteration order is not guaranteed)
+ *
+ * _.values('hi');
+ * // => ['h', 'i']
+ */
+function values(object) {
+  return object == null ? [] : baseValues(object, keys(object));
+}
+
+module.exports = values;
+
+
+/***/ }),
+/* 399 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayMap = __webpack_require__(400);
+
+/**
+ * The base implementation of `_.values` and `_.valuesIn` which creates an
+ * array of `object` property values corresponding to the property names
+ * of `props`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {Array} props The property names to get values for.
+ * @returns {Object} Returns the array of property values.
+ */
+function baseValues(object, props) {
+  return arrayMap(props, function(key) {
+    return object[key];
+  });
+}
+
+module.exports = baseValues;
+
+
+/***/ }),
+/* 400 */
+/***/ (function(module, exports) {
+
+/**
+ * A specialized version of `_.map` for arrays without support for iteratee
+ * shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ */
+function arrayMap(array, iteratee) {
+  var index = -1,
+      length = array == null ? 0 : array.length,
+      result = Array(length);
+
+  while (++index < length) {
+    result[index] = iteratee(array[index], index, array);
+  }
+  return result;
+}
+
+module.exports = arrayMap;
+
+
+/***/ }),
+/* 401 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayLikeKeys = __webpack_require__(318),
+    baseKeys = __webpack_require__(402),
+    isArrayLike = __webpack_require__(75);
+
+/**
+ * Creates an array of the own enumerable property names of `object`.
+ *
+ * **Note:** Non-object values are coerced to objects. See the
+ * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+ * for more details.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Object
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.keys(new Foo);
+ * // => ['a', 'b'] (iteration order is not guaranteed)
+ *
+ * _.keys('hi');
+ * // => ['0', '1']
+ */
+function keys(object) {
+  return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
+}
+
+module.exports = keys;
+
+
+/***/ }),
+/* 402 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isPrototype = __webpack_require__(128),
+    nativeKeys = __webpack_require__(403);
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ */
+function baseKeys(object) {
+  if (!isPrototype(object)) {
+    return nativeKeys(object);
+  }
+  var result = [];
+  for (var key in Object(object)) {
+    if (hasOwnProperty.call(object, key) && key != 'constructor') {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+module.exports = baseKeys;
+
+
+/***/ }),
+/* 403 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var overArg = __webpack_require__(307);
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeKeys = overArg(Object.keys, Object);
+
+module.exports = nativeKeys;
+
 
 /***/ })
 /******/ ]);

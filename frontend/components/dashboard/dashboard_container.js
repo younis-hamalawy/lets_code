@@ -5,8 +5,8 @@ import { selectAllEvents } from '../../reducers/selectors';
 import Dashboard from './dashboard';
 
 
-const mapStateToProps = ( state) => {
-
+const mapStateToProps = (state, ownProps) => {
+  console.log("XXXXX");
   return ({
     currentUser: state.session.currentUser,
     events: selectAllEvents(state.events)
@@ -14,10 +14,10 @@ const mapStateToProps = ( state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchAllEvents: () =>dispatch(fetchAllEvents()),
+  fetchAllEvents: () => dispatch(fetchAllEvents()),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Dashboard);
