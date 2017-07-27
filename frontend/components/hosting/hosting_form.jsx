@@ -40,7 +40,7 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     console.log(this.props.currentUser);
     e.preventDefault();
-    if (this.props.currentUser.city_id === null || this.props.currentUser.city_id === 0){
+    if (this.props.currentUser.city_id === null){
       let newUser = Object.assign({}, this.state.currentUser);
       newUser["city_id"] = this.state.city_id;
       this.props.setCity(this.props.currentUser.id, newUser)
@@ -66,7 +66,7 @@ class SessionForm extends React.Component {
 
   pickCity() {
     let citiesarray = values(this.props.cities);
-    if (this.props.currentUser.city_id === null || this.props.currentUser.city_id === 0){
+    if (this.props.currentUser.city_id === null){
       return(
         <div className="pick-city">
           <select name="city" onChange={this.update('city_id')}>

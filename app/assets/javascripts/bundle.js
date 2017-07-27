@@ -50227,7 +50227,7 @@ var SessionForm = function (_React$Component) {
 
       console.log(this.props.currentUser);
       e.preventDefault();
-      if (this.props.currentUser.city_id === null || this.props.currentUser.city_id === 0) {
+      if (this.props.currentUser.city_id === null) {
         var newUser = Object.assign({}, this.state.currentUser);
         newUser["city_id"] = this.state.city_id;
         this.props.setCity(this.props.currentUser.id, newUser);
@@ -50256,7 +50256,7 @@ var SessionForm = function (_React$Component) {
     key: 'pickCity',
     value: function pickCity() {
       var citiesarray = (0, _lodash.values)(this.props.cities);
-      if (this.props.currentUser.city_id === null || this.props.currentUser.city_id === 0) {
+      if (this.props.currentUser.city_id === null) {
         return _react2.default.createElement(
           'div',
           { className: 'pick-city' },
