@@ -48842,6 +48842,15 @@ var sessionLinks = function sessionLinks() {
     ),
     _react2.default.createElement(
       _reactRouterDom.Link,
+      { to: '/dashboard' },
+      _react2.default.createElement(
+        'button',
+        { className: 'sign-button' },
+        'Dashboard'
+      )
+    ),
+    _react2.default.createElement(
+      _reactRouterDom.Link,
       { to: '/signin' },
       _react2.default.createElement(
         'button',
@@ -48881,6 +48890,15 @@ var endsessionLink = function endsessionLink(currentUser, signout) {
         'button',
         { className: 'sign-button' },
         'Hosting'
+      )
+    ),
+    _react2.default.createElement(
+      _reactRouterDom.Link,
+      { to: '/dashboard' },
+      _react2.default.createElement(
+        'button',
+        { className: 'sign-button' },
+        'Dashboard'
       )
     ),
     _react2.default.createElement(
@@ -50459,9 +50477,13 @@ var Splash = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'lets-code-button' },
-            _react2.default.createElement(
+            this.props.session.currentUser ? _react2.default.createElement(
               _reactRouterDom.Link,
-              { to: '/cities', type: 'button', className: 'let\'s-code-button' },
+              { className: 'host-button', to: '/cities' },
+              'Let\'s code together!'
+            ) : _react2.default.createElement(
+              _reactRouterDom.Link,
+              { className: 'host-button', to: '/signUp' },
               'Let\'s code together!'
             )
           )
@@ -50632,7 +50654,6 @@ var _dashboard2 = _interopRequireDefault(_dashboard);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  console.log("XXXXX");
   return {
     currentUser: state.session.currentUser,
     events: (0, _selectors.selectAllEvents)(state.events)

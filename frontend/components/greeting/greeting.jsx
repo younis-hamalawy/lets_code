@@ -12,6 +12,10 @@ const sessionLinks = () => (
       <button className="sign-button">Hosting</button>
     </Link>
 
+    <Link to="/dashboard">
+      <button className="sign-button">Dashboard</button>
+    </Link>
+
     <Link to="/signin">
       <button className="sign-button">Sign In</button>
     </Link>
@@ -34,6 +38,11 @@ const endsessionLink = (currentUser, signout) => (
     <Link to="/hosting">
       <button className="sign-button">Hosting</button>
     </Link>
+
+    <Link to="/dashboard">
+      <button className="sign-button">Dashboard</button>
+    </Link>
+
     <button className="sign-button" onClick={signout}>Sign Out</button>
 	</nav>
 );

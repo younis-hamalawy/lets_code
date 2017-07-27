@@ -6,7 +6,6 @@ import Dashboard from './dashboard';
 
 
 const mapStateToProps = (state, ownProps) => {
-  console.log("XXXXX");
   return ({
     currentUser: state.session.currentUser,
     events: selectAllEvents(state.events)

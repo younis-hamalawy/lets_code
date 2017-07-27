@@ -20,7 +20,7 @@ class Splash extends React.Component {
 
           <div className="first">
             <div className="lets-code-button">
-              <Link to={`/cities`} type="button" className="let's-code-button">Let's code together!</Link>
+              { this.props.session.currentUser ? <Link className='host-button' to={'/cities'}>Let's code together!</Link> : <Link className='host-button' to={'/signUp'}>Let's code together!</Link>}
             </div>
           </div>
         <div className="first-container-content">
