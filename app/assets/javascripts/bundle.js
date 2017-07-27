@@ -48702,6 +48702,10 @@ var _city_container = __webpack_require__(386);
 
 var _city_container2 = _interopRequireDefault(_city_container);
 
+var _splash_container = __webpack_require__(393);
+
+var _splash_container2 = _interopRequireDefault(_splash_container);
+
 var _hosting_form_container = __webpack_require__(391);
 
 var _hosting_form_container2 = _interopRequireDefault(_hosting_form_container);
@@ -48744,6 +48748,7 @@ var App = function App() {
         _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/cities', component: _cities_container2.default }),
         _react2.default.createElement(_route_util.ProtectedRoute, { exact: true, path: '/cities/:id', component: _city_container2.default }),
         _react2.default.createElement(_route_util.ProtectedRoute, { exact: true, path: '/hosting', component: _hosting_form_container2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _splash_container2.default }),
         _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' })
       )
     ),
@@ -48910,6 +48915,10 @@ var _session_form = __webpack_require__(378);
 
 var _session_form2 = _interopRequireDefault(_session_form);
 
+var _cities_actions = __webpack_require__(51);
+
+var _events_actions = __webpack_require__(78);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(_ref) {
@@ -48927,6 +48936,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, _ref2) {
   var formType = location.pathname.slice(1);
   var _processForm = formType === 'signin' ? _session_actions.signin : _session_actions.signup;
   return {
+    fetchAllEvents: function fetchAllEvents() {
+      return dispatch((0, _events_actions.fetchAllEvents)());
+    },
+    fetchAllCities: function fetchAllCities() {
+      return dispatch((0, _cities_actions.fetchAllCities)());
+    },
     signin: function signin(user) {
       return dispatch((0, _session_actions.signin)(user));
     },
@@ -49000,12 +49015,18 @@ var SessionForm = function (_React$Component) {
       this.props.clearErrors();
     }
   }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.props.fetchAllCities();
+      this.props.fetchAllEvents();
+    }
+  }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       if (this.props.match.path !== nextProps.match.path) {
         this.props.clearErrors();
       }
-
+      console.log("XXXXX");
       if (nextProps.signedin) {
         this.props.history.push('/');
       }
@@ -50349,6 +50370,258 @@ var SessionForm = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = (0, _reactRouterDom.withRouter)(SessionForm);
+
+/***/ }),
+/* 393 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.mapStateToProps = undefined;
+
+var _reactRedux = __webpack_require__(21);
+
+var _splash = __webpack_require__(394);
+
+var _splash2 = _interopRequireDefault(_splash);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = exports.mapStateToProps = function mapStateToProps(_ref) {
+  var session = _ref.session;
+  return {
+    session: session
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(_splash2.default);
+
+/***/ }),
+/* 394 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(16);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Splash = function (_React$Component) {
+  _inherits(Splash, _React$Component);
+
+  function Splash() {
+    _classCallCheck(this, Splash);
+
+    return _possibleConstructorReturn(this, (Splash.__proto__ || Object.getPrototypeOf(Splash)).apply(this, arguments));
+  }
+
+  _createClass(Splash, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'splash-container' },
+        _react2.default.createElement(
+          'div',
+          { className: 'first' },
+          _react2.default.createElement(
+            'div',
+            { className: 'everyone' },
+            _react2.default.createElement(
+              'h1',
+              null,
+              'Everyone is interesting'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'first' },
+          _react2.default.createElement(
+            'div',
+            { className: 'screen' },
+            _react2.default.createElement(
+              'h2',
+              null,
+              'But you don\u2019t discover that when you\u2019re staring at a screen'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'first' },
+          _react2.default.createElement(
+            'div',
+            { className: 'lets-code-button' },
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/cities', type: 'button', className: 'let\'s-code-button' },
+              'Let\'s code together!'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'first-container-content' },
+          _react2.default.createElement(
+            'div',
+            { className: 'info-container' },
+            _react2.default.createElement(
+              'div',
+              { className: 'info' },
+              _react2.default.createElement(
+                'div',
+                { className: 'first-info' },
+                _react2.default.createElement(
+                  'h2',
+                  null,
+                  'Show up for an event'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'You and a few others join a host at a cafe'
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'first-info' },
+                _react2.default.createElement(
+                  'h2',
+                  null,
+                  'Have a real conversation'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'You code for two hours'
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'first-info' },
+                _react2.default.createElement(
+                  'h2',
+                  null,
+                  'See what happens'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'That\'s it. No strings attached!'
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'splash-body' },
+            _react2.default.createElement(
+              'h3',
+              { className: 'why' },
+              'SO WHY ARE THOUSANDS OF PEOPLE DOING IT?'
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'entry' },
+              _react2.default.createElement('img', { className: 'splash-image', src: "http://res.cloudinary.com/flying-monkey/image/upload/v1501144140/realpeople-1d5fb20324228744e992569f082415977c4b3799ef7b14cc5922c2dade18f97c_by2i9g.png", alt: 'splash-image' }),
+              _react2.default.createElement(
+                'div',
+                { className: 'weird' },
+                _react2.default.createElement(
+                  'h2',
+                  null,
+                  'It\'s weird'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'Everyone is stepping a little out of their comfort zone. This makes it so much easier to actually learn something unexpected. Because open minds are a prerequisite around here'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'entry' },
+              _react2.default.createElement(
+                'div',
+                { className: 'weird' },
+                _react2.default.createElement(
+                  'h2',
+                  null,
+                  'We won\'t meet otherwise'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'In all likelihood, our paths won\u2019t cross for any reason. So often, we only meet people through work, school, or friends of friends. And even then, it\u2019s questionable. So basically, we manufacture serendipity'
+                )
+              ),
+              _react2.default.createElement('img', { className: 'splash-image', src: "http://res.cloudinary.com/flying-monkey/image/upload/v1501144140/campfire-eae12c98731c5564dcd309eb8e2fc0af48a7b023b677deae69fa309eb3db44d4_dp8f2i.png", alt: 'cartoon-figures' })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'splash-entry' },
+              _react2.default.createElement('img', { className: 'splash-image', src: "http://res.cloudinary.com/flying-monkey/image/upload/v1501144140/nevermeet-55361a98c59cda3fced04c6234e80553c4ed3858c1028008e6fa3642185d57b9_qbtwnm.png", alt: 'cartoon-figures' }),
+              _react2.default.createElement(
+                'div',
+                { className: 'weird' },
+                _react2.default.createElement(
+                  'h2',
+                  null,
+                  'Your hands are made for high fiving!'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  'And your eyes are made\u2026for eye contact! Real humans are so much cooler than their tweets or Instagram pictures. Let\'s Code has real humans! nofilter!'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'host-button-container' },
+              this.props.session.currentUser ? _react2.default.createElement(
+                _reactRouterDom.Link,
+                { className: 'host-button', to: '/cities' },
+                'LET\'S CODE TOGETHER!'
+              ) : _react2.default.createElement(
+                _reactRouterDom.Link,
+                { className: 'host-button', to: '/signUp' },
+                'LET\'S CODE TOGETHER!'
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Splash;
+}(_react2.default.Component);
+
+exports.default = Splash;
 
 /***/ })
 /******/ ]);

@@ -5,6 +5,7 @@ import SessionFormContainer from './session_form/session_form_container';
 import FooterContainer from './footer/footer_container';
 import CitiesContainer from './cities/cities_container'
 import CityContainer from './city/city_container'
+import SplashContainer from './splash/splash_container'
 import HostingFormContainer from './hosting/hosting_form_container'
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
@@ -25,6 +26,7 @@ const App = () => (
         <Route exact path="/cities" component={CitiesContainer} />
         <ProtectedRoute exact path="/cities/:id" component={CityContainer} />
         <ProtectedRoute exact path="/hosting" component={HostingFormContainer} />
+        <Route path="/" component={SplashContainer} />
         <Redirect to="/" />
       </Switch>
     </div>

@@ -14,16 +14,21 @@ class SessionForm extends React.Component {
     // this.signupFields = this.signupFields.bind(this);
     this.demosignin = this.demosignin.bind(this);
   }
-  
+
   componentWillUnmount() {
     this.props.clearErrors();
+  }
+
+  componentDidMount() {
+    this.props.fetchAllCities();
+    this.props.fetchAllEvents();
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.path !== nextProps.match.path){
       this.props.clearErrors();
     }
-
+    console.log("XXXXX");
     if (nextProps.signedin) {
       this.props.history.push('/');
     }
