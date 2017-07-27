@@ -8,7 +8,7 @@ class SessionForm extends React.Component {
     // console.log(this.props);
     this.state = {
       date: "",
-      time: "",
+      name: "",
       address: "",
       description: "",
       host_id: this.props.currentUser.id,
@@ -31,19 +31,22 @@ class SessionForm extends React.Component {
   }
 
   update(field) {
+    console.log(field);
     return e => {
       this.setState({ [field]: e.currentTarget.value});
     };
   }
 
   handleSubmit(e) {
+    console.log(this.props.currentUser);
     e.preventDefault();
-    const event = this.state;
-    this.props.createEvent(event).then( () => this.props.history.push(`/cities/${this.props.currentUser.city_id}`));
-    if (this.props.currentUser.city_id === null){
-      newUser["city_id"] = this.props.city.id;
+    if (this.props.currentUser.city_id === null || this.props.currentUser.city_id === 0){
+      let newUser = Object.assign({}, this.state.currentUser);
+      newUser["city_id"] = this.state.city_id;
       this.props.setCity(this.props.currentUser.id, newUser)
     }
+    const event = this.state;
+    this.props.createEvent(event).then( () => this.props.history.push(`/cities/${this.state.city_id}`));
   }
 
 
@@ -62,25 +65,24 @@ class SessionForm extends React.Component {
   }
 
   pickCity() {
-    let cities = values(this.props.cities);
-    if (this.props.currentUser.city_id === null ){
+    let citiesarray = values(this.props.cities);
+    if (this.props.currentUser.city_id === null || this.props.currentUser.city_id === 0){
       return(
         <div className="pick-city">
-          <select name="city">
+          <select name="city" onChange={this.update('city_id')}>
             <option value="" disabled selected>Set default city</option>
             {
-              cities.map( (el) => {
+              citiesarray.map( (el) => {
                 console.log(typeof(el.name));
                 return (<option
                   key={el.id}
-                  value={el.name}
+                  value={el.id}
                   >{el.name}</option>
                 );
               })
             }
           </select>
         </div>
-
       )
     }
   }

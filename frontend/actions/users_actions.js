@@ -13,8 +13,8 @@ export const receiveAllUsers = (users) => ({
   users
 });
 
-export const setCity = (cityId, user) => dispatch => (
-  UserAPIUtil.setCity(cityId, user).then(user => (
+export const setCity = (userId, user) => dispatch => (
+  UserAPIUtil.setCity(userId, user).then(user => (
     dispatch(receiveCurrentUser(user))
   ))
 );

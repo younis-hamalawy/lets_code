@@ -3,56 +3,29 @@ import { Link } from 'react-router-dom';
 import { values } from 'lodash';
 import CityEventItemContainer from './city_event_item_container';
 import { isEmpty } from 'lodash';
-// import CitiesItem from './cities_item';
 
 class City extends React.Component {
   constructor(props) {
     super(props)
     console.log(this.props);
-    // console.log(this.props.currentCityId);
     this.renderEvents = this.renderEvents.bind(this);
-    // const cities = values(this.props.cities);
-    // this.city = cities[this.props.currentCityId]
-    // console.log("xxxx",this.city);
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.match.params.id !== this.props.match.params.id) {
-  //     this.props.fetchCity(this.props.match.params.id)
-  //   }
-  // }
-
 
   componentWillMount() {
     this.props.fetchAllCities();
     this.props.fetchAllEvents();
     this.props.fetchSingleCity(this.props.match.params.id);
-
   }
-  // componentWillUnmount() {
-  //   this.props.fetchAllCities();
-  //   this.props.fetchSingleCity(this.props.match.params.id);
-  //
-  // }
 
   renderEvents () {
-
     let { events } = this.props
-    // console.log(events);
     events = events.filter( event => event.city_id === this.props.currentCityId);
-    // console.log(events);
     return events.map ( event => (
-
-        <CityEventItemContainer key={event.id} event={event}/>
-
+      <CityEventItemContainer key={event.id} event={event}/>
     ))
   }
 
   render() {
-    // console.log(this.props);
-    // if (isEmpty(this.props.cities)) {
-    //   return <div>Loading...</div>;
-    // }
     const city = this.props.cities[this.props.currentCityId] || "";
     return (
       <div className="big-city-container">

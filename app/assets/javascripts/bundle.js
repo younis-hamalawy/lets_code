@@ -49534,9 +49534,9 @@ var receiveAllUsers = exports.receiveAllUsers = function receiveAllUsers(users) 
   };
 };
 
-var setCity = exports.setCity = function setCity(cityId, user) {
+var setCity = exports.setCity = function setCity(userId, user) {
   return function (dispatch) {
-    return UserAPIUtil.setCity(cityId, user).then(function (user) {
+    return UserAPIUtil.setCity(userId, user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
     });
   };
@@ -49564,10 +49564,10 @@ var fetchAllUsers = exports.fetchAllUsers = function fetchAllUsers() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var setCity = exports.setCity = function setCity(id, user) {
+var setCity = exports.setCity = function setCity(user_id, user) {
   return $.ajax({
     method: 'PATCH',
-    url: '/api/users/' + id,
+    url: '/api/users/' + user_id,
     data: { user: user }
   });
 };
@@ -49679,8 +49679,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// import CitiesItem from './cities_item';
-
 var City = function (_React$Component) {
   _inherits(City, _React$Component);
 
@@ -49690,20 +49688,9 @@ var City = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (City.__proto__ || Object.getPrototypeOf(City)).call(this, props));
 
     console.log(_this.props);
-    // console.log(this.props.currentCityId);
     _this.renderEvents = _this.renderEvents.bind(_this);
-    // const cities = values(this.props.cities);
-    // this.city = cities[this.props.currentCityId]
-    // console.log("xxxx",this.city);
     return _this;
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.match.params.id !== this.props.match.params.id) {
-  //     this.props.fetchCity(this.props.match.params.id)
-  //   }
-  // }
-
 
   _createClass(City, [{
     key: 'componentWillMount',
@@ -49712,24 +49699,16 @@ var City = function (_React$Component) {
       this.props.fetchAllEvents();
       this.props.fetchSingleCity(this.props.match.params.id);
     }
-    // componentWillUnmount() {
-    //   this.props.fetchAllCities();
-    //   this.props.fetchSingleCity(this.props.match.params.id);
-    //
-    // }
-
   }, {
     key: 'renderEvents',
     value: function renderEvents() {
       var _this2 = this;
 
       var events = this.props.events;
-      // console.log(events);
 
       events = events.filter(function (event) {
         return event.city_id === _this2.props.currentCityId;
       });
-      // console.log(events);
       return events.map(function (event) {
         return _react2.default.createElement(_city_event_item_container2.default, { key: event.id, event: event });
       });
@@ -49737,10 +49716,6 @@ var City = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      // console.log(this.props);
-      // if (isEmpty(this.props.cities)) {
-      //   return <div>Loading...</div>;
-      // }
       var city = this.props.cities[this.props.currentCityId] || "";
       return _react2.default.createElement(
         'div',
@@ -50208,7 +50183,7 @@ var SessionForm = function (_React$Component) {
 
     _this.state = {
       date: "",
-      time: "",
+      name: "",
       address: "",
       description: "",
       host_id: _this.props.currentUser.id,
@@ -50240,6 +50215,7 @@ var SessionForm = function (_React$Component) {
     value: function update(field) {
       var _this2 = this;
 
+      console.log(field);
       return function (e) {
         _this2.setState(_defineProperty({}, field, e.currentTarget.value));
       };
@@ -50249,15 +50225,17 @@ var SessionForm = function (_React$Component) {
     value: function handleSubmit(e) {
       var _this3 = this;
 
+      console.log(this.props.currentUser);
       e.preventDefault();
-      var event = this.state;
-      this.props.createEvent(event).then(function () {
-        return _this3.props.history.push('/cities/' + _this3.props.currentUser.city_id);
-      });
-      if (this.props.currentUser.city_id === null) {
-        newUser["city_id"] = this.props.city.id;
+      if (this.props.currentUser.city_id === null || this.props.currentUser.city_id === 0) {
+        var newUser = Object.assign({}, this.state.currentUser);
+        newUser["city_id"] = this.state.city_id;
         this.props.setCity(this.props.currentUser.id, newUser);
       }
+      var event = this.state;
+      this.props.createEvent(event).then(function () {
+        return _this3.props.history.push('/cities/' + _this3.state.city_id);
+      });
     }
   }, {
     key: 'renderErrors',
@@ -50277,26 +50255,26 @@ var SessionForm = function (_React$Component) {
   }, {
     key: 'pickCity',
     value: function pickCity() {
-      var cities = (0, _lodash.values)(this.props.cities);
-      if (this.props.currentUser.city_id === null) {
+      var citiesarray = (0, _lodash.values)(this.props.cities);
+      if (this.props.currentUser.city_id === null || this.props.currentUser.city_id === 0) {
         return _react2.default.createElement(
           'div',
           { className: 'pick-city' },
           _react2.default.createElement(
             'select',
-            { name: 'city' },
+            { name: 'city', onChange: this.update('city_id') },
             _react2.default.createElement(
               'option',
               { value: '', disabled: true, selected: true },
               'Set default city'
             ),
-            cities.map(function (el) {
+            citiesarray.map(function (el) {
               console.log(_typeof(el.name));
               return _react2.default.createElement(
                 'option',
                 {
                   key: el.id,
-                  value: el.name
+                  value: el.id
                 },
                 el.name
               );
