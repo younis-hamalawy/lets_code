@@ -31,14 +31,12 @@ class SessionForm extends React.Component {
   }
 
   update(field) {
-    console.log(field);
     return e => {
       this.setState({ [field]: e.currentTarget.value});
     };
   }
 
   handleSubmit(e) {
-    console.log(this.props.currentUser);
     e.preventDefault();
     if (this.props.currentUser.city_id === null){
       let newUser = Object.assign({}, this.state.currentUser);
@@ -73,7 +71,6 @@ class SessionForm extends React.Component {
             <option value="" disabled selected>Set default city</option>
             {
               citiesarray.map( (el) => {
-                console.log(typeof(el.name));
                 return (<option
                   key={el.id}
                   value={el.id}

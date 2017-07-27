@@ -14,11 +14,19 @@ $base: 0.75rem;
 .cities-list {
   // height: 23rem;
   // width: 23orrem;
+  max-width: 80vw;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  flex-flow: row-wrap;
   padding: 1rem 12rem;
 }
+
+ .inner-list {
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+ }
 
 p.img-text {
   z-index:1;

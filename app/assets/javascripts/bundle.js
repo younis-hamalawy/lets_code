@@ -25227,7 +25227,7 @@ var matchPath = function matchPath(pathname) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.selectAllEvents = exports.selectAllCities = undefined;
+exports.selectPastEvents = exports.selectJoinedEvents = exports.selectHostedEvents = exports.selectAllEvents = exports.selectAllCities = undefined;
 
 var _lodash = __webpack_require__(77);
 
@@ -25238,6 +25238,43 @@ var selectAllCities = exports.selectAllCities = function selectAllCities(cities)
 var selectAllEvents = exports.selectAllEvents = function selectAllEvents(_ref) {
   var entities = _ref.entities;
   return (0, _lodash.values)(entities);
+};
+
+var selectHostedEvents = exports.selectHostedEvents = function selectHostedEvents(entities, currentUser) {
+  var hostedEvents = [];
+  var allEventsIds = Object.keys(entities);
+  for (var i = 0; i < allEventsIds.length; i++) {
+    if (entities[allEventsIds[i]].host_id === currentUser.id) {
+      hostedEvents.push(entities[allEventsIds[i]]);
+    }
+  }
+  return hostedEvents;
+};
+
+var selectJoinedEvents = exports.selectJoinedEvents = function selectJoinedEvents(entities) {
+  var joinedEvents = [];
+  var currentDay = new Date();
+  var allEventsIds = Object.keys(entities);
+  for (var i = 0; i < allEventsIds.length; i++) {
+    var date = new Date(entities[allEventsIds[i]].date);
+    if (entities[allEventsIds[i]].attending && currentDay < date) {
+      joinedEvents.push(entities[allEventsIds[i]]);
+    }
+  }
+  return joinedEvents;
+};
+
+var selectPastEvents = exports.selectPastEvents = function selectPastEvents(entities) {
+  var pastEvents = [];
+  var currentDay = new Date();
+  var allEventsIds = Object.keys(entities);
+  for (var i = 0; i < allEventsIds.length; i++) {
+    var date = new Date(entities[allEventsIds[i]].date);
+    if (entities[allEventsIds[i]].attending && currentDay > date) {
+      pastEvents.push(entities[allEventsIds[i]]);
+    }
+  }
+  return pastEvents;
 };
 
 /***/ }),
@@ -49390,13 +49427,20 @@ var Cities = function (_React$Component) {
 
       var cities = this.props.cities;
 
-      return cities.map(function (city) {
+      var length = cities.length;
+
+      var first = cities.slice(0, length / 2).map(function (city) {
         return _react2.default.createElement(_cities_item2.default, { key: city.id, city: city, currentUser: _this2.props.currentUser, setCity: _this2.props.setCity });
       });
+      var second = cities.slice(length / 2).map(function (city) {
+        return _react2.default.createElement(_cities_item2.default, { key: city.id, city: city, currentUser: _this2.props.currentUser, setCity: _this2.props.setCity });
+      });
+      return [first, second];
     }
   }, {
     key: 'render',
     value: function render() {
+      var citiesList = this.renderCities();
       return _react2.default.createElement(
         'div',
         { className: 'cities-container' },
@@ -49417,7 +49461,16 @@ var Cities = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'cities-list' },
-          this.renderCities()
+          _react2.default.createElement(
+            'div',
+            { className: 'inner-list' },
+            citiesList[0]
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'inner-list' },
+            citiesList[1]
+          )
         ),
         _react2.default.createElement(
           'div',
@@ -50177,8 +50230,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(4);
@@ -50242,7 +50293,6 @@ var SessionForm = function (_React$Component) {
     value: function update(field) {
       var _this2 = this;
 
-      console.log(field);
       return function (e) {
         _this2.setState(_defineProperty({}, field, e.currentTarget.value));
       };
@@ -50252,7 +50302,6 @@ var SessionForm = function (_React$Component) {
     value: function handleSubmit(e) {
       var _this3 = this;
 
-      console.log(this.props.currentUser);
       e.preventDefault();
       if (this.props.currentUser.city_id === null) {
         var newUser = Object.assign({}, this.state.currentUser);
@@ -50296,7 +50345,6 @@ var SessionForm = function (_React$Component) {
               'Set default city'
             ),
             citiesarray.map(function (el) {
-              console.log(_typeof(el.name));
               return _react2.default.createElement(
                 'option',
                 {
@@ -50646,6 +50694,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _reactRedux = __webpack_require__(21);
 
+var _reactRouterDom = __webpack_require__(16);
+
 var _events_actions = __webpack_require__(78);
 
 var _selectors = __webpack_require__(84);
@@ -50659,7 +50709,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     currentUser: state.session.currentUser,
-    events: (0, _selectors.selectAllEvents)(state.events)
+    hostedEvents: (0, _selectors.selectHostedEvents)(state.events.entities, state.session.currentUser),
+    joinedEvents: (0, _selectors.selectJoinedEvents)(state.events.entities),
+    pastEvents: (0, _selectors.selectPastEvents)(state.events.entities)
   };
 };
 
@@ -50671,7 +50723,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_dashboard2.default);
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_dashboard2.default));
 
 /***/ }),
 /* 396 */
@@ -50728,19 +50780,8 @@ var Dashboard = function (_React$Component) {
   }, {
     key: 'showEvents',
     value: function showEvents() {
-      // const pastEvents = [];
-      var joinedEvents = [];
-      var hostedEvents = [];
-      var allEvents = this.props.events || [];
 
-      for (var i = 0; i < allEvents.length; i++) {
-        if (allEvents[i].attending) {
-          joinedEvents.push(allEvents[i]);
-        } else if (allEvents[i].host_id === this.props.currentUser.id) {
-          hostedEvents.push(allEvents[i]);
-        }
-      }
-      if (joinedEvents.length === 0 && hostedEvents.length === 0) {
+      if (this.props.joinedEvents.length === 0 && this.props.hostedEvents.length === 0) {
         return _react2.default.createElement(
           'div',
           null,
@@ -50764,8 +50805,7 @@ var Dashboard = function (_React$Component) {
           )
         );
       }
-      // let joinedEventsValues = values(joinedEvents);
-      // let hostedEventsValues = values(joinedEvents);
+
       return _react2.default.createElement(
         'div',
         null,
@@ -50783,7 +50823,7 @@ var Dashboard = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'dashboard-hosted-events' },
-              hostedEvents.map(function (event) {
+              this.props.hostedEvents.map(function (event) {
                 return _react2.default.createElement(_dashboard_item2.default, {
                   key: event.id,
                   event: event
@@ -50806,7 +50846,7 @@ var Dashboard = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'dashboard-current-events' },
-              joinedEvents.map(function (event) {
+              this.props.joinedEvents.map(function (event) {
                 return _react2.default.createElement(_dashboard_item2.default, {
                   key: event.id,
                   event: event

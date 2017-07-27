@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
-
+import { withRouter } from 'react-router-dom';
 import { fetchAllEvents } from '../../actions/events_actions';
-import { selectAllEvents } from '../../reducers/selectors';
+import { selectHostedEvents, selectJoinedEvents, selectPastEvents } from '../../reducers/selectors';
 import Dashboard from './dashboard';
 
 
 const mapStateToProps = (state, ownProps) => {
   return ({
     currentUser: state.session.currentUser,
-    events: selectAllEvents(state.events)
+    hostedEvents: selectHostedEvents(state.events.entities, state.session.currentUser),
+    joinedEvents: selectJoinedEvents(state.events.entities),
+    pastEvents: selectPastEvents(state.events.entities)
   })
 };
 
@@ -16,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
   fetchAllEvents: () => dispatch(fetchAllEvents()),
 });
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Dashboard);
+)(Dashboard));

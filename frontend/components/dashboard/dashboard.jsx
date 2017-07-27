@@ -15,19 +15,8 @@ class Dashboard extends React.Component {
   }
 
   showEvents() {
-    // const pastEvents = [];
-    const joinedEvents = [];
-    const hostedEvents = [];
-    const allEvents = this.props.events || [];
 
-    for (let i = 0; i < allEvents.length; i++) {
-      if (allEvents[i].attending) {
-        joinedEvents.push(allEvents[i]);
-      } else if (allEvents[i].host_id === this.props.currentUser.id) {
-        hostedEvents.push(allEvents[i]);
-      }
-    }
-    if (joinedEvents.length === 0 && hostedEvents.length === 0) {
+    if (this.props.joinedEvents.length === 0 && this.props.hostedEvents.length === 0) {
       return (
         <div>
           <h4 className="dashboard-header-1">
@@ -42,8 +31,7 @@ class Dashboard extends React.Component {
         </div>
       );
     }
-      // let joinedEventsValues = values(joinedEvents);
-      // let hostedEventsValues = values(joinedEvents);
+
     return (
       <div>
         <h4 className="dashboard-header-1">
@@ -54,7 +42,7 @@ class Dashboard extends React.Component {
           <ul className="dashboard-ul">
             <div className="dashboard-hosted-events">
               {
-                hostedEvents.map(event => (
+                this.props.hostedEvents.map(event => (
                   <DashboardItem
                     key={event.id}
                     event={event}
@@ -73,7 +61,7 @@ class Dashboard extends React.Component {
           <ul className="dashboard-ul-current">
             <div className="dashboard-current-events">
               {
-                joinedEvents.map(event => (
+                this.props.joinedEvents.map(event => (
                   <DashboardItem
                     key={event.id}
                     event={event}
