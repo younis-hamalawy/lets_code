@@ -61,3 +61,24 @@
     }
   }
 }
+
+.dashboard-hosted-events, .dashboard-current-events {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 70vw;
+}
+
+.dashboard-ul, .dashboard-ul-current {
+  display: flex;
+  // flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.join {
+  display: flex;
+  justify-content: center;
+}
