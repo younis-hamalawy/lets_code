@@ -1,3 +1,4 @@
+$base: 0.75rem;
 .city-event-item-container {
   background-color: #fffdf8;
   width: 15rem;
@@ -117,5 +118,30 @@
       padding-left: 1.5rem;
       font-weight: bold;
     }
+  }
+  .lets-code-button {
+
+    font-family: 'Josefin Slab', serif;
+    font-weight: 1000;
+    font-size: $base*2.5;
+    border:solid 1px #41403E;
+    align-self:center;
+    margin:2rem;
+    // background:transparent;
+    padding:0.8rem 0.9rem;
+    // margin: rem;
+    transition:all .5s ease;
+    color: #343336;
+
+    letter-spacing:1px;
+    outline:none;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    background-color: rgba(255, 188, 72, 0.5);
+    // opacity: 0.8;
+  }
+
+  .lets-code-button:hover{
+    box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
   }
 }

@@ -66,9 +66,9 @@ class SessionForm extends React.Component {
     let citiesarray = values(this.props.cities);
     if (this.props.currentUser.city_id === null){
       return(
-        <div className="pick-city">
-          <select name="city" onChange={this.update('city_id')}>
-            <option value="" disabled selected>Set default city</option>
+        <div>
+          <select className="city" onChange={this.update('city_id')}>
+            <option  value="" selected disabled>Set default city</option>
             {
               citiesarray.map( (el) => {
                 return (<option

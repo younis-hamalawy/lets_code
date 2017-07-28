@@ -50363,13 +50363,13 @@ var SessionForm = function (_React$Component) {
       if (this.props.currentUser.city_id === null) {
         return _react2.default.createElement(
           'div',
-          { className: 'pick-city' },
+          null,
           _react2.default.createElement(
             'select',
-            { name: 'city', onChange: this.update('city_id') },
+            { className: 'city', onChange: this.update('city_id') },
             _react2.default.createElement(
               'option',
-              { value: '', disabled: true, selected: true },
+              { value: '', selected: true, disabled: true },
               'Set default city'
             ),
             citiesarray.map(function (el) {
@@ -50831,12 +50831,12 @@ var Dashboard = function (_React$Component) {
             { className: 'join' },
             this.props.currentUser.city_id ? _react2.default.createElement(
               _reactRouterDom.Link,
-              { className: 'host-button', to: '/cities/' + this.props.currentUser.city_id },
-              'Join a coding meet up!'
+              { className: 'lets-code-button', to: '/cities/' + this.props.currentUser.city_id },
+              'Join a meetup!'
             ) : _react2.default.createElement(
               _reactRouterDom.Link,
-              { className: 'host-button', to: '/cities' },
-              'Join a coding meetup!'
+              { className: 'lets-code-button', to: '/cities' },
+              'Join a meetup!'
             )
           )
         );

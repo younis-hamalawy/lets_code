@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
           </h4>
 
           <div className="join">
-            { this.props.currentUser.city_id ? <Link className='host-button' to={`/cities/${this.props.currentUser.city_id}`}>Join a coding meet up!</Link> : <Link className='host-button' to={'/cities'}>Join a coding meetup!</Link>}
+            { this.props.currentUser.city_id ? <Link className='lets-code-button' to={`/cities/${this.props.currentUser.city_id}`}>Join a meetup!</Link> : <Link className='lets-code-button' to={'/cities'}>Join a meetup!</Link>}
 
           </div>
 
