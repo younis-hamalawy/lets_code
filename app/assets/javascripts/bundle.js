@@ -25241,6 +25241,7 @@ var selectAllEvents = exports.selectAllEvents = function selectAllEvents(_ref) {
 };
 
 var selectHostedEvents = exports.selectHostedEvents = function selectHostedEvents(entities, currentUser) {
+  entities = entities || {};
   var hostedEvents = [];
   var allEventsIds = Object.keys(entities);
   for (var i = 0; i < allEventsIds.length; i++) {
@@ -25252,6 +25253,7 @@ var selectHostedEvents = exports.selectHostedEvents = function selectHostedEvent
 };
 
 var selectJoinedEvents = exports.selectJoinedEvents = function selectJoinedEvents(entities) {
+  entities = entities || {};
   var joinedEvents = [];
   var currentDay = new Date();
   var allEventsIds = Object.keys(entities);
@@ -25265,6 +25267,7 @@ var selectJoinedEvents = exports.selectJoinedEvents = function selectJoinedEvent
 };
 
 var selectPastEvents = exports.selectPastEvents = function selectPastEvents(entities) {
+  entities = entities || {};
   var pastEvents = [];
   var currentDay = new Date();
   var allEventsIds = Object.keys(entities);
@@ -50498,44 +50501,52 @@ var Splash = function (_React$Component) {
         { className: 'splash-container' },
         _react2.default.createElement(
           'div',
-          { className: 'first' },
+          { className: 'splash-main' },
           _react2.default.createElement(
             'div',
-            { className: 'everyone' },
+            { className: 'transbox1' },
             _react2.default.createElement(
-              'h1',
-              null,
-              'Everyone is interesting'
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'first' },
-          _react2.default.createElement(
-            'div',
-            { className: 'screen' },
+              'div',
+              { className: 'first' },
+              _react2.default.createElement(
+                'div',
+                { className: 'everyone' },
+                _react2.default.createElement(
+                  'h1',
+                  null,
+                  'Everyone is interesting'
+                )
+              )
+            ),
             _react2.default.createElement(
-              'h2',
-              null,
-              'But you don\u2019t discover that when you\u2019re staring at a screen'
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'first' },
-          _react2.default.createElement(
-            'div',
-            { className: 'lets-code-button' },
-            this.props.session.currentUser ? _react2.default.createElement(
-              _reactRouterDom.Link,
-              { className: 'host-button', to: '/cities' },
-              'Let\'s code together!'
-            ) : _react2.default.createElement(
-              _reactRouterDom.Link,
-              { className: 'host-button', to: '/signUp' },
-              'Let\'s code together!'
+              'div',
+              { className: 'first' },
+              _react2.default.createElement(
+                'div',
+                { className: 'screen' },
+                _react2.default.createElement(
+                  'h2',
+                  null,
+                  'But you don\u2019t discover that when you\u2019re staring at a screen'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'first' },
+              _react2.default.createElement(
+                'div',
+                { className: 'lets-code-button' },
+                this.props.session.currentUser ? _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { className: 'host-button', to: '/cities' },
+                  'Let\'s code together!'
+                ) : _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { className: 'host-button', to: '/signUp' },
+                  'Let\'s code together!'
+                )
+              )
             )
           )
         ),

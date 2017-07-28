@@ -5,6 +5,7 @@ export const selectAllCities = cities => values(cities);
 export const selectAllEvents = ({ entities }) => values(entities);
 
 export const selectHostedEvents = (entities, currentUser) => {
+  entities = entities || {};
   const hostedEvents = [];
   const allEventsIds = Object.keys(entities);
   for (let i = 0; i < allEventsIds.length; i++) {
@@ -16,6 +17,7 @@ export const selectHostedEvents = (entities, currentUser) => {
 };
 
 export const selectJoinedEvents = (entities) => {
+  entities = entities || {};
   const joinedEvents = [];
   const currentDay = new Date();
   const allEventsIds = Object.keys(entities);
@@ -29,6 +31,7 @@ export const selectJoinedEvents = (entities) => {
 };
 
 export const selectPastEvents = (entities) => {
+  entities = entities || {};
   const pastEvents = [];
   const currentDay = new Date();
   const allEventsIds = Object.keys(entities);

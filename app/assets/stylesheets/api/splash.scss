@@ -1,0 +1,31 @@
+
+.splash-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://res.cloudinary.com/flying-monkey/image/upload/c_crop,h_1352,w_6260,y_1102/v1501206711/rawpixel-com-247361_eolpxk.jpg");
+  background-repeat: no-repeat;
+  height: auto;
+  width: 100vw;
+  background-size: contain;
+  background-position: center;
+  min-height: 25rem;
+  min-width: 100vw;
+  div.transbox1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    background-color: rgb(221, 223, 214);
+    opacity: 0.4;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+    // background-size: cover;
+    min-height: inherit;
+    min-width: inherit;
+  }
+
+}

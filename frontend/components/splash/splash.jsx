@@ -2,27 +2,31 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class Splash extends React.Component {
-  render(){
-    return(
+  render() {
+    return (
       <div className="splash-container">
-        <div className="first">
-            <div className="everyone">
-              <h1>Everyone is interesting</h1>
+          <div className="splash-main">
+            <div className="transbox1">
+            <div className="first">
+              <div className="everyone">
+                <h1>Everyone is interesting</h1>
+              </div>
+            </div>
+
+            <div className="first">
+              <div className="screen">
+                <h2>But you don’t discover that when you’re staring at a screen</h2>
+              </div>
+            </div>
+
+
+            <div className="first">
+              <div className="lets-code-button">
+                { this.props.session.currentUser ? <Link className='host-button' to={'/cities'}>Let's code together!</Link> : <Link className='host-button' to={'/signUp'}>Let's code together!</Link>}
+              </div>
             </div>
           </div>
-
-          <div className="first">
-            <div className="screen">
-              <h2>But you don’t discover that when you’re staring at a screen</h2>
-            </div>
-          </div>
-
-
-          <div className="first">
-            <div className="lets-code-button">
-              { this.props.session.currentUser ? <Link className='host-button' to={'/cities'}>Let's code together!</Link> : <Link className='host-button' to={'/signUp'}>Let's code together!</Link>}
-            </div>
-          </div>
+        </div>
         <div className="first-container-content">
           <div className="info-container">
             <div className="info">
