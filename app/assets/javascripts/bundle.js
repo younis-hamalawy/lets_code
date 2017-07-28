@@ -50409,29 +50409,29 @@ var SessionForm = function (_React$Component) {
           _react2.default.createElement('br', null),
           _react2.default.createElement(
             'div',
-            { className: 'create-event-form' },
+            { className: 'sign-form' },
             _react2.default.createElement('input', { type: 'text',
               value: this.state.name,
               onChange: this.update('name'),
-              className: 'create-event-box',
+              className: 'sign-input',
               placeholder: 'Name'
             }),
             _react2.default.createElement('input', { type: 'date',
               value: this.state.date,
               onChange: this.update('date'),
-              className: 'create-event-box',
+              className: 'sign-input',
               placeholder: 'Date'
             }),
             _react2.default.createElement('input', { type: 'text',
               value: this.state.address,
               onChange: this.update('address'),
-              className: 'create-event-box',
+              className: 'sign-input',
               placeholder: 'Address'
             }),
             _react2.default.createElement('input', { type: 'text',
               value: this.state.description,
               onChange: this.update('description'),
-              className: 'create-event-box',
+              className: 'sign-input',
               placeholder: 'Description'
             }),
             this.pickCity(),
@@ -50441,7 +50441,7 @@ var SessionForm = function (_React$Component) {
               { className: 'errors' },
               this.renderErrors()
             ),
-            _react2.default.createElement('input', { className: 'host-submit', type: 'submit', value: 'HOST THIS EVENT!' })
+            _react2.default.createElement('input', { className: 'sign-button', type: 'submit', value: 'HOST THIS EVENT!' })
           )
         )
       );

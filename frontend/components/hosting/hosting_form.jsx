@@ -93,35 +93,35 @@ class SessionForm extends React.Component {
           <h2>JOIN THE HOST COMMUNITY</h2>
           <p className="create-event-text">Learn to code at your own pace by bringing strangers together for a great programming experience</p>
           <br/>
-          <div className="create-event-form">
+          <div className="sign-form">
             <input type="text"
               value={this.state.name}
               onChange={this.update('name')}
-              className="create-event-box"
+              className="sign-input"
               placeholder="Name"
               />
             <input type="date"
               value={this.state.date}
               onChange={this.update('date')}
-              className="create-event-box"
+              className="sign-input"
               placeholder="Date"
               />
             <input type="text"
               value={this.state.address}
               onChange={this.update('address')}
-              className="create-event-box"
+              className="sign-input"
               placeholder="Address"
               />
             <input type="text"
               value={this.state.description}
               onChange={this.update('description')}
-              className="create-event-box"
+              className="sign-input"
               placeholder="Description"
               />
             {this.pickCity()}
             <br/>
             <div className="errors">{this.renderErrors()}</div>
-            <input className='host-submit' type="submit" value="HOST THIS EVENT!" />
+            <input className='sign-button' type="submit" value="HOST THIS EVENT!" />
           </div>
         </form>
       </div>
