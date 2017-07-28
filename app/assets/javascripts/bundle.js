@@ -50565,11 +50565,11 @@ var Splash = function (_React$Component) {
                 this.props.session.currentUser ? _react2.default.createElement(
                   _reactRouterDom.Link,
                   { className: 'host-button', to: '/cities' },
-                  'Let\'s code together!'
+                  'let\'s code together!'
                 ) : _react2.default.createElement(
                   _reactRouterDom.Link,
                   { className: 'host-button', to: '/signUp' },
-                  'Let\'s code together!'
+                  'let\'s code together!'
                 )
               )
             )
@@ -50699,11 +50699,11 @@ var Splash = function (_React$Component) {
               this.props.session.currentUser ? _react2.default.createElement(
                 _reactRouterDom.Link,
                 { className: 'host-button', to: '/cities' },
-                'LET\'S CODE TOGETHER!'
+                'let\'s code together!'
               ) : _react2.default.createElement(
                 _reactRouterDom.Link,
                 { className: 'host-button', to: '/signUp' },
-                'LET\'S CODE TOGETHER!'
+                'let\'s code together!'
               )
             )
           )

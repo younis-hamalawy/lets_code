@@ -22,7 +22,7 @@ class Splash extends React.Component {
 
             <div className="first">
               <div className="lets-code-button">
-                { this.props.session.currentUser ? <Link className='host-button' to={'/cities'}>Let's code together!</Link> : <Link className='host-button' to={'/signUp'}>Let's code together!</Link>}
+                { this.props.session.currentUser ? <Link className='host-button' to={'/cities'}>let's code together!</Link> : <Link className='host-button' to={'/signUp'}>let's code together!</Link>}
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@ class Splash extends React.Component {
               </div>
             </div>
             <div className="lets-code-button">
-              { this.props.session.currentUser ? <Link className='host-button' to={'/cities'}>LET'S CODE TOGETHER!</Link> : <Link className='host-button' to={'/signUp'}>LET'S CODE TOGETHER!</Link>}
+              { this.props.session.currentUser ? <Link className='host-button' to={'/cities'}>let's code together!</Link> : <Link className='host-button' to={'/signUp'}>let's code together!</Link>}
             </div>
           </div>
         </div>
