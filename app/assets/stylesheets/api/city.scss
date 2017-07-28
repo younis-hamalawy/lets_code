@@ -142,11 +142,12 @@ div.event {
   align-items: center;
   justify-content: center;
   max-width: 70vw;
+  flex-grow: 1;
   .city-event-item-container {
     background-color: #fffdf8;
-    width: 15rem;
-    max-width: 15rem;
-    min-height: 20rem;
+    width: 15em;
+    // max-width: 15em;
+    min-height: 20em;
     margin: 1rem 1.5rem;
     padding: 1rem;
     border-style: solid;
@@ -159,7 +160,7 @@ div.event {
     .event-details{
       display: flex;
       flex-direction: column;
-      min-height: 15rem;
+      min-height: 16em;
       align-items: center;
       // flex: 1;
       .event-city-name {
