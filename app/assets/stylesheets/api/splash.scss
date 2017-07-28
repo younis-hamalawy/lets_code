@@ -13,7 +13,7 @@ $base: 0.75rem;
   min-height: 25rem;
   min-width: 100vw;
   // opacity: 0.4;
-  filter: alpha(opacity=30);
+  // filter: alpha(opacity=30);
   div.transbox1 {
     width: 100%;
     z-index: 1;
@@ -26,7 +26,7 @@ $base: 0.75rem;
     align-items: center;
     // background-color: rgb(221, 223, 214);
     // opacity: 0.2;
-    filter: alpha(opacity=60); /* For IE8 and earlier */
+    // filter: alpha(opacity=60); /* For IE8 and earlier */
     // background-size: cover;
     min-height: inherit;
     min-width: inherit;

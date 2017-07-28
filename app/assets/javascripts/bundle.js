@@ -50035,8 +50035,8 @@ var CityEventItem = function (_React$Component) {
         if (this.props.event.host_id === this.props.currentUser.id) {
           return _react2.default.createElement(
             'button',
-            { className: 'sign-button', disabled: true },
-            'You are hosting this event!'
+            { className: 'sign-button1', disabled: true },
+            'Hosting!'
           );
         }
         if (this.props.event.attending === true) {
@@ -50127,36 +50127,61 @@ var CityEventItem = function (_React$Component) {
         'div',
         { key: this.props.event.id, className: 'city-event-item-container' },
         _react2.default.createElement(
-          'p',
-          { className: 'event-city-name' },
-          this.props.event.name
+          'div',
+          { className: 'event-details' },
+          _react2.default.createElement(
+            'div',
+            { className: 'event-detail' },
+            _react2.default.createElement(
+              'p',
+              { className: 'event-city-name' },
+              this.props.event.name
+            ),
+            _react2.default.createElement(
+              'p',
+              { className: 'event-day' },
+              this.formatDay()
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'day' },
+              _react2.default.createElement(
+                'p',
+                { className: 'event-month' },
+                this.formatMonth(),
+                '\xA0\xA0'
+              ),
+              _react2.default.createElement(
+                'p',
+                { className: 'event-daynumber' },
+                this.dayNumber()
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'box-footer1' },
+            _react2.default.createElement(
+              'div',
+              { className: 'box-footer' },
+              _react2.default.createElement(
+                'p',
+                { className: 'event-description' },
+                this.props.event.description
+              ),
+              _react2.default.createElement(
+                'p',
+                { className: 'event-address' },
+                this.props.event.address
+              )
+            )
+          )
         ),
         _react2.default.createElement(
-          'p',
-          { className: 'event-day' },
-          this.formatDay()
-        ),
-        _react2.default.createElement(
-          'p',
-          { className: 'event-month' },
-          this.formatMonth()
-        ),
-        _react2.default.createElement(
-          'p',
-          { className: 'event-daynumber' },
-          this.dayNumber()
-        ),
-        _react2.default.createElement(
-          'p',
-          { className: 'event-description' },
-          this.props.event.description
-        ),
-        _react2.default.createElement(
-          'p',
-          { className: 'event-address' },
-          this.props.event.address
-        ),
-        this.registerEventButton()
+          'div',
+          { className: 'small-border' },
+          this.registerEventButton()
+        )
       );
     }
   }]);
