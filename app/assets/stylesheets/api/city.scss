@@ -145,7 +145,8 @@ div.event {
   .city-event-item-container {
     background-color: #fffdf8;
     width: 15rem;
-    height: 18rem;
+    max-width: 15rem;
+    min-height: 20rem;
     margin: 1rem 1.5rem;
     padding: 1rem;
     border-style: solid;
@@ -153,12 +154,14 @@ div.event {
     border-color: #ddd;
     display: flex;
     flex-direction: column;
+    flex: 1;
     // flex-wrap: wrap;
     .event-details{
       display: flex;
       flex-direction: column;
-      height: 15rem;
+      min-height: 15rem;
       align-items: center;
+      // flex: 1;
       .event-city-name {
         color: rgba(255,0,0,0.8);
         margin-top: 1rem;
@@ -217,7 +220,8 @@ div.event {
   padding-top: 1rem;
   display: flex;
   justify-content: center;
-  height: 3rem;
+  min-height: 3rem;
+  flex: 1;
   .sign-button {
     background: white;
   }

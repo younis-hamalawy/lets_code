@@ -1,8 +1,8 @@
 $base: 0.75rem;
 .city-event-item-container {
   background-color: #fffdf8;
-  width: 15rem;
-  height: 16rem;
+  max-width: 15rem;
+  min-height: 17rem;
   margin: 1rem 1.5rem;
   padding: 1rem;
   border-style: solid;
@@ -10,6 +10,7 @@ $base: 0.75rem;
   border-color: #ddd;
   display: flex;
   flex-direction: column;
+  flex: 1;
   // flex-wrap: wrap;
   .event-details{
     display: flex;
