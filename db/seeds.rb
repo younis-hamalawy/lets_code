@@ -8,7 +8,7 @@
 
 User.destroy_all
 
-User.create!(first_name: "Steve", last_name: "Buscemi", email: "steve@gmail.com", password: "password")
+User.create!(first_name: "Jamie", last_name: "Buscemi", email: "jamie@gmail.com", password: "password")
 User.create!(first_name: "Stuntman", last_name: "Mike", email: "stuntman@gmail.com", password: "password")
 User.create!(first_name: "Zoe", last_name: "Bell", email: "zoe@gmail.com", password: "password")
 User.create!(first_name: "Jungle", last_name: "Julia", email: "julia@gmail.com", password: "password")
@@ -44,45 +44,17 @@ Event.create!(date: Faker::Date.forward(50), name:"Intermediate C++", address: "
 Event.create!(date: Faker::Date.forward(50), name:"Ruby for the Intermediate", address: "2760 24th St, San Francisco, CA 94110, USA", description: "Come join us under the sun at the backyard of Dynamo Donut & coffee", host_id: 3, city_id: 1)
 Event.create!(date: Faker::Date.forward(50), name:"React overview", address: "3248 22nd St, San Francisco, CA 94110, USA", description: "@Revolution Cafe in mission we're talking React", host_id: 1, city_id: 1)
 
+Event.create!(date: Faker::Date.forward(50), name:"Ruby for beginners", address: "Humphry Slocombe, 2790A Harrison St, Chicago", description: "Just a few people coding ruby at an Ice Cream parlor", host_id: 2, city_id: 6)
+Event.create!(date: Faker::Date.forward(50), name:"JavaScript forever @bluebottle", address: "2900 18th St", description: "The most advanced JS coding experience with skillful players in the field", host_id: 3, city_id: 2)
+Event.create!(date: Faker::Date.forward(50), name:"Intermediate C++", address: "3049 20th St", description: "Come code with me @Atlas cafe, they have the best tea in town.", host_id: 2, city_id: 1)
+Event.create!(date: Faker::Date.forward(50), name:"Ruby for the Intermediate", address: "2760 24th St", description: "Come join us under the sun at the backyard of Dynamo Donut & coffee", host_id: 3, city_id: 3)
+Event.create!(date: Faker::Date.forward(50), name:"React overview", address: "3248 22nd St", description: "@Revolution Cafe in mission we're talking React", host_id: 2, city_id: 4)
+Event.create!(date: Faker::Date.forward(50), name:"Ruby for beginners", address: "Humphry Slocombe, 2790A Harrison St", description: "Just a few people coding ruby at an Ice Cream parlor", host_id: 2, city_id: 2)
+Event.create!(date: Faker::Date.forward(50), name:"JavaScript forever @bluebottle", address: "2900 18th St", description: "The most advanced JS coding experience with skillful players in the field", host_id: 6, city_id: 5)
+Event.create!(date: Faker::Date.forward(50), name:"Intermediate C++", address: "3049 20th St", description: "Come code with me @Atlas cafe, they have the best tea in town.", host_id: 7, city_id: 3)
+Event.create!(date: Faker::Date.forward(50), name:"Ruby for the Intermediate", address: "2760 24th St", description: "Come join us under the sun at the backyard of Dynamo Donut & coffee", host_id: 3, city_id: 3)
+Event.create!(date: Faker::Date.forward(50), name:"React overview", address: "3248 22nd St", description: "@Revolution Cafe in mission we're talking React", host_id: 1, city_id: 3)
 
-# Event.create!(date: Faker::Date.forward(50), time: "8:55 AM", name:"Ruby for beginners", address: "239 E 5th St, New York, NY 10003", description: "Local chain.", host_id: 3, city_id: 8)
-# Event.create!(date: Faker::Date.forward(50), time: "11:40 AM", name:"Ruby for beginners", address: "187 Columbus Ave, New York, NY 10023", description: "Free-trade tea here.", host_id: 1, city_id: 8)
-# Event.create!(date: Faker::Date.forward(50), time: "10:30 AM", name:"Ruby for beginners", address: "18 W 29th St, New York, NY 10001", description: "Thoughtfully sourced tea.", host_id: 3, city_id: 8)
-# Event.create!(date: Faker::Date.forward(50), time: "8:10 AM", name:"Ruby for beginners", address: "180 10th Ave, New York, NY 10011", description: "Soccer fans!", host_id: 4, city_id: 8)
-# Event.create!(date: Faker::Date.forward(50), time: "12:30 PM", name:"Ruby for beginners", address: "21 E 27th St, New York, NY 10016", description: "Art-adorned tea shop.", host_id: 5, city_id: 8)
-#
-#
-#
-#
-# Event.create!(date: Faker::Date.forward(50), time: "8:30 AM", name:"Ruby for beginners", address: "735 Columbus Ave, San Francisco, CA 94133", description: "Venerable tea shop.", host_id: 1, city_id: 7)
-# Event.create!(date: Faker::Date.forward(50), time: "9:40 AM", name:"Ruby for beginners", address: "200 Columbus Ave, San Francisco, CA 94133", description: "Small & bustling spot.", host_id: 1, city_id: 7)
-# Event.create!(date: Faker::Date.forward(50), time: "10:30 AM", name:"Ruby for beginners", address: "375 Valencia St, San Francisco, CA 94103", description: "Trendy cafe chain with great tea!", host_id: 3, city_id: 7)
-# Event.create!(date: Faker::Date.forward(50), time: "8:10 AM", name:"Ruby for beginners", address: "315 Linden St, San Francisco, CA 94102", description: "Rustic ambiance.", host_id: 4, city_id: 7)
-# Event.create!(date: Faker::Date.forward(50), time: "12:30 PM", name:"Ruby for beginners", address: "375 Taylor St, San Francisco, CA 94102", description: "Artisanal tea.", host_id: 5, city_id: 7)
-#
-#
-#
-# Event.create!(date: Faker::Date.forward(50), time: "9:30 AM", name:"Ruby for beginners", address: "Grønlandsleiret 32, 0190 Oslo, Norway", description: "Contemporary setting.", host_id: 1, city_id: 6)
-# Event.create!(date: Faker::Date.forward(50), time: "1:30 PM", name:"Ruby for beginners", address: "Olav Vs gate 2, 0161 Oslo, Norway", description: "Bi-level airy spot.", host_id: 1, city_id: 6)
-# Event.create!(date: Faker::Date.forward(50), time: "4:30 PM", name:"Ruby for beginners", address: "Thorvald Meyers gate 18A, 0474 Oslo, Norway", description: "Great pastries.", host_id: 3, city_id: 6)
-# Event.create!(date: Faker::Date.forward(50), time: "9:15 AM", name:"Ruby for beginners", address: "Universitetsgata 2, 0164 Oslo, Norway", description: "Specializes in custom blends.", host_id: 4, city_id: 6)
-# Event.create!(date: Faker::Date.forward(50), time: "11:30 AM", name:"Ruby for beginners", address: "Grüners gate 1, 0552 Oslo, Norway", description: "Laid back local chain.", host_id: 5, city_id: 6)
-#
-#
-#
-# Event.create!(date: Faker::Date.forward(50), time: "8:30 AM", name:"Ruby for beginners", address: "1-19-8 Dogenzaka, Shibuya-ku", description: "Trendy chain.", host_id: 1, city_id: 5)
-# Event.create!(date: Faker::Date.forward(50), time: "6:40 PM", name:"Ruby for beginners", address: "1-16-11 Tomigaya, Shibuya-ku", description: "Bakey cafe.", host_id: 1, city_id: 5)
-# Event.create!(date: Faker::Date.forward(50), time: "10:30 AM", name:"Ruby for beginners", address: "5-17-5 Jingumae, Shibuya-ku", description: "Loose-leaf teas.", host_id: 3, city_id: 5)
-# Event.create!(date: Faker::Date.forward(50), time: "8:10 AM", name:"Ruby for beginners", address: "3-1-4 Kiyosumi, Koto", description: "Funky and comfortable.", host_id: 4, city_id: 5)
-# Event.create!(date: Faker::Date.forward(50), time: "12:30 PM", name:"Ruby for beginners", address: "1-17-23 Meguro, Meguro-ku", description: "Intimate tea shop.", host_id: 5, city_id: 5)
-#
-#
-#
-# Event.create!(date: Faker::Date.forward(50), time: "8:30 AM", name:"Ruby for beginners", address: "Klubbgata 3, 4013 Stavanger, Norway", description: "Upscale, light-filled cafe.", host_id: 13, city_id: 4)
-# Event.create!(date: Faker::Date.forward(50), time: "9:40 AM", name:"Ruby for beginners", address: "Øvre Holmegate 25, 4006 Stavanger, Norway", description: "Snacks will be served.", host_id: 13, city_id: 4)
-# Event.create!(date: Faker::Date.forward(50), time: "12:10 PM", name:"Ruby for beginners", address: "Øvre Holmegate 32, 4006 Stavanger, Norway", description: "International teas.", host_id: 3, city_id: 4)
-# Event.create!(date: Faker::Date.forward(50), time: "8:10 AM", name:"Ruby for beginners", address: "Kongsgata 48, 4005 Stavanger, Norway", description: "Cozy spot.", host_id: 11, city_id: 4)
-# Event.create!(date: Faker::Date.forward(50), time: "12:30 PM", name:"Ruby for beginners", address: "Klubbgata 5, 4013 Stavanger, Norway", description: "Quaint tea shop.", host_id: 11, city_id: 4)
 
 
 Registration.destroy_all
@@ -93,3 +65,15 @@ Registration.create!(user_id: 2, event_id: 5)
 Registration.create!(user_id: 3, event_id: 5)
 Registration.create!(user_id: 6, event_id: 2)
 Registration.create!(user_id: 5, event_id: 1)
+Registration.create!(user_id: 2, event_id: 5)
+Registration.create!(user_id: 4, event_id: 5)
+Registration.create!(user_id: 5, event_id: 2)
+Registration.create!(user_id: 7, event_id: 1)
+Registration.create!(user_id: 8, event_id: 5)
+Registration.create!(user_id: 9, event_id: 5)
+Registration.create!(user_id: 10, event_id: 2)
+Registration.create!(user_id: 1, event_id: 7)
+Registration.create!(user_id: 1, event_id: 9)
+Registration.create!(user_id: 1, event_id: 10)
+Registration.create!(user_id: 1, event_id: 12)
+Registration.create!(user_id: 5, event_id: 9)
