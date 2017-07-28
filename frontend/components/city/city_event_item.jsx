@@ -26,7 +26,7 @@ class CityEventItem extends React.Component {
       if (this.props.currentUser){
         if (this.props.event.host_id === this.props.currentUser.id){
           return (
-            <button className="sign-button" disabled>You are the host!</button>
+            <button className="sign-button" disabled>You are hosting this event!</button>
           )
         }
         if (this.props.event.attending === true){

@@ -100,14 +100,20 @@ p.img-text:hover {
   flex-direction: column;
   align-items: center;
   align-content: space-between;
-  min-height: 9rem;
-  min-width: 15rem;
-  padding: 0.5rem 1rem;
+  min-height: 10rem;
+  min-width: 18rem;
+  padding: 0.5rem 0.5rem;
   .button-link {
-    padding: 0.5rem 0rem 1rem 0rem;
+    padding: 0.5rem 0rem 0rem 0rem;
     font-family: 'Josefin Slab', serif;
     font-weight: bold;
     font-size: $base;
+  }
+  p.p1 {
+    padding: 0.5rem 0rem 0rem 0rem;
+    font-family: 'Josefin Slab', serif;
+    font-weight: bold;
+    font-size: $base*1.15;
   }
 
 }
@@ -118,9 +124,15 @@ p.img-text:hover {
   align-items: center;
   h2, h3 {
     padding: 0.5rem;
-    font-family: 'Cabin', sans-serif;
+    padding-bottom: 0;
+    font-family: 'Fjalla One', sans-serif;
     color: rgb(92, 92, 92);
+    font-weight: 300;
+  }
+  h3 {
+    font-family: 'Amatic SC', cursive;
     font-weight: bold;
+    font-size: $base*2;
   }
 
 }

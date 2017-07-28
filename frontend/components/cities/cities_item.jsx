@@ -19,7 +19,7 @@ class CitiesItem extends React.Component {
     setCityButton() {
       if (this.props.currentUser){
         if (this.props.currentUser.city_id === this.props.city.id) {
-          return  (<p>Home City</p>)
+          return  (<p className="p1">Home City</p>)
           }else{
             return (
               <a className="button-link" href="#" onClick={this.handleClick}>set as home city</a>)  }

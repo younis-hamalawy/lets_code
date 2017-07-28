@@ -48763,7 +48763,7 @@ var App = function App() {
       _react2.default.createElement(
         'div',
         { className: 'logo' },
-        _react2.default.createElement('img', { src: 'http://res.cloudinary.com/flying-monkey/image/upload/c_scale,h_173,q_100/v1500688575/Logomakr_6c8O0u_hdqiac.png', alt: 'logo', height: '70', width: '165', className: 'logo-img' }),
+        _react2.default.createElement('img', { src: 'http://res.cloudinary.com/flying-monkey/image/upload/c_crop,h_377,w_987/v1501200502/L_C_tshqyx.png', alt: 'logo', height: '50', width: '100', className: 'logo-img' }),
         _react2.default.createElement(
           _reactRouterDom.Link,
           { to: '/' },
@@ -49552,7 +49552,7 @@ var CitiesItem = function (_React$Component) {
         if (this.props.currentUser.city_id === this.props.city.id) {
           return _react2.default.createElement(
             'p',
-            null,
+            { className: 'p1' },
             'Home City'
           );
         } else {
@@ -50033,7 +50033,7 @@ var CityEventItem = function (_React$Component) {
           return _react2.default.createElement(
             'button',
             { className: 'sign-button', disabled: true },
-            'You are the host!'
+            'You are hosting this event!'
           );
         }
         if (this.props.event.attending === true) {
