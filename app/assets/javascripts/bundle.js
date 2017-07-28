@@ -42844,14 +42844,6 @@ var _root_reducer2 = _interopRequireDefault(_root_reducer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// const middlewares = [thunk];
-// if (process.env.NODE_ENV !== 'production') {
-//   // must use 'require' (import only allowed at top of file)
-//   const createLogger = require('redux-logger');
-//   middlewares.push(createLogger());
-// }
-
-// import logger from 'redux-logger';
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   return (0, _redux.createStore)(_root_reducer2.default, preloadedState, (0, _redux.applyMiddleware)(_reduxThunk2.default));
