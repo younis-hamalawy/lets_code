@@ -30,7 +30,7 @@ $base: 0.75rem;
 
 p.img-text {
   z-index:1;
-  color:red;
+  color: rgba(255,0,0,0.75);
   font-weight:bold;
   font-family: 'Fjalla One', sans-serif;
   font-size: $base*2.5;
@@ -100,8 +100,8 @@ p.img-text:hover {
   flex-direction: column;
   align-items: center;
   align-content: space-between;
-  min-height: 20vh;
-  min-width: 20vw;
+  min-height: 14rem;
+  min-width: 25rem;
   padding: 0.5rem 0.9rem;
   .button-link {
     padding: 0.7rem 0rem 0rem 0rem;
@@ -114,6 +114,7 @@ p.img-text:hover {
     font-family: 'Josefin Slab', serif;
     font-weight: bold;
     font-size: $base*1.5;
+    color: #343336;
   }
 
 }
@@ -192,9 +193,10 @@ div.transbox {
   justify-content: center;
   align-content: center;
   align-items: center;
-  background-color: #eddfb1;
-  opacity: 0.4;
-  filter: alpha(opacity=60); /* For IE8 and earlier */
+  background: rgba(255,255,255,0.5);
+  // background-color: #eddfb1;
+  // opacity: 0.4;
+  // filter: alpha(opacity=60); /* For IE8 and earlier */
   // background-size: cover;
   min-height: inherit;
   min-width: inherit;
