@@ -1,7 +1,7 @@
 // Place all the styles related to the api/cities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$base: 0.75rem;
+$base: 0.75em;
 .cities-container {
   display: flex;
   flex-direction: column;
@@ -33,7 +33,7 @@ p.img-text {
   color: rgba(255,0,0,0.75);
   font-weight:bold;
   font-family: 'Fjalla One', sans-serif;
-  font-size: $base*2.5;
+  font-size: $base*2;
 }
 
 p.img-text:hover {
