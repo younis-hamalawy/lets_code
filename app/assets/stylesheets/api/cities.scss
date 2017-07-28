@@ -100,24 +100,27 @@ p.img-text:hover {
   flex-direction: column;
   align-items: center;
   align-content: space-between;
-  min-height: 10rem;
-  min-width: 18rem;
-  padding: 0.5rem 0.5rem;
+  min-height: 14rem;
+  min-width: 23rem;
+  padding: 0.5rem 0.9rem;
   .button-link {
-    padding: 0.5rem 0rem 0rem 0rem;
+    padding: 0.7rem 0rem 0rem 0rem;
     font-family: 'Josefin Slab', serif;
     font-weight: bold;
-    font-size: $base;
+    font-size: $base*1.5;
   }
   p.p1 {
-    padding: 0.5rem 0rem 0rem 0rem;
+    padding: 0.7rem 0rem 0rem 0rem;
     font-family: 'Josefin Slab', serif;
     font-weight: bold;
-    font-size: $base*1.15;
+    font-size: $base*1.5;
   }
 
 }
-
+.cities-header2{
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
 .cities-header1, .cities-header2 {
   display: flex;
   flex-direction: column;
@@ -125,12 +128,13 @@ p.img-text:hover {
   h2, h3 {
     padding: 0.5rem;
     padding-bottom: 0;
-    font-family: 'Fjalla One', sans-serif;
-    color: rgb(92, 92, 92);
+    font-family: 'Amatic SC', cursive;
+    // color: rgb(92, 92, 92);
     font-weight: 300;
+    font-size: $base*5;
   }
   h3 {
-    font-family: 'Amatic SC', cursive;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
     font-weight: bold;
     font-size: $base*2;
   }
