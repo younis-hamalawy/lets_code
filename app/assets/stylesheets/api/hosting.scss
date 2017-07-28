@@ -62,9 +62,15 @@ $base: 0.75rem;
     border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   }
 
-  input.sign-button, button.sign-button {
+  input.sign-button {
     width: 15rem;
-    padding: 0.6rem;
+    padding: 0.6rem 1rem;
+    background-color: rgba(255, 188, 72, 0.5);
+    font-weight: bold;
+    font-size: 2rem;
+    width: auto;
+    color: #343336;
+    // align-self: center;
   }
 
   .city {
