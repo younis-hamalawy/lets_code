@@ -6,7 +6,6 @@ import CityEventItemContainer from './city_event_item_container';
 class City extends React.Component {
   constructor(props) {
     super(props)
-    console.log(this.props);
     this.renderEvents = this.renderEvents.bind(this);
   }
 
@@ -49,7 +48,6 @@ class City extends React.Component {
           <h3>The Host Community is full of amazing stories.</h3>
           <p>How else would someone end up regularly bringing strangers together for Code Time? Before each of them were invited to community, they were attendees that fed their Code Times with their questions, open-mindedness, and presence.</p>
         </div>
-
       </div>
     )
   }

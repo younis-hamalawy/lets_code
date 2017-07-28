@@ -100,11 +100,11 @@ p.img-text:hover {
   flex-direction: column;
   align-items: center;
   align-content: space-between;
-  min-height: 14rem;
-  min-width: 25rem;
-  padding: 0.5rem 0.9rem;
+  min-height: 10em;
+  min-width: 18em;
+  padding: 0.5em 0.9em;
   .button-link {
-    padding: 0.7rem 0rem 0rem 0rem;
+    padding: 0.7em 0rem 0rem 0rem;
     font-family: 'Josefin Slab', serif;
     font-weight: bold;
     font-size: $base*1.5;

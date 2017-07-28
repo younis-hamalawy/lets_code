@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import merge from 'lodash/merge';
 
 class CityEventItem extends React.Component {
   constructor(props) {
@@ -49,7 +48,6 @@ class CityEventItem extends React.Component {
         }else{
           day++;
         }
-        // let month = date.getMonth();
         switch (day) {
           case 0:
             return "Sunday";
@@ -104,7 +102,6 @@ class CityEventItem extends React.Component {
     }
 
     render () {
-      // console.log(this.props);
       return (
         <div key={this.props.event.id} className="city-event-item-container">
           <div className="event-details">

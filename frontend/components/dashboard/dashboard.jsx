@@ -7,7 +7,6 @@ import DashboardItem from './dashboard_item';
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.currentUser.city);
   }
 
   componentWillMount() {
@@ -22,12 +21,9 @@ class Dashboard extends React.Component {
           <h4 className="dashboard-header-1">
             You have no coding meetups coming up! Let's change that.
           </h4>
-
           <div className="join">
             { this.props.currentUser.city_id ? <Link className='lets-code-button' to={`/cities/${this.props.currentUser.city_id}`}>Join a meetup!</Link> : <Link className='lets-code-button' to={'/cities'}>Join a meetup!</Link>}
-
           </div>
-
         </div>
       );
     }
@@ -37,7 +33,6 @@ class Dashboard extends React.Component {
         <h4 className="dashboard-header-1">
           Events you're hosting:
         </h4>
-
         <div className="dashboard-outer">
           <ul className="dashboard-ul">
             <div className="dashboard-hosted-events">
@@ -52,11 +47,9 @@ class Dashboard extends React.Component {
             </div>
           </ul>
         </div>
-
         <h4 className="dashboard-header-1">
           Events you've joined:
         </h4>
-
         <div className="dashboard-outer-current">
           <ul className="dashboard-ul-current">
             <div className="dashboard-current-events">
@@ -73,7 +66,6 @@ class Dashboard extends React.Component {
         </div>
       </div>
     );
-
   }
 
   render() {
@@ -85,7 +77,6 @@ class Dashboard extends React.Component {
             <h4 className="dashboard-header-1">Welcome home, {this.props.currentUser.first_name}!</h4>
             <h5 className="dashboard-header-2">What are you grateful for today?</h5>
           </div>
-
           <div className="join2">
             {this.showEvents()}
           </div>

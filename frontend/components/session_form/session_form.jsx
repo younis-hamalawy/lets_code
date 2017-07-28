@@ -11,7 +11,6 @@ class SessionForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.signupFields = this.signupFields.bind(this);
     this.demosignin = this.demosignin.bind(this);
   }
 
@@ -28,7 +27,6 @@ class SessionForm extends React.Component {
     if (this.props.match.path !== nextProps.match.path){
       this.props.clearErrors();
     }
-    console.log("XXXXX");
     if (nextProps.signedin) {
       this.props.history.push('/');
     }

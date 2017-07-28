@@ -40,7 +40,6 @@ const EventsReducer = (state = defaultState, action) => {
         errors
       });
     case CLEAR_EVENTS_ERRORS:
-    // console.log("FART");
       return {
         errors: []
       };

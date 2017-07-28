@@ -8,6 +8,7 @@
 
 User.destroy_all
 
+User.create!(first_name: "Steve", last_name: "Buscemi", email: "steve@gmail.com", password: "password")
 User.create!(first_name: "Stuntman", last_name: "Mike", email: "stuntman@gmail.com", password: "password")
 User.create!(first_name: "Zoe", last_name: "Bell", email: "zoe@gmail.com", password: "password")
 User.create!(first_name: "Jungle", last_name: "Julia", email: "julia@gmail.com", password: "password")
@@ -27,12 +28,12 @@ User.create!(first_name: "Mr. Pink", last_name: ".", email: "email15@gmail.com",
 
 City.destroy_all
 
-City.create!(name: "SAN FRANCISCO", city_abrv:"SF", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500917215/sf_t5qwmt.jpg")
-City.create!(name: "NEW YORK CITY", city_abrv: "NYC", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500917188/nyc_ow7rzd.jpg")
-City.create!(name: "PORTLAND", city_abrv: "PRL", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500917194/portland_tqvwwi.jpg")
-City.create!(name: "LONDON", city_abrv: "LDN", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500958980/london3jpg_exw9tj.jpg")
-City.create!(name: "BOSTON", city_abrv: "BST", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500917428/boston_sgejl8.jpg")
-City.create!(name: "CHICAGO", city_abrv: "CHG", image_url: "http://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500917221/chicago_cptebs.jpg")
+City.create!(name: "SAN FRANCISCO", city_abrv:"SF", image_url: "https://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500917215/sf_t5qwmt.jpg")
+City.create!(name: "NEW YORK CITY", city_abrv: "NYC", image_url: "https://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500917188/nyc_ow7rzd.jpg")
+City.create!(name: "PORTLAND", city_abrv: "PRL", image_url: "https://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500917194/portland_tqvwwi.jpg")
+City.create!(name: "LONDON", city_abrv: "LDN", image_url: "https://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500958980/london3jpg_exw9tj.jpg")
+City.create!(name: "BOSTON", city_abrv: "BST", image_url: "https://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500917428/boston_sgejl8.jpg")
+City.create!(name: "CHICAGO", city_abrv: "CHG", image_url: "https://res.cloudinary.com/flying-monkey/image/upload/q_100/v1500917221/chicago_cptebs.jpg")
 
 
 Event.destroy_all

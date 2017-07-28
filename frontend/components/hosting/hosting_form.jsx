@@ -5,7 +5,6 @@ import { values } from 'lodash';
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-    // console.log(this.props);
     this.state = {
       date: "",
       name: "",
@@ -47,9 +46,6 @@ class SessionForm extends React.Component {
     this.props.createEvent(event).then( () => this.props.history.push(`/cities/${this.state.city_id}`));
   }
 
-
-
-
   renderErrors() {
     return(
       <ul className="errors">
@@ -85,9 +81,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
-
     return (
-
       <div className="create-event-form-container">
         <form onSubmit={this.handleSubmit} className="create-event-form-box">
           <h2>JOIN THE HOST COMMUNITY</h2>
