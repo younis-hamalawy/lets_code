@@ -37,7 +37,7 @@ $base: 0.75rem;
 
   font-family: 'Josefin Slab', serif;
   font-weight: bold;
-  font-size: $base;
+  font-size: $base*1.2;
   border:solid 2px #41403E;
   align-self:center;
   margin-bottom:2rem;
@@ -45,7 +45,7 @@ $base: 0.75rem;
   padding:0.8rem 0.9rem;
   margin:1rem;
   transition:all .5s ease;
-  color:#41403E;
+  // color:#41403E;
 
   letter-spacing:1px;
   outline:none;
