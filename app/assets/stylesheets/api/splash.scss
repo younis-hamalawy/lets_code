@@ -1,17 +1,19 @@
 $base: 0.75rem;
 .splash-main {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url("https://res.cloudinary.com/flying-monkey/image/upload/c_crop,h_1200,w_6260,y_1323/v1501206711/rawpixel-com-247361_eolpxk.jpg");
+  background-image: url("https://res.cloudinary.com/flying-monkey/image/upload/c_crop,h_2000,w_6260,y_1323/v1501206711/rawpixel-com-247361_eolpxk.jpg");
   background-repeat: no-repeat;
   height: auto;
   width: 100vw;
   background-size: contain;
   background-position: center;
-  min-height: 25rem;
+  height: 25rem;
   min-width: 100vw;
+  background-size: 100%;
   // opacity: 0.4;
   // filter: alpha(opacity=30);
   div.transbox1 {
@@ -28,8 +30,8 @@ $base: 0.75rem;
     // opacity: 0.2;
     // filter: alpha(opacity=60); /* For IE8 and earlier */
     // background-size: cover;
-    min-height: inherit;
-    min-width: inherit;
+    height: inherit;
+    width: inherit;
     background: rgba(255,255,255,0.7);
   }
   .everyone{
