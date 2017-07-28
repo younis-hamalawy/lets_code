@@ -31,4 +31,9 @@
  html, body {
      max-width: 100vw;
      overflow-x: hidden;
+     background-color: rgba(255, 255, 255,0.8);
  }
+
+ /*navbar.navbar {
+   background-color: rgba(245, 245, 42,0.5);
+ }*/
