@@ -50614,7 +50614,7 @@ var Splash = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'entry' },
-              _react2.default.createElement('img', { className: 'splash-image', src: "http://res.cloudinary.com/flying-monkey/image/upload/v1501144140/realpeople-1d5fb20324228744e992569f082415977c4b3799ef7b14cc5922c2dade18f97c_by2i9g.png", alt: 'splash-image' }),
+              _react2.default.createElement('img', { className: 'splash-image', src: "https://res.cloudinary.com/flying-monkey/image/upload/v1501218843/3_copy_xjycpj.png", alt: 'splash-image' }),
               _react2.default.createElement(
                 'div',
                 { className: 'weird' },
@@ -50647,12 +50647,12 @@ var Splash = function (_React$Component) {
                   'In all likelihood, our paths won\u2019t cross for any reason. So often, we only meet people through work, school, or friends of friends. And even then, it\u2019s questionable. So basically, we manufacture serendipity'
                 )
               ),
-              _react2.default.createElement('img', { className: 'splash-image', src: "http://res.cloudinary.com/flying-monkey/image/upload/v1501144140/campfire-eae12c98731c5564dcd309eb8e2fc0af48a7b023b677deae69fa309eb3db44d4_dp8f2i.png", alt: 'cartoon-figures' })
+              _react2.default.createElement('img', { className: 'splash-image', src: "http://res.cloudinary.com/flying-monkey/image/upload/v1501218843/2_copy_eatysw.png", alt: 'cartoon-figures' })
             ),
             _react2.default.createElement(
               'div',
-              { className: 'splash-entry' },
-              _react2.default.createElement('img', { className: 'splash-image', src: "http://res.cloudinary.com/flying-monkey/image/upload/v1501144140/nevermeet-55361a98c59cda3fced04c6234e80553c4ed3858c1028008e6fa3642185d57b9_qbtwnm.png", alt: 'cartoon-figures' }),
+              { className: 'entry' },
+              _react2.default.createElement('img', { className: 'splash-image', src: "http://res.cloudinary.com/flying-monkey/image/upload/v1501218843/1_copy_noaeuj.png", alt: 'cartoon-figures' }),
               _react2.default.createElement(
                 'div',
                 { className: 'weird' },
@@ -50670,7 +50670,7 @@ var Splash = function (_React$Component) {
             ),
             _react2.default.createElement(
               'div',
-              { className: 'host-button-container' },
+              { className: 'lets-code-button' },
               this.props.session.currentUser ? _react2.default.createElement(
                 _reactRouterDom.Link,
                 { className: 'host-button', to: '/cities' },

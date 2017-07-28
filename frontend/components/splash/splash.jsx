@@ -47,7 +47,7 @@ class Splash extends React.Component {
           <div className="splash-body">
             <h3 className="why">SO WHY ARE THOUSANDS OF PEOPLE DOING IT?</h3>
             <div className="entry">
-              <img className="splash-image" src={"http://res.cloudinary.com/flying-monkey/image/upload/v1501144140/realpeople-1d5fb20324228744e992569f082415977c4b3799ef7b14cc5922c2dade18f97c_by2i9g.png"} alt="splash-image" />
+              <img className="splash-image" src={"https://res.cloudinary.com/flying-monkey/image/upload/v1501218843/3_copy_xjycpj.png"} alt="splash-image" />
               <div className="weird">
                 <h2>It's weird</h2>
                 <p>Everyone is stepping a little out of their comfort zone. This makes it so much easier to actually learn something unexpected. Because open minds are a prerequisite around here</p>
@@ -58,16 +58,16 @@ class Splash extends React.Component {
                 <h2>We won't meet otherwise</h2>
                 <p>In all likelihood, our paths won’t cross for any reason. So often, we only meet people through work, school, or friends of friends. And even then, it’s questionable. So basically, we manufacture serendipity</p>
               </div>
-              <img className="splash-image" src={"http://res.cloudinary.com/flying-monkey/image/upload/v1501144140/campfire-eae12c98731c5564dcd309eb8e2fc0af48a7b023b677deae69fa309eb3db44d4_dp8f2i.png"} alt="cartoon-figures" />
+              <img className="splash-image" src={"http://res.cloudinary.com/flying-monkey/image/upload/v1501218843/2_copy_eatysw.png"} alt="cartoon-figures" />
             </div>
-            <div className="splash-entry">
-              <img className="splash-image" src={"http://res.cloudinary.com/flying-monkey/image/upload/v1501144140/nevermeet-55361a98c59cda3fced04c6234e80553c4ed3858c1028008e6fa3642185d57b9_qbtwnm.png"} alt="cartoon-figures" />
+            <div className="entry">
+              <img className="splash-image" src={"http://res.cloudinary.com/flying-monkey/image/upload/v1501218843/1_copy_noaeuj.png"} alt="cartoon-figures" />
               <div className="weird">
                 <h2>Your hands are made for high fiving!</h2>
                 <p>And your eyes are made…for eye contact! Real humans are so much cooler than their tweets or Instagram pictures. Let's Code has real humans! nofilter!</p>
               </div>
             </div>
-            <div className="host-button-container">
+            <div className="lets-code-button">
               { this.props.session.currentUser ? <Link className='host-button' to={'/cities'}>LET'S CODE TOGETHER!</Link> : <Link className='host-button' to={'/signUp'}>LET'S CODE TOGETHER!</Link>}
             </div>
           </div>
