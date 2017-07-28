@@ -29,7 +29,7 @@ class City extends React.Component {
     return (
       <div className="big-city-container">
         <div key={this.props.currentCityId} className={city.city_abrv}>
-          <div className="transbox">
+          <div className="transbox2">
             <div className="city-text">
               <div className="img-text5"><p className="img-text2">{city.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></div>
               <div className="img-text4"><p className="img-text3">&nbsp;&nbsp;&nbsp;Let's Code together!</p>

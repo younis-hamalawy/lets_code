@@ -72,17 +72,25 @@ class DashboardItem extends React.Component {
 
   render () {
     return (
-    <div className="event-container">
-      <div key={this.props.event.id} className="event-item">
-        <p className="event-city-name">{this.props.event.name}</p>
-        <p className="event-day">{this.formatDay()}</p>
-        <p className="event-month">{this.formatMonth()}</p>
-        <p className="event-daynumber">{this.dayNumber()}</p>
-        <p className="event-description">{this.props.event.description}</p>
-        <p className="event-address">{this.props.event.address}</p>
-      </div>
+      <div key={this.props.event.id} className="city-event-item-container">
+        <div className="event-details">
+          <div className="event-detail">
+            <p className="event-city-name">{this.props.event.name}</p>
+            <p className="event-day">{this.formatDay()}</p>
+            <div className="day">
+              <p className="event-month">{this.formatMonth()}&nbsp;&nbsp;</p>
+              <p className="event-daynumber">{this.dayNumber()}</p>
+            </div>
+          </div>
+          <div className="box-footer1">
+            <div className="box-footer">
+              <p className="event-description">{this.props.event.description}</p>
+              <p className="event-address">{this.props.event.address}</p>
+            </div>
+          </div>
+        </div>
 
-    </div>
+      </div>
     )
   }
 }

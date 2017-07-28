@@ -49813,7 +49813,7 @@ var City = function (_React$Component) {
           { key: this.props.currentCityId, className: city.city_abrv },
           _react2.default.createElement(
             'div',
-            { className: 'transbox' },
+            { className: 'transbox2' },
             _react2.default.createElement(
               'div',
               { className: 'city-text' },
@@ -51041,39 +51041,56 @@ var DashboardItem = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'event-container' },
+        { key: this.props.event.id, className: 'city-event-item-container' },
         _react2.default.createElement(
           'div',
-          { key: this.props.event.id, className: 'event-item' },
+          { className: 'event-details' },
           _react2.default.createElement(
-            'p',
-            { className: 'event-city-name' },
-            this.props.event.name
+            'div',
+            { className: 'event-detail' },
+            _react2.default.createElement(
+              'p',
+              { className: 'event-city-name' },
+              this.props.event.name
+            ),
+            _react2.default.createElement(
+              'p',
+              { className: 'event-day' },
+              this.formatDay()
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'day' },
+              _react2.default.createElement(
+                'p',
+                { className: 'event-month' },
+                this.formatMonth(),
+                '\xA0\xA0'
+              ),
+              _react2.default.createElement(
+                'p',
+                { className: 'event-daynumber' },
+                this.dayNumber()
+              )
+            )
           ),
           _react2.default.createElement(
-            'p',
-            { className: 'event-day' },
-            this.formatDay()
-          ),
-          _react2.default.createElement(
-            'p',
-            { className: 'event-month' },
-            this.formatMonth()
-          ),
-          _react2.default.createElement(
-            'p',
-            { className: 'event-daynumber' },
-            this.dayNumber()
-          ),
-          _react2.default.createElement(
-            'p',
-            { className: 'event-description' },
-            this.props.event.description
-          ),
-          _react2.default.createElement(
-            'p',
-            { className: 'event-address' },
-            this.props.event.address
+            'div',
+            { className: 'box-footer1' },
+            _react2.default.createElement(
+              'div',
+              { className: 'box-footer' },
+              _react2.default.createElement(
+                'p',
+                { className: 'event-description' },
+                this.props.event.description
+              ),
+              _react2.default.createElement(
+                'p',
+                { className: 'event-address' },
+                this.props.event.address
+              )
+            )
           )
         )
       );

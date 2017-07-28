@@ -72,26 +72,26 @@ div.big-city-container {
 p.img-text2 {
   position: relative;
   z-index:1;
-  color:red;
+  color: rgba(255,0,0, 0.6);
   font-weight:bold;
   font-family: 'Fjalla One', sans-serif;
   font-size: $base*6;
   display: flex;
   align-items: baseline;
   align-content: baseline;
-  opacity: 1;
+  // opacity: 0.5;
 }
 p.img-text3 {
   position: relative;
   z-index:1;
-  color:black;
+  color:rgba(0,0,0, 0.7);
   font-weight:bold;
   font-family: 'Fjalla One', sans-serif;
   font-size: $base*2;
-  opacity: 1;
+  // opacity: 1;
 }
 
-div.transbox {
+div.transbox2 {
   display: flex;
   z-index: 1;
   justify-content: center;
@@ -110,7 +110,7 @@ div.img-text {
   align-content: flex-end;
   align-items: flex-end;
   margin: 0;
-  opacity: 1;
+  // texopacity: 0.8;
 }
 
 
@@ -160,6 +160,7 @@ div.event {
       height: 15rem;
       align-items: center;
       .event-city-name {
+        color: rgba(240,128,128, 0.9);
         margin-top: 1rem;
         font-family: 'Yanone Kaffeesatz', sans-serif;
         font-weight: bold;
@@ -217,6 +218,9 @@ div.event {
   display: flex;
   justify-content: center;
   height: 3rem;
+  .sign-button {
+    background: white;
+  }
 }
 .sign-button1 {
   font-family: 'Josefin Slab', serif;
@@ -225,7 +229,7 @@ div.event {
   border:solid 2px #41403E;
   align-self:center;
   margin:2rem;
-  background:transparent;
+  background: white;
   padding: 1rem 0.9rem;
   margin: 0.5rem 1rem;
   transition:all .5s ease;
