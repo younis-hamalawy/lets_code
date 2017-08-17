@@ -15,7 +15,7 @@ const App = () => (
   <div className="main-app">
       <navbar className="navbar">
         <div className="logo">
-          <img src="http://res.cloudinary.com/flying-monkey/image/upload/c_crop,h_377,w_987/v1501200502/L_C_tshqyx.png" alt="logo" height="50" width="100" className="logo-img"></img>
+          <img src="https://res.cloudinary.com/flying-monkey/image/upload/c_crop,h_377,w_987/v1501200502/L_C_tshqyx.png" alt="logo" height="50" width="100" className="logo-img"></img>
           <Link to="/"><h1>Let's Code!</h1></Link>
         </div>
         <GreetingContainer className="button-container"/>
