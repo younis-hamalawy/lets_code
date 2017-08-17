@@ -19,6 +19,7 @@ $base: 0.75rem;
   // filter: alpha(opacity=30);
   div.transbox1 {
     width: 100%;
+    max-height: 100%;
     z-index: 1;
     display: flex;
     flex-direction: column;
@@ -71,11 +72,11 @@ $base: 0.75rem;
   }
   h1 {
     font-family: 'Amatic SC', cursive;
-    font-size: 9rem;
+    font-size: 8rem;
   }
   h2 {
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }
 
