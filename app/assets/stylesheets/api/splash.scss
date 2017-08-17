@@ -87,7 +87,7 @@ $base: 0.75rem;
 .info-container{
   display: flex;
   // flex-direction: column;
-  width: 100vw;
+  // width: 100vw;
   padding: 1rem;
 
 }
@@ -100,22 +100,23 @@ div.info {
   // align-items: center;
   align-content: center;
   // padding: 0 17rem;
+  padding: 0 5em;
   .first-info{
     margin: 0 5rem;
     display: flex;
     flex-direction: column;
     // justify-content: center;
     // align-content: center;
-    min-width: 20vw;
+    min-width: 25%;
     h2{
       font-family: 'Amatic SC', cursive;
-      font-size: 2rem;
+      font-size: 1.7em;
       margin: 0.5rem;
       text-align: center;
     }
     p {
       font-family: 'Yanone Kaffeesatz', sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.3em;
       margin: 0 0.5rem;
       text-align: center;
 
