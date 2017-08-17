@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20170718205648) do
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "email", null: false
-    t.string "image_url", default: "http://res.cloudinary.com/flying-monkey/image/upload/v1500417413/profile_avatar_ytdmt7.jpg", null: false
+    t.string "image_url", default: "https://res.cloudinary.com/flying-monkey/image/upload/v1500417413/profile_avatar_ytdmt7.jpg", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false
     t.integer "city_id"

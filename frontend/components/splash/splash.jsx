@@ -76,14 +76,14 @@ class Splash extends React.Component {
               </div>
               <img
                 className="splash-image"
-                src={'http://res.cloudinary.com/flying-monkey/image/upload/v1501218843/2_copy_eatysw.png'}
+                src={'https://res.cloudinary.com/flying-monkey/image/upload/v1501218843/2_copy_eatysw.png'}
                 alt="cartoon-figures"
               />
             </div>
             <div className="entry">
               <img
                 className="splash-image"
-                src={'http://res.cloudinary.com/flying-monkey/image/upload/v1501218843/1_copy_noaeuj.png'}
+                src={'https://res.cloudinary.com/flying-monkey/image/upload/v1501218843/1_copy_noaeuj.png'}
                 alt="cartoon-figures"
               />
               <div className="weird">
