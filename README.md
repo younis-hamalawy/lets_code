@@ -1,5 +1,5 @@
 # Let's Code
-[Live](https://lets-code-together.herokuapp.com/)
+[Live](http://letscode.today/)
 
 Let's Code is a full-stack single web application inspired by Tea with Strangers built using Ruby on Rails utilizing React.js + Redux architecture. Let's Code allows users to organize meet ups in 6 different cities.
 
@@ -54,7 +54,7 @@ Passwords are digested using the `BCrypt` gem before being stored. Authenticatio
 
 ### Users and Events
 
-Users have the ability to attend and leave events, and create events.  
+Users have the ability to attend and leave events, and create events.
 
 The event component displays the information saved in the database's events table.  In the database, each event is required to have a `date`, `name`, `address`, `description`, `host_id`, `city_id`. When logged in users can choose to join or leave an event from the City show page.
 
