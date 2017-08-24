@@ -49112,11 +49112,6 @@ var SessionForm = function (_React$Component) {
   }
 
   _createClass(SessionForm, [{
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.props.clearErrors();
-    }
-  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.props.fetchAllCities();
@@ -49131,6 +49126,11 @@ var SessionForm = function (_React$Component) {
       if (nextProps.signedin) {
         this.props.history.push('/');
       }
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.props.clearErrors();
     }
   }, {
     key: 'update',
@@ -49149,6 +49149,46 @@ var SessionForm = function (_React$Component) {
       this.props.processForm({ user: user });
     }
   }, {
+    key: 'signupFields',
+    value: function signupFields() {
+      if (this.props.formType === 'signup') {
+        return _react2.default.createElement(
+          'div',
+          { className: 'signup-form' },
+          _react2.default.createElement(
+            'label',
+            null,
+            _react2.default.createElement('input', {
+              type: 'text',
+              value: this.state.first_name,
+              onChange: this.update('first_name'),
+              className: 'sign-input',
+              placeholder: 'First name'
+            })
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'label',
+            null,
+            _react2.default.createElement('input', {
+              type: 'text',
+              value: this.state.last_name,
+              onChange: this.update('last_name'),
+              className: 'sign-input',
+              placeholder: 'Last name'
+            })
+          )
+        );
+      }
+    }
+  }, {
+    key: 'demosignin',
+    value: function demosignin(e) {
+      e.preventDefault();
+      var user = { email: 'jamie@gmail.com', password: 'password' };
+      this.props.signin({ user: user });
+    }
+  }, {
     key: 'renderErrors',
     value: function renderErrors() {
       return _react2.default.createElement(
@@ -49164,47 +49204,8 @@ var SessionForm = function (_React$Component) {
       );
     }
   }, {
-    key: 'signupFields',
-    value: function signupFields() {
-      if (this.props.formType === "signup") {
-        return _react2.default.createElement(
-          'div',
-          { className: 'signup-form' },
-          _react2.default.createElement(
-            'label',
-            null,
-            _react2.default.createElement('input', { type: 'text',
-              value: this.state.first_name,
-              onChange: this.update('first_name'),
-              className: 'sign-input',
-              placeholder: 'First name'
-            })
-          ),
-          _react2.default.createElement('br', null),
-          _react2.default.createElement(
-            'label',
-            null,
-            _react2.default.createElement('input', { type: 'text',
-              value: this.state.last_name,
-              onChange: this.update('last_name'),
-              className: 'sign-input',
-              placeholder: 'Last name'
-            })
-          )
-        );
-      }
-    }
-  }, {
-    key: 'demosignin',
-    value: function demosignin(e) {
-      e.preventDefault();
-      var user = { email: "stuntman@gmail.com", password: "password" };
-      this.props.signin({ user: user });
-    }
-  }, {
     key: 'render',
     value: function render() {
-
       return _react2.default.createElement(
         'div',
         { className: 'sign-form-container' },
@@ -49224,7 +49225,8 @@ var SessionForm = function (_React$Component) {
             _react2.default.createElement(
               'label',
               null,
-              _react2.default.createElement('input', { type: 'email',
+              _react2.default.createElement('input', {
+                type: 'email',
                 value: this.state.email,
                 onChange: this.update('email'),
                 className: 'sign-input',
@@ -49234,7 +49236,8 @@ var SessionForm = function (_React$Component) {
             _react2.default.createElement(
               'label',
               null,
-              _react2.default.createElement('input', { type: 'password',
+              _react2.default.createElement('input', {
+                type: 'password',
                 value: this.state.password,
                 onChange: this.update('password'),
                 className: 'sign-input',
