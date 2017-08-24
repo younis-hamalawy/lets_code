@@ -38,22 +38,22 @@ City.create!(name: "CHICAGO", city_abrv: "CHG", image_url: "https://res.cloudina
 
 Event.destroy_all
 
-Event.create!(date: Faker::Date.forward(50), name:"Ruby for beginners", address: "Humphry Slocombe, 2790A Harrison St, San Francisco, CA 94110, USA", description: "Just a few people coding ruby at an Ice Cream parlor", host_id: 2, city_id: 1)
-Event.create!(date: Faker::Date.forward(50), name:"JavaScript forever @bluebottle", address: "2900 18th St, San Francisco, CA 94110, USA", description: "The most advanced JS coding experience with skillful players in the field", host_id: 1, city_id: 1)
-Event.create!(date: Faker::Date.forward(50), name:"Intermediate C++", address: "3049 20th St, San Francisco, CA 94110", description: "Come code with me @Atlas cafe, they have the best tea in town.", host_id: 2, city_id: 1)
-Event.create!(date: Faker::Date.forward(50), name:"Ruby for the Intermediate", address: "2760 24th St, San Francisco, CA 94110, USA", description: "Come join us under the sun at the backyard of Dynamo Donut & coffee", host_id: 3, city_id: 1)
-Event.create!(date: Faker::Date.forward(50), name:"React overview", address: "3248 22nd St, San Francisco, CA 94110, USA", description: "@Revolution Cafe in mission we're talking React", host_id: 1, city_id: 1)
+Event.create!(date: Faker::Date.forward(200), name:"Ruby for beginners", address: "Humphry Slocombe, 2790A Harrison St, San Francisco, CA 94110, USA", description: "Just a few people coding ruby at an Ice Cream parlor", host_id: 2, city_id: 1)
+Event.create!(date: Faker::Date.forward(200), name:"JavaScript forever @bluebottle", address: "2900 18th St, San Francisco, CA 94110, USA", description: "The most advanced JS coding experience with skillful players in the field", host_id: 1, city_id: 1)
+Event.create!(date: Faker::Date.forward(200), name:"Intermediate C++", address: "3049 20th St, San Francisco, CA 94110", description: "Come code with me @Atlas cafe, they have the best tea in town.", host_id: 2, city_id: 1)
+Event.create!(date: Faker::Date.forward(200), name:"Ruby for the Intermediate", address: "2760 24th St, San Francisco, CA 94110, USA", description: "Come join us under the sun at the backyard of Dynamo Donut & coffee", host_id: 3, city_id: 1)
+Event.create!(date: Faker::Date.forward(200), name:"React overview", address: "3248 22nd St, San Francisco, CA 94110, USA", description: "@Revolution Cafe in mission we're talking React", host_id: 1, city_id: 1)
 
-Event.create!(date: Faker::Date.forward(50), name:"Ruby for beginners", address: "Humphry Slocombe, 2790A Harrison St, Chicago", description: "Just a few people coding ruby at an Ice Cream parlor", host_id: 2, city_id: 6)
-Event.create!(date: Faker::Date.forward(50), name:"JavaScript forever @bluebottle", address: "2900 18th St", description: "The most advanced JS coding experience with skillful players in the field", host_id: 3, city_id: 2)
-Event.create!(date: Faker::Date.forward(50), name:"Intermediate C++", address: "3049 20th St", description: "Come code with me @Atlas cafe, they have the best tea in town.", host_id: 2, city_id: 1)
-Event.create!(date: Faker::Date.forward(50), name:"Ruby for the Intermediate", address: "2760 24th St", description: "Come join us under the sun at the backyard of Dynamo Donut & coffee", host_id: 3, city_id: 3)
-Event.create!(date: Faker::Date.forward(50), name:"React overview", address: "3248 22nd St", description: "@Revolution Cafe in mission we're talking React", host_id: 2, city_id: 4)
-Event.create!(date: Faker::Date.forward(50), name:"Ruby for beginners", address: "Humphry Slocombe, 2790A Harrison St", description: "Just a few people coding ruby at an Ice Cream parlor", host_id: 2, city_id: 2)
-Event.create!(date: Faker::Date.forward(50), name:"JavaScript forever @bluebottle", address: "2900 18th St", description: "The most advanced JS coding experience with skillful players in the field", host_id: 6, city_id: 5)
-Event.create!(date: Faker::Date.forward(50), name:"Intermediate C++", address: "3049 20th St", description: "Come code with me @Atlas cafe, they have the best tea in town.", host_id: 7, city_id: 3)
-Event.create!(date: Faker::Date.forward(50), name:"Ruby for the Intermediate", address: "2760 24th St", description: "Come join us under the sun at the backyard of Dynamo Donut & coffee", host_id: 3, city_id: 3)
-Event.create!(date: Faker::Date.forward(50), name:"React overview", address: "3248 22nd St", description: "@Revolution Cafe in mission we're talking React", host_id: 1, city_id: 3)
+Event.create!(date: Faker::Date.forward(200), name:"Ruby for beginners", address: "Humphry Slocombe, 2790A Harrison St, Chicago", description: "Just a few people coding ruby at an Ice Cream parlor", host_id: 2, city_id: 6)
+Event.create!(date: Faker::Date.forward(200), name:"JavaScript forever @bluebottle", address: "2900 18th St", description: "The most advanced JS coding experience with skillful players in the field", host_id: 3, city_id: 2)
+Event.create!(date: Faker::Date.forward(200), name:"Intermediate C++", address: "3049 20th St", description: "Come code with me @Atlas cafe, they have the best tea in town.", host_id: 2, city_id: 1)
+Event.create!(date: Faker::Date.forward(200), name:"Ruby for the Intermediate", address: "2760 24th St", description: "Come join us under the sun at the backyard of Dynamo Donut & coffee", host_id: 3, city_id: 3)
+Event.create!(date: Faker::Date.forward(200), name:"React overview", address: "3248 22nd St", description: "@Revolution Cafe in mission we're talking React", host_id: 2, city_id: 4)
+Event.create!(date: Faker::Date.forward(200), name:"Ruby for beginners", address: "Humphry Slocombe, 2790A Harrison St", description: "Just a few people coding ruby at an Ice Cream parlor", host_id: 2, city_id: 2)
+Event.create!(date: Faker::Date.forward(200), name:"JavaScript forever @bluebottle", address: "2900 18th St", description: "The most advanced JS coding experience with skillful players in the field", host_id: 6, city_id: 5)
+Event.create!(date: Faker::Date.forward(200), name:"Intermediate C++", address: "3049 20th St", description: "Come code with me @Atlas cafe, they have the best tea in town.", host_id: 7, city_id: 3)
+Event.create!(date: Faker::Date.forward(200), name:"Ruby for the Intermediate", address: "2760 24th St", description: "Come join us under the sun at the backyard of Dynamo Donut & coffee", host_id: 3, city_id: 3)
+Event.create!(date: Faker::Date.forward(200), name:"React overview", address: "3248 22nd St", description: "@Revolution Cafe in mission we're talking React", host_id: 1, city_id: 3)
 
 
 
