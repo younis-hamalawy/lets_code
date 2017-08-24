@@ -15,11 +15,11 @@ The front end is built completely in React.js/Redux and JavaScript. React's virt
 #### Libraries
 
 * Ruby on Rails
-* PostgreSQL
 * React
 * Redux
 * jQuery
-* Google API
+* Database
+  * PostgreSQL
 * Gems
   * Jbuilder
   * BCrypt
