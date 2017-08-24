@@ -30701,8 +30701,8 @@ document.addEventListener('DOMContentLoaded', function () {
   } else {
     store = (0, _store2.default)();
   }
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
   // window.fetchAllEvents = fetchAllEvents;
   // window.fetchSingleEvent = fetchSingleEvent;
   // window.createEvent = createEvent;
