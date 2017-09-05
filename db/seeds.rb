@@ -8,7 +8,7 @@
 
 User.destroy_all
 
-User.create!(first_name: "Jamie", last_name: "Buscemi", email: "jamie@gmail.com", password: "password")
+User.create!(first_name: "Guest", last_name: "Guest", email: "jamie@gmail.com", password: "password")
 User.create!(first_name: "Stuntman", last_name: "Mike", email: "stuntman@gmail.com", password: "password")
 User.create!(first_name: "Zoe", last_name: "Bell", email: "zoe@gmail.com", password: "password")
 User.create!(first_name: "Jungle", last_name: "Julia", email: "julia@gmail.com", password: "password")
