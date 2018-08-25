@@ -14,7 +14,6 @@ class SessionForm extends React.Component {
     this.demosignin = this.demosignin.bind(this);
   }
 
-
   componentDidMount() {
     this.props.fetchAllCities();
     this.props.fetchAllEvents();
@@ -34,9 +33,10 @@ class SessionForm extends React.Component {
   }
 
   update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value,
-    });
+    return e =>
+      this.setState({
+        [field]: e.currentTarget.value,
+      });
   }
 
   handleSubmit(e) {
@@ -45,30 +45,29 @@ class SessionForm extends React.Component {
     this.props.processForm({ user });
   }
 
-
   signupFields() {
     if (this.props.formType === 'signup') {
       return (
         <div className="signup-form">
           <label>
-          <input
-          type="text"
-          value={this.state.first_name}
-          onChange={this.update('first_name')}
-          className="sign-input"
-          placeholder="First name"
-        />
-        </label>
+            <input
+              type="text"
+              value={this.state.first_name}
+              onChange={this.update('first_name')}
+              className="sign-input"
+              placeholder="First name"
+            />
+          </label>
           <br />
           <label>
-          <input
-          type="text"
-          value={this.state.last_name}
-          onChange={this.update('last_name')}
-          className="sign-input"
-          placeholder="Last name"
-        />
-        </label>
+            <input
+              type="text"
+              value={this.state.last_name}
+              onChange={this.update('last_name')}
+              className="sign-input"
+              placeholder="Last name"
+            />
+          </label>
         </div>
       );
     }
@@ -83,11 +82,7 @@ class SessionForm extends React.Component {
   renderErrors() {
     return (
       <ul className="errors">
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
+        {this.props.errors.map((error, i) => <li key={`error-${i}`}>{error}</li>)}
       </ul>
     );
   }
@@ -124,7 +119,9 @@ class SessionForm extends React.Component {
 
             <div className="form-buttons">
               <input className="sign-button" type="submit" value="Let's Code!" />
-              <button type="submit" className="sign-button" onClick={this.demosignin}>Demo Login</button>
+              <button type="submit" className="sign-button" onClick={this.demosignin}>
+                Demo Login
+              </button>
             </div>
           </div>
         </form>
