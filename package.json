@@ -32,13 +32,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flying-monkey/lets_code.git"
+    "url": "git+https://github.com/younis-hamalawy/lets_code.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/flying-monkey/lets_code/issues"
+    "url": "https://github.com/younis-hamalawy/lets_code/issues"
   },
-  "homepage": "https://github.com/flying-monkey/lets_code#readme"
+  "homepage": "https://github.com/younis-hamalawy/lets_code#readme"
 }
