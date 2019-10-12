@@ -2,7 +2,7 @@
   "name": "lets_code",
   "private": true,
   "dependencies": {
-    "babel-core": "^6.26.3",
+    "@babel/core": "^7.6.4",
     "babel-loader": "^8.0.6",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
@@ -13,12 +13,13 @@
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0",
-    "webpack": "^4.41.1"
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "redux-logger": "^3.0.6",
-    "uglify-js-brunch": "^2.10.0"
+    "uglify-js-brunch": "^2.10.0",
+    "webpack": "^4.41.1",
+    "webpack-cli": "^3.3.9"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",

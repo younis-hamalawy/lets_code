@@ -20,11 +20,12 @@ const prodPlugins = [
 plugins = plugins.concat(process.env.NODE_ENV === 'production' ? prodPlugins : devPlugins);
 
 module.exports = {
+  mode: "production",
   context: __dirname,
-  entry: './frontend/lets_code.jsx',
+  entry: "./frontend/lets_code.jsx",
   output: {
-    path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, "app", "assets", "javascripts"),
+    filename: "bundle.js"
   },
   plugins,
   module: {
@@ -32,15 +33,15 @@ module.exports = {
       {
         test: [/\.jsx?$/, /\.js?$/],
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         query: {
-          presets: ['es2015', 'react'],
-        },
-      },
-    ],
+          presets: ["es2015", "react"]
+        }
+      }
+    ]
   },
-  devtool: 'source-map',
+  devtool: "source-map",
   resolve: {
-    extensions: ['.js', '.jsx', '*'],
-  },
+    extensions: [".js", ".jsx", "*"]
+  }
 };
