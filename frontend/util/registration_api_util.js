@@ -4,10 +4,3 @@ export const fetchAllRegistrations = () => {
     url: `api/registrations/`
   });
 };
-
-// export const fetchSingleRegistration = (registration_id) => {
-//   return $.ajax({
-//     method: 'GET',
-//     url: `api/cities/${city_id}/registrations`
-//   });
-// };

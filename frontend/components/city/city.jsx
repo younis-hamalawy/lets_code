@@ -20,7 +20,7 @@ class City extends React.Component {
     events = events.filter( event => event.city_id === this.props.currentCityId);
     return events.map ( event => (
       <CityEventItemContainer key={event.id} event={event}/>
-    ))
+    ));
   }
 
   render() {

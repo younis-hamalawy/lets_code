@@ -19,7 +19,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.session.currentUser,
     events: selectAllEvents(state.events)
 
-  })
+  });
 };
 
 const mapDispatchToProps = dispatch => ({

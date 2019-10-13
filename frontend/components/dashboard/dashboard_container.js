@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
     hostedEvents: selectHostedEvents(state.events.entities, state.session.currentUser),
     joinedEvents: selectJoinedEvents(state.events.entities),
     pastEvents: selectPastEvents(state.events.entities)
-  })
+  });
 };
 
 const mapDispatchToProps = dispatch => ({

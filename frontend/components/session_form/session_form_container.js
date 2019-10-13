@@ -11,7 +11,7 @@ const mapStateToProps = ({ session }) => {
   return {
     signedIn: Boolean(session.currentUser),
     errors: session.errors
-  }
+  };
 };
 
 const mapDispatchToProps = (dispatch, { location }) => {

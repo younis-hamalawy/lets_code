@@ -31,15 +31,13 @@ export const destroyEvent = (event_id) => {
 export const registerEvent = (event_id, user_id) => (
   $.ajax({
     method: 'POST',
-    url: `/api/events/${event_id}/registrations`,
-    // data: { registration: {event_id, user_id} }
+    url: `/api/events/${event_id}/registrations`
   })
 );
 
 export const deregisterEvent = (event_id, user_id) => (
   $.ajax({
     method: 'Delete',
-    url: `/api/events/${event_id}/registrations/${user_id}`,
-    // data: { registration: {event_id, user_id} }
+    url: `/api/events/${event_id}/registrations/${user_id}`
   })
 );

@@ -5,7 +5,7 @@ import { values } from 'lodash';
 
 class DashboardItem extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   formatDay() {
@@ -16,22 +16,21 @@ class DashboardItem extends React.Component {
       }else{
         day++;
       }
-      // let month = date.getMonth();
       switch (day) {
         case 0:
           return "Sunday";
         case 1:
-          return "Monday"
+          return "Monday";
         case 2:
-          return "Tuesday"
+          return "Tuesday";
         case 3:
-          return "Wednesday"
+          return "Wednesday";
         case 4:
-          return "Thursday"
+          return "Thursday";
         case 5:
-          return "Friday"
+          return "Friday";
         case 6:
-          return "Saturday"
+          return "Saturday";
       }
   }
 
@@ -42,27 +41,27 @@ class DashboardItem extends React.Component {
         case 0:
           return "JAN";
         case 1:
-          return "FEB"
+          return "FEB";
         case 2:
-          return "MAR"
+          return "MAR";
         case 3:
-          return "APR"
+          return "APR";
         case 4:
-          return "MAY"
+          return "MAY";
         case 5:
-          return "JUN"
+          return "JUN";
         case 6:
-          return "JUL"
+          return "JUL";
         case 7:
-          return "AUG"
+          return "AUG";
         case 8:
-          return "SEPT"
+          return "SEPT";
         case 9:
-          return "OCT"
+          return "OCT";
         case 10:
-          return "NOV"
+          return "NOV";
         case 11:
-          return "DEC"
+          return "DEC";
       }
   }
 

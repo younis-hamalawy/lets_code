@@ -7,7 +7,6 @@ import {
 
 const defaultState = {
   entities: {},
-  // currentCity: null
 };
 
 
@@ -18,9 +17,6 @@ const CitiesReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_ALL_CITIES:
       return action.cities;
-      // return merge({}, state, {
-      //   cities: action.cities
-      // });
     case RECEIEVE_SINGLE_CITY:
       return merge({}, state, action.city)
     default:

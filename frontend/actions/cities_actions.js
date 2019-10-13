@@ -11,7 +11,7 @@ export const receiveAllCities = cities => ({
 export const receiveSingleCity = city => ({
   type: RECEIEVE_SINGLE_CITY,
   city
-})
+});
 
 export const fetchAllCities = () => dispatch => (
   CitiesAPIUtil.fetchAllCities().then(cities => (

@@ -5,8 +5,8 @@ import CitiesItem from './cities_item';
 
 class Cities extends React.Component {
   constructor(props) {
-    super(props)
-  this.renderCities = this.renderCities.bind(this);
+    super(props);
+    this.renderCities = this.renderCities.bind(this);
   }
 
   componentWillMount() {
@@ -20,10 +20,10 @@ class Cities extends React.Component {
 
     const first = cities.slice(0, length / 2).map(city => (
       <CitiesItem key={city.id} city={city} currentUser={this.props.currentUser} setCity={this.props.setCity} />
-    ))
+    ));
     const second = cities.slice(length / 2).map(city => (
       <CitiesItem key={city.id} city={city} currentUser={this.props.currentUser} setCity={this.props.setCity} />
-    ))
+    ));
     return [first, second];
   }
 

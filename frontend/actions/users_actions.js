@@ -19,12 +19,6 @@ export const setCity = (userId, user) => dispatch => (
   ))
 );
 
-// export const registerEvent = (event_id, user_id) => dispatch => (
-//   UserAPIUtil.registerEvent(event_id, user_id).then(user => (
-//     dispatch(receiveCurrentUser(user))
-//   ))
-// );
-
 export const fetchAllUsers = () => dispatch(
   UsersAPIUtil.fetchAllusers().then(users => (
       dispatch(receiveAllUsers(users))

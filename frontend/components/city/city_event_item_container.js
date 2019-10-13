@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-// import lodash from 'lodash';
 
 import CityEventItem from './city_event_item';
 import { registerEvent, deregisterEvent } from '../../actions/events_actions';

@@ -6,12 +6,10 @@ import {
 
 
 const UsersReducer = (state = {}, action) => {
-  Object.freeze(state)
+  Object.freeze(state);
   switch(action.type) {
     case RECEIVE_ALL_USERS:
-      return action.users
-      });
-
+      return action.users;
     default:
       return state;
   }

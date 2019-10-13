@@ -25,7 +25,7 @@ export const deleteEvent = event => ({
 export const receiveErrors = (errors) => ({
   type: RECEIVE_EVENTS_ERRORS,
   errors
-})
+});
 
 export const clearErrors = () => ({
   type: CLEAR_EVENTS_ERRORS
