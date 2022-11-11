@@ -21,7 +21,7 @@
     "redux-logger": "^3.0.6",
     "uglify-js-brunch": "^2.10.0",
     "webpack": "^4.41.1",
-    "webpack-cli": "^3.3.9"
+    "webpack-cli": "^3.3.12"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",
